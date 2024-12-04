@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Parallax from '$lib/parallax/parallax.svelte';
+	import Parallax from '$lib/parallax/Parallax.svelte';
 </script>
 
 <div>
