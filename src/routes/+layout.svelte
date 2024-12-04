@@ -1,13 +1,10 @@
-<script>
+<script lang="ts">
+	import Nav from '$lib/Nav.svelte';
+
 	let { children } = $props();
 </script>
 
-<nav>
-	<a href="/parallax">parallax</a>
-	<a href="/parallax/old/1">1</a>
-	<a href="/parallax/old/2">2</a>
-	<a href="/parallax/old/scroll">scroll</a>
-</nav>
+<Nav></Nav>
 <main>
 	{@render children()}
 </main>
