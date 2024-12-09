@@ -5,6 +5,7 @@
 
 <style>
 	nav {
+		/* position: fixed; z-index: 3; */
 		background-color: black;
 		padding: 10px;
 		display: flex;

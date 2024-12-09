@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { createPositions } from './islandPositions.svelte';
 
-	const { title = 'Title Text' } = $props();
+	const { title = 'Title Text', moveWithScroll = true, moveWithMouse = true } = $props();
 
+	let scrollY = $state(0);
 	let mouse = $state({ x: 0, y: 0 });
 	let hero = $state({ width: 0, height: 0 });
 
@@ -18,10 +19,12 @@
 		const offsetX = -hero.width / 2;
 		const offsetY = -hero.height / 2;
 
-		const x = offsetX + mouse.x * scale;
-		const y = offsetY + mouse.y * scale;
+		const x = moveWithMouse ? mouse.x : 0;
+		const y = (moveWithMouse ? mouse.y : 0) + (moveWithScroll ? scrollY : 0);
+		const tx = offsetX + x * scale;
+		const ty = offsetY + y * scale;
 
-		return { x: x + 'px', y: y + 'px' };
+		return { x: tx + 'px', y: ty + 'px' };
 	}
 
 	let parallaxShift = $derived(getShift());
@@ -30,6 +33,8 @@
 {#snippet island(level: string = 'fore', x: number = 0, y: number = 0, content: string)}
 	<div class="island parallax-{level}ground" style="left:{x}px; top:{y}px;">{content}</div>
 {/snippet}
+
+<svelte:window bind:scrollY />
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <section
@@ -79,8 +84,8 @@
 	}
 
 	.hero-title {
-		/* font-size: 3rem; */
-		font-size: 10vw;
+		/* font-size: 4vw; */
+		font-size: 4rem;
 		color: hsl(180, 20%, 30%);
 	}
 
@@ -89,7 +94,8 @@
 	}
 
 	.island {
-		padding: 10px;
+		padding: 10px 20px;
+		font-size: 2rem;
 		width: fit-content;
 		background-color: hsl(180, 20%, 49%);
 		color: hsl(0, 0%, 88%);
@@ -108,7 +114,7 @@
 	}
 
 	.parallax-foreground {
-		--shift-scale: 1;
+		--shift-scale: 0.8;
 		--size-scale: 1;
 		opacity: 0.9;
 	}
@@ -118,7 +124,7 @@
 		opacity: 0.7;
 	}
 	.parallax-background {
-		--shift-scale: 0.3;
+		--shift-scale: 0.2;
 		--size-scale: 0.5;
 		opacity: 0.5;
 	}
