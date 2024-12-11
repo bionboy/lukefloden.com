@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { createPositions } from './islandPositions.svelte';
 
-	const { title = 'Title Text', moveWithScroll = true, moveWithMouse = true } = $props();
+	const {
+		title = 'Title Text',
+		foregroundContent = 'foreground',
+		midgroundContent = 'midground',
+		backgroundContent = 'background',
+		moveWithScroll = true,
+		moveWithMouse = true
+	} = $props();
 
 	let scrollY = $state(0);
 	let mouse = $state({ x: 0, y: 0 });
@@ -47,13 +54,13 @@
 >
 	<div class="parallax">
 		{#each positions[2] as coords}
-			{@render island('back', coords[0], coords[1], 'Background')}
+			{@render island('back', coords[0], coords[1], backgroundContent)}
 		{/each}
 		{#each positions[1] as coords}
-			{@render island('mid', coords[0], coords[1], 'Midground')}
+			{@render island('mid', coords[0], coords[1], midgroundContent)}
 		{/each}
 		{#each positions[0] as coords}
-			{@render island('fore', coords[0], coords[1], 'Foreground')}
+			{@render island('fore', coords[0], coords[1], foregroundContent)}
 		{/each}
 	</div>
 	<div class="hero-content">
@@ -68,7 +75,7 @@
 		align-items: center;
 		justify-content: center;
 		overflow: clip;
-		height: 90vh;
+		height: 100vh;
 		min-height: 300px;
 		/* max-height: 1000px; */
 		background-image: linear-gradient(

@@ -6,14 +6,17 @@
 </script>
 
 <div class="home">
-	<Parallax title="Under Construction!" />
+	<Parallax
+		title="Under Construction!"
+		foregroundContent="👷‍♀️"
+		midgroundContent="🚧"
+		backgroundContent="🏗️"
+	/>
 </div>
 
 <style>
 	.home {
+		align-content: center;
 		height: 100vh;
-		background-color: white;
-		padding: 0px;
-		margin: 0px;
 	}
 </style>
