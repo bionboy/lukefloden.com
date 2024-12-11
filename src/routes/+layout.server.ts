@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
+import { dev } from '$app/environment';
 
 export const load: LayoutServerLoad = async ({ url }) => {
 	middlewareUnderConstruction(url);
@@ -7,7 +8,7 @@ export const load: LayoutServerLoad = async ({ url }) => {
 // }) satisfies LayoutServerLoad;
 
 function middlewareUnderConstruction(url: URL) {
-	const isUnderConstruction = true;
+	const isUnderConstruction = !dev;
 	if (isUnderConstruction && url.pathname !== '/under-construction') {
 		throw redirect(307, '/under-construction');
 	}
