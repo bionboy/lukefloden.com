@@ -2,7 +2,7 @@
 	import DemosDisplay from './DemosDisplay.svelte';
 	import DemoContainer from './DemoContainer.svelte';
 
-	import Parallax from '$lib/parallax/Parallax.svelte';
+	import Parallax from './Parallax.svelte';
 </script>
 
 <div>
