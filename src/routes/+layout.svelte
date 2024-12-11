@@ -4,20 +4,17 @@
 	let { children } = $props();
 </script>
 
-<Nav></Nav>
+<Nav />
 <main>
 	{@render children()}
 </main>
 
 <style>
 	main {
-		padding: 0px;
-		margin: 0px;
-		background-image: linear-gradient(
-			to bottom right in hsl,
-			hsl(100, 90%, 30%),
-			hsl(100, 90%, 60%)
-		);
-		border: 3px solid hsl(100, 90%, 70%);
+		/* padding: 0px; */
+		/* margin: 0px; */
+		/* position: relative; */
+		/* background-image: linear-gradient(to bottom right in hsl, hsl(70, 90%, 30%), hsl(70, 90%, 60%)); */
+		/* border: 3px solid hsl(100, 90%, 70%); */
 	}
 </style>

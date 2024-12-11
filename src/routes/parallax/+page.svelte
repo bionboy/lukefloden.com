@@ -1,11 +1,22 @@
 <script lang="ts">
+	import DemosDisplay from './DemosDisplay.svelte';
+	import DemoContainer from './DemoContainer.svelte';
+
 	import Parallax from '$lib/parallax/Parallax.svelte';
 </script>
 
 <div>
-	<Parallax title="Moving with the mouse and when you scroll"></Parallax>
-	<Parallax title="I only react to the mouse ¯\_(ツ)_/¯" moveWithScroll={false} />
-	<Parallax title="Scrolling only 😈" moveWithMouse={false} />
+	<DemosDisplay>
+		<DemoContainer title="Moving with the mouse and when you scroll">
+			<Parallax />
+		</DemoContainer>
+		<DemoContainer title="I only react to the mouse ¯\_(ツ)_/¯">
+			<Parallax moveWithScroll={false} />
+		</DemoContainer>
+		<DemoContainer title="Scrolling only 😈">
+			<Parallax moveWithMouse={false} />
+		</DemoContainer>
+	</DemosDisplay>
 	<section class="etc">
 		<p>putting some ...</p>
 		<p>more content ...</p>

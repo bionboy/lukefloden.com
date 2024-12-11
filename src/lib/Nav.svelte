@@ -5,14 +5,13 @@
 
 <style>
 	nav {
-		/* position: fixed; z-index: 3; */
+		/* position: fixed; */
+		/* z-index: 3; */
 		background-color: black;
 		padding: 10px;
 		display: flex;
 		border-radius: 0.5rem;
-		margin-bottom: 10px;
 		a {
-			/* background-color: blue; */
 			border-radius: 0.5rem;
 			color: green;
 			padding: 5px;
