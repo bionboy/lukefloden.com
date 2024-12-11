@@ -2,9 +2,15 @@
 	import Nav from '$lib/Nav.svelte';
 
 	let { children } = $props();
+
+	let locations = [
+		{ route: '/demos', name: 'Demos' },
+		{ route: '/demos/parallax', name: 'Parallax' },
+		{ route: '/idk', name: 'idk' }
+	];
 </script>
 
-<Nav />
+<Nav {locations} />
 <main>
 	{@render children()}
 </main>

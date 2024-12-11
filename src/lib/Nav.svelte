@@ -1,6 +1,12 @@
+<script lang="ts">
+	// let { locations }: { locations: [{ route: string; name: string }] } = $props();
+	let { locations } = $props();
+</script>
+
 <nav>
-	<a href="/">Home</a>
-	<a href="/parallax/">Parallax</a>
+	{#each locations as { name, route }}
+		<a href={route}>{name}</a>
+	{/each}
 </nav>
 
 <style>
