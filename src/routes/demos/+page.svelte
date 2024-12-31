@@ -5,13 +5,17 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-{#snippet artwork(title: string, art: Snippet)}
+{#snippet artwork(title: string, route: string, art: Snippet)}
 	<div class="artwork-container">
 		{#if title}
-			<h2>{title}</h2>
+			<a href={route}>
+				<h2>{title}</h2>
+			</a>
 		{/if}
 		<div class="artwork-content">
-			{@render art()}
+			<a href={route}>
+				{@render art()}
+			</a>
 		</div>
 	</div>
 	<style>
@@ -28,12 +32,18 @@
 		}
 
 		h2 {
-			color: #333;
+			/* color: #333; */
 			margin: 10px;
 		}
 
+		/* link style reset, only for content, so original HTML link styles remain :) */
 		.artwork-content {
 			flex: 1;
+
+			> a {
+				color: inherit;
+				text-decoration: none;
+			}
 		}
 	</style>
 {/snippet}
@@ -43,10 +53,10 @@
 {/snippet}
 
 <div class="gallery">
-	{@render artwork('Parallax Hero', parallax)}
+	{@render artwork('Parallax Hero', 'demos/parallax', parallax)}
 	{#each { length: 3 } as _, index}
 		<div></div>
-		<!-- {@render artwork(index.toString(), parallax)} -->
+		<!-- {@render artwork(index.toString(), index.toString(), parallax)} -->
 	{/each}
 </div>
 
