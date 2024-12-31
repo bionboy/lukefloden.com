@@ -4,6 +4,7 @@
 	let { children } = $props();
 
 	let locations = [
+		{ route: '/', name: 'Home' },
 		{ route: '/demos', name: 'Demos' },
 		{ route: '/demos/parallax', name: 'Parallax Hero' }
 	];

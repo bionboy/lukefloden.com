@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Nav from '$lib/Nav.svelte';
 	import type { PageData } from './$types';
 	import Parallax from './demos/parallax/Parallax.svelte';
 
@@ -6,13 +7,17 @@
 </script>
 
 <div class="home">
+	<Nav
+		locations={[
+			{ route: '/', name: 'Home' },
+			{ route: '/demos', name: 'Demos' }
+		]}
+	/>
 	<Parallax title="💫🌟✨ Welcome ✨🌟💫" />
 </div>
 
 <style>
 	.home {
-		/* width: auto; */
-		/* height: auto; */
 		height: 100vh;
 	}
 </style>
