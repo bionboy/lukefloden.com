@@ -8,22 +8,33 @@
 	{#if title}
 		<h2>{title}</h2>
 	{/if}
-	{@render children()}
+	<div class="demo-content">
+		{@render children()}
+	</div>
 </div>
 
 <style>
 	.demo-container {
-		padding: 10px;
-		background-color: white;
-		/* border: 5px solid pink; */
-		border-radius: 1rem;
-
+		flex: 1;
+		min-width: 400px;
+		max-height: 800px;
 		text-align: center;
 	}
 
 	h2 {
-		/* background-color: red; */
-		/* color: green; */
+		background-color: hsl(240, 100%, 80%);
+		border-radius: 0.5rem;
+
+		margin: 10px 0px;
+		padding: 1rem;
 		color: #222;
+	}
+
+	.demo-content {
+		background-color: hsl(240, 100%, 80%);
+		/* border: 2px solid pink; */
+		padding: 10px;
+		border-radius: 0.5rem;
+		height: 50vh;
 	}
 </style>
