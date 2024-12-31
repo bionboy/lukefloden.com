@@ -8,7 +8,8 @@ export const load: LayoutServerLoad = async ({ url }) => {
 // }) satisfies LayoutServerLoad;
 
 function middlewareUnderConstruction(url: URL) {
-	const isUnderConstruction = !dev;
+	// const isUnderConstruction = !dev;
+	const isUnderConstruction = false;
 	if (isUnderConstruction && url.pathname !== '/under-construction') {
 		throw redirect(307, '/under-construction');
 	}
