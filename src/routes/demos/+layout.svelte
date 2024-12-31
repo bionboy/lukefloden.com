@@ -5,8 +5,7 @@
 
 	let locations = [
 		{ route: '/demos', name: 'Demos' },
-		{ route: '/demos/parallax', name: 'Parallax' },
-		{ route: '/idk', name: 'idk' }
+		{ route: '/demos/parallax', name: 'Parallax Hero' }
 	];
 </script>
 
