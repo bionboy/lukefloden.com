@@ -11,6 +11,7 @@
 		foregroundContent="👷‍♀️"
 		midgroundContent="🚧"
 		backgroundContent="🏗️"
+		fullscreen
 	/>
 </div>
 

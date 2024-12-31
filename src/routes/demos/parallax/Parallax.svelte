@@ -7,7 +7,8 @@
 		midgroundContent = 'midground',
 		backgroundContent = 'background',
 		moveWithScroll = true,
-		moveWithMouse = true
+		moveWithMouse = true,
+		fullscreen = false
 	} = $props();
 
 	let scrollY = $state(0);
@@ -44,13 +45,14 @@
 <svelte:window bind:scrollY />
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<section
+<div
 	class="hero"
 	onmousemove={(event) => (mouse = { x: event.clientX, y: event.clientY })}
 	bind:clientWidth={hero.width}
 	bind:clientHeight={hero.height}
 	style:--x-shift={parallaxShift.x}
 	style:--y-shift={parallaxShift.y}
+	style:height={fullscreen ? '100vh' : '100%'}
 >
 	<div class="parallax">
 		{#each positions[2] as coords}
@@ -66,7 +68,7 @@
 	<div class="hero-content">
 		<h1 class="hero-title">{title}</h1>
 	</div>
-</section>
+</div>
 
 <style>
 	.hero {
@@ -75,9 +77,6 @@
 		align-items: center;
 		justify-content: center;
 		overflow: clip;
-		height: 100vh;
-		min-height: 300px;
-		/* max-height: 1000px; */
 		background-image: linear-gradient(
 			to bottom right in hsl,
 			hsl(180, 100%, 55%),
@@ -91,7 +90,6 @@
 	}
 
 	.hero-title {
-		/* font-size: 4vw; */
 		font-size: 4rem;
 		color: hsl(180, 20%, 30%);
 	}
@@ -109,9 +107,6 @@
 		border-radius: 1rem;
 
 		position: absolute;
-		/* display: flex; */
-		/* justify-content: center; */
-		/* align-items: center; */
 
 		transform: translate(
 				calc(var(--x-shift) * var(--shift-scale)),
