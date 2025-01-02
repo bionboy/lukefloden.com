@@ -4,6 +4,8 @@
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 
+	let orientationEventPermission = $state('');
+
 	let textElement: HTMLDivElement;
 	let cubeElement: HTMLDivElement;
 
@@ -21,13 +23,16 @@
 			// @ts-ignore
 			DeviceOrientationEvent.requestPermission()
 				.then((permissionState: string) => {
+					orientationEventPermission = permissionState;
 					if (permissionState === 'granted') {
-						window.addEventListener('deviceorientation', handleDeviceOrientation);
+						// nothing to do, the event listener is already added in the svelte:window directive
+					} else {
+						alert('Permission denied');
 					}
 				})
 				.catch(console.error);
 		} else {
-			window.addEventListener('deviceorientation', handleDeviceOrientation);
+			alert('somehow this is not an iOS device but the useagent says it is....');
 		}
 	}
 
@@ -55,7 +60,7 @@
 
 <svelte:window ondeviceorientation={handleDeviceOrientation} />
 
-{#if data.isIosSafari}
+{#if data.isIosSafari && orientationEventPermission !== 'granted'}
 	<div class="centered">
 		<button onclick={requestIosSafariDeviceOrientation}
 			>Request iOS Safari Device Orientation</button
