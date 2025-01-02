@@ -32,10 +32,14 @@
 	}
 
 	function handleDeviceOrientation(event: DeviceOrientationEvent) {
-		const absolute = event.absolute;
 		const alpha = event.alpha || 0;
 		const beta = event.beta || 0;
 		const gamma = event.gamma || 0;
+
+		// If exactly upright (basically, non mobile devices)
+		if (alpha === 0 && beta === 90 && gamma === 0) {
+			return;
+		}
 
 		// This works if the device is flat on a table
 		// const transform = `rotateZ(${alpha}deg)`;
@@ -59,9 +63,9 @@
 	</div>
 {/if}
 
-<div class="centered" style:height="100dvh">
-	<p bind:this={textElement}>Place your phone flat on a table please!</p>
+<div class="centered" style:height="90vh">
 	<!-- <Cube bind:cubeElement /> -->
+	<p class="leveled" bind:this={textElement}>Place your phone flat on a table please!</p>
 </div>
 
 <style>
@@ -70,11 +74,12 @@
 		justify-content: center;
 		align-items: center;
 	}
+
 	button {
 		margin: 10px;
 	}
 
-	p {
+	.leveled {
 		border: 3px dashed red;
 	}
 </style>

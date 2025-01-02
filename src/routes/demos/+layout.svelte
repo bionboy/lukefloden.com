@@ -12,9 +12,4 @@
 </script>
 
 <Nav {locations} />
-<main>
-	{@render children()}
-</main>
-
-<style>
-</style>
+{@render children()}
