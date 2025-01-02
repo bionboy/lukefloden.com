@@ -6,11 +6,13 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<div class="centered">
-	<DeviceOrientationPermissionRequester isIosSafari={data.isIosSafari} />
-</div>
-<div class="centered" style:height="90dvh">
-	<AlwaysLevel />
+<div style:background-color="hsl(160, 100%, 90%)">
+	<div class="centered">
+		<DeviceOrientationPermissionRequester isIosSafari={data.isIosSafari} />
+	</div>
+	<div class="centered" style:height="100dvh">
+		<AlwaysLevel />
+	</div>
 </div>
 
 <style>
