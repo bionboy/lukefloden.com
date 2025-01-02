@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Cube from './cube.svelte';
 
-	// import type { PageData } from './$types';
-	// let { data }: { data: PageData } = $props();
+	import type { PageData } from './$types';
+	let { data }: { data: PageData } = $props();
 
 	let textElement: HTMLDivElement;
 	let cubeElement: HTMLDivElement;
@@ -51,9 +51,7 @@
 
 <svelte:window ondeviceorientation={handleDeviceOrientation} />
 
-<!-- TODO: only show this if its an iphone -->
-<!-- <button onclick={requestIosSafariDeviceOrientation}>Request iOS Safari Device Orientation</button> -->
-{#if /iPhone|iPad|iPod/i.test(navigator.userAgent)}
+{#if data.isIosSafari}
 	<button onclick={requestIosSafariDeviceOrientation}>Request iOS Safari Device Orientation</button>
 {/if}
 
