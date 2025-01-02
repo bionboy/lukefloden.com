@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { PageData } from './$types';
 	import Parallax from './parallax/Parallax.svelte';
+	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	let { data }: { data: PageData } = $props();
 </script>
 
@@ -52,8 +53,24 @@
 	<Parallax title="hi!" />
 {/snippet}
 
+{#snippet alwaysLevel()}
+	<div class="always-level-container">
+		<AlwaysLevel />
+	</div>
+	<style>
+		.always-level-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			background-color: hsl(160, 100%, 90%);
+		}
+	</style>
+{/snippet}
+
 <div class="gallery">
 	{@render artwork('Parallax Hero', 'demos/parallax', parallax)}
+	{@render artwork('Always Level', 'demos/always-level', alwaysLevel)}
 	{#each { length: 3 } as _, index}
 		<div></div>
 		<!-- {@render artwork(index.toString(), index.toString(), parallax)} -->
