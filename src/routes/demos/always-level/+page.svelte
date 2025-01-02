@@ -52,23 +52,29 @@
 <svelte:window ondeviceorientation={handleDeviceOrientation} />
 
 {#if data.isIosSafari}
-	<button onclick={requestIosSafariDeviceOrientation}>Request iOS Safari Device Orientation</button>
+	<div class="centered">
+		<button onclick={requestIosSafariDeviceOrientation}
+			>Request iOS Safari Device Orientation</button
+		>
+	</div>
 {/if}
 
-<div class="centered">
+<div class="centered" style:height="100dvh">
 	<p bind:this={textElement}>Place your phone flat on a table please!</p>
 	<!-- <Cube bind:cubeElement /> -->
 </div>
 
 <style>
 	.centered {
-		height: 100dvh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
+	button {
+		margin: 10px;
+	}
+
 	p {
-		/* make a debug style */
 		border: 3px dashed red;
 	}
 </style>
