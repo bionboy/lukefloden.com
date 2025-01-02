@@ -16,7 +16,7 @@
 <style>
 	.demo-container {
 		flex: 1;
-		min-width: 400px;
+		min-width: 300px;
 		max-height: 800px;
 		text-align: center;
 	}
