@@ -11,8 +11,6 @@
 
 <style>
 	nav {
-		/* position: fixed; */
-		/* z-index: 3; */
 		background-color: hsl(240, 100%, 80%);
 		padding: 10px;
 		display: flex;

@@ -1,15 +1,26 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { createPositions } from './islandPositions.svelte';
 
+	type Props = {
+		title?: string;
+		titleContent?: Snippet;
+		foregroundContent?: Snippet;
+		midgroundContent?: Snippet;
+		backgroundContent?: Snippet;
+		moveWithScroll?: boolean;
+		moveWithMouse?: boolean;
+	};
+
 	const {
-		title = 'Title Text',
-		foregroundContent = 'foreground',
-		midgroundContent = 'midground',
-		backgroundContent = 'background',
+		title = 'Parallax',
+		titleContent,
+		foregroundContent,
+		midgroundContent,
+		backgroundContent,
 		moveWithScroll = true,
-		moveWithMouse = true,
-		fullscreen = false
-	} = $props();
+		moveWithMouse = true
+	}: Props = $props();
 
 	let scrollY = $state(0);
 	let mouse = $state({ x: 0, y: 0 });
@@ -18,7 +29,7 @@
 	let positions = $derived([
 		createPositions(hero.width, hero.height, 5),
 		createPositions(hero.width, hero.height, 10),
-		createPositions(hero.width, hero.height, 20)
+		createPositions(hero.width, hero.height, 30)
 	]);
 
 	function getShift(scale: number = 1) {
@@ -38,21 +49,16 @@
 	let parallaxShift = $derived(getShift());
 </script>
 
-{#snippet island(level: string = 'fore', x: number = 0, y: number = 0, content: string)}
-	<div class="island parallax-{level}ground" style="left:{x}px; top:{y}px;">{content}</div>
-{/snippet}
-
 <svelte:window bind:scrollY />
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	class="hero"
+	role="presentation"
 	onmousemove={(event) => (mouse = { x: event.clientX, y: event.clientY })}
 	bind:clientWidth={hero.width}
 	bind:clientHeight={hero.height}
 	style:--x-shift={parallaxShift.x}
 	style:--y-shift={parallaxShift.y}
-	style:height={fullscreen ? '100vh' : '100%'}
 >
 	<div class="parallax">
 		{#each positions[2] as coords}
@@ -66,9 +72,65 @@
 		{/each}
 	</div>
 	<div class="hero-content">
-		<h1 class="hero-title">{title}</h1>
+		{#if titleContent}
+			{@render titleContent()}
+		{:else}
+			<h1 class="hero-title">{title}</h1>
+		{/if}
 	</div>
 </div>
+
+{#snippet island(level: string = 'fore', x: number = 0, y: number = 0, content?: Snippet)}
+	<div class="island parallax-{level}ground" style="left:{x}px; top:{y}px;">
+		{@render (content ?? cloud)()}
+	</div>
+{/snippet}
+
+{#snippet cloud()}
+	<div class="cloud">
+		<div class="cloud-part cloud-part-1"></div>
+		<div class="cloud-part cloud-part-2"></div>
+		<div class="cloud-part cloud-part-3"></div>
+	</div>
+	<style>
+		.cloud {
+			position: relative;
+			width: 200px;
+			height: 60px;
+			background: #fff;
+			border-radius: 50px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.cloud-part {
+			position: absolute;
+			background: #fff;
+			border-radius: 50%;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.cloud-part-1 {
+			width: 80px;
+			height: 80px;
+			top: -40px;
+			left: 20px;
+		}
+
+		.cloud-part-2 {
+			width: 100px;
+			height: 100px;
+			top: -50px;
+			left: 80px;
+		}
+
+		.cloud-part-3 {
+			width: 60px;
+			height: 60px;
+			top: -30px;
+			left: 150px;
+		}
+	</style>
+{/snippet}
 
 <style>
 	.hero {
@@ -77,6 +139,7 @@
 		align-items: center;
 		justify-content: center;
 		overflow: clip;
+		height: 100%;
 		background-image: linear-gradient(
 			to bottom right in hsl,
 			hsl(180, 100%, 55%),
@@ -99,35 +162,39 @@
 	}
 
 	.island {
+		--shift-scale: 1;
+		--size-scale: 1;
+		--blur-amount: 0px;
+		--opacity: 1;
+
+		position: absolute;
+
 		padding: 10px 20px;
 		font-size: 2rem;
 		width: fit-content;
-		background-color: hsl(180, 20%, 49%);
-		color: hsl(0, 0%, 88%);
-		border-radius: 1rem;
-
-		position: absolute;
 
 		transform: translate(
 				calc(var(--x-shift) * var(--shift-scale)),
 				calc(var(--y-shift) * var(--shift-scale))
 			)
 			scale(var(--size-scale));
+		filter: blur(var(--blur-amount));
+		opacity: var(--opacity);
 	}
 
 	.parallax-foreground {
 		--shift-scale: 0.8;
-		--size-scale: 1;
-		opacity: 0.9;
 	}
 	.parallax-midground {
 		--shift-scale: 0.5;
 		--size-scale: 0.7;
-		opacity: 0.7;
+		--blur-amount: 1px;
+		--opacity: 0.9;
 	}
 	.parallax-background {
 		--shift-scale: 0.2;
 		--size-scale: 0.5;
-		opacity: 0.5;
+		--blur-amount: 2px;
+		--opacity: 0.7;
 	}
 </style>
