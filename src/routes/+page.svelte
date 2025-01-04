@@ -18,7 +18,7 @@
 			<div class="title">
 				<p>Welcome to my site...</p>
 				<p>things are in flux right now...</p>
-				<p class=" border-red-200 border-2">but that's ok...</p>
+				<p>but that's ok...</p>
 			</div>
 		{/snippet}
 	</Parallax>
