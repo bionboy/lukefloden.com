@@ -71,9 +71,8 @@
 <div class="gallery">
 	{@render artwork('Parallax Hero', 'demos/parallax', parallax)}
 	{@render artwork('Always Level', 'demos/always-level', alwaysLevel)}
-	{#each { length: 3 } as _, index}
+	{#each { length: 2 } as _, index}
 		<div></div>
-		<!-- {@render artwork(index.toString(), index.toString(), parallax)} -->
 	{/each}
 </div>
 
