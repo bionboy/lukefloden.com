@@ -5,9 +5,9 @@
 
 	const defaultLocations = [
 		{ route: '/', name: 'Home' },
-		{ route: '/demos', name: 'Demos' },
-		{ route: '/about', name: 'About' },
-		{ route: '/contact', name: 'Contact' }
+		{ route: '/demos', name: 'Demos' }
+		// { route: '/about', name: 'About' },
+		// { route: '/contact', name: 'Contact' }
 	];
 
 	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
