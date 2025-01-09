@@ -17,7 +17,7 @@
 	export { className as class };
 </script>
 
-<nav class={cn('flex items-center space-x-4 lg:space-x-6', className)}>
+<nav class={cn('w-full flex justify-center items-center gap-4 lg:gap-6', className)}>
 	{#each locations as { name, route }}
 		<a href={route}> {name} </a>
 	{/each}
@@ -25,6 +25,10 @@
 
 <style lang="postcss">
 	a {
-		@apply text-muted-foreground hover:text-primary text-sm font-medium transition-colors;
+		@apply text-muted-foreground 
+		text-sm font-medium 
+		hover:text-primary hover:scale-125
+		transition-all duration-500 ease-in
+		hover:duration-200;
 	}
 </style>
