@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Nav from '$lib/components/Nav.svelte';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 
 	let hovering = $state(false);
 	const hoverTrue = () => (hovering = true);
@@ -29,7 +30,7 @@
 		<Nav />
 	</div>
 	<div class="island right" class:headerMinimized>
-		<div class="size-10 bg-destructive rounded-xl transition-transform" class:headerMinimized></div>
+		<ThemeSwitcher />
 	</div>
 </div>
 
