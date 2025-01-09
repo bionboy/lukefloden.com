@@ -8,7 +8,7 @@
 
 	let headerHeight = $state(0);
 	let scrollY: number = $state(0);
-	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 4);
+	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 1 - 1);
 </script>
 
 <svelte:window bind:scrollY />
@@ -38,13 +38,13 @@
 	.site-header {
 		@apply sticky z-10 top-0 w-screen h-16 
 			flex items-center 
+      overflow-x-clip
 			gap-4;
 	}
 
 	.backdrop {
 		@apply -z-[1] absolute size-full
-			border-b 
-      bg-background bg-opacity-20 backdrop-blur-sm
+      bg-background bg-opacity-60 backdrop-blur-sm
 			shadow-lg
 			opacity-100;
 		transition:
