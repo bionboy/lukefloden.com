@@ -24,7 +24,7 @@
 >
 	<div class="backdrop" class:headerMinimized></div>
 	<div class="island left" class:headerMinimized>
-		<div class="size-10 bg-destructive rounded-xl transition-transform" class:headerMinimized></div>
+		<div class="size-10 bg-destructive rounded-full"></div>
 	</div>
 	<div class="ocean" class:headerMinimized>
 		<Nav />
