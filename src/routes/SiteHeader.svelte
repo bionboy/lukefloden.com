@@ -43,7 +43,8 @@
 
 	.backdrop {
 		@apply -z-[1] absolute size-full
-			border-b bg-border
+			border-b 
+      bg-background bg-opacity-20 backdrop-blur-sm
 			shadow-lg
 			opacity-100;
 		transition:
