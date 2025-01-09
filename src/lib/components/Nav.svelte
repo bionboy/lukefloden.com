@@ -8,7 +8,11 @@
 		{ route: '/', name: 'Home' },
 		{ route: '/demos', name: 'Demos' }
 		// { route: '/about', name: 'About' },
-		// { route: '/contact', name: 'Contact' }
+		// { route: '/contact', name: 'Contact' },
+		// { route: '/1', name: 'About' },
+		// { route: '/2', name: 'Contact' },
+		// { route: '/3', name: 'About' },
+		// { route: '/4', name: 'Contact' }
 	];
 
 	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
@@ -19,20 +23,36 @@
 </script>
 
 <nav class={cn('w-full flex justify-center items-center gap-4 lg:gap-6', className)}>
-	{#each locations as { name, route }}
-		<a href={route} class:active={route === $page.route.id}> {name} </a>
+	{#each locations as { name, route } (route)}
+		<a href={route} class:active={route === $page.route.id}>
+			{name}
+		</a>
 	{/each}
 </nav>
 
 <style lang="postcss">
 	a {
-		@apply text-muted-foreground 
-		text-sm font-medium 
-		hover:text-primary hover:scale-125
-		transition-all duration-500 ease-in
-		hover:duration-200;
+		@apply text-sm font-medium 
+		text-muted-foreground
+		transition-all duration-500 ease-in;
 	}
 	a.active {
 		@apply text-primary scale-125;
+	}
+	a:hover {
+		@apply text-primary;
+		animation: float 1s infinite ease-in-out;
+	}
+
+	@keyframes float {
+		0% {
+			transform: translateY(0px) scale(1.25);
+		}
+		50% {
+			transform: translateY(-2px) scale(1.25);
+		}
+		100% {
+			transform: translateY(0px) scale(1.25);
+		}
 	}
 </style>
