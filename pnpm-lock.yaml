@@ -14,6 +14,9 @@ importers:
       '@vercel/speed-insights':
         specifier: ^1.1.0
         version: 1.1.0(@sveltejs/kit@2.8.2(@sveltejs/vite-plugin-svelte@4.0.1(svelte@5.2.7)(vite@5.4.11))(svelte@5.2.7)(vite@5.4.11))(svelte@5.2.7)
+      mode-watcher:
+        specifier: ^0.5.0
+        version: 0.5.0(svelte@5.2.7)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
@@ -1299,6 +1302,11 @@ packages:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
+
+  mode-watcher@0.5.0:
+    resolution: {integrity: sha512-5E6fh/aXhAVv+U+DbeM0hCmskQE9u7WSmvnCRijJB/MJu7HtB73sjiCaZ9n1M8QHmzLrBFo8XBAUcWXkDm8Z9A==}
+    peerDependencies:
+      svelte: ^4.0.0 || ^5.0.0-next.1
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -2860,6 +2868,10 @@ snapshots:
       rimraf: 5.0.10
 
   mkdirp@3.0.1: {}
+
+  mode-watcher@0.5.0(svelte@5.2.7):
+    dependencies:
+      svelte: 5.2.7
 
   mri@1.2.0: {}
 
