@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { cn } from '$lib/utils.js';
 
 	export type NavLocations = { route: string; name: string }[];
@@ -19,7 +20,7 @@
 
 <nav class={cn('w-full flex justify-center items-center gap-4 lg:gap-6', className)}>
 	{#each locations as { name, route }}
-		<a href={route}> {name} </a>
+		<a href={route} class:active={route === $page.route.id}> {name} </a>
 	{/each}
 </nav>
 
@@ -30,5 +31,8 @@
 		hover:text-primary hover:scale-125
 		transition-all duration-500 ease-in
 		hover:duration-200;
+	}
+	a.active {
+		@apply text-primary scale-125;
 	}
 </style>
