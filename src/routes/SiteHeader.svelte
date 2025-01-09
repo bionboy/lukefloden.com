@@ -9,6 +9,8 @@
 	let headerHeight = $state(0);
 	let scrollY: number = $state(0);
 	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 1 - 1);
+
+	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
 
 <svelte:window bind:scrollY />
@@ -24,7 +26,14 @@
 >
 	<div class="backdrop" class:headerMinimized></div>
 	<div class="island left" class:headerMinimized>
-		<div class="size-10 bg-destructive rounded-full"></div>
+		<div
+			class="size-10 bg-destructive rounded-full"
+			onclick={scrollToTop}
+			onkeydown={(e) => e.key === 'Enter' && scrollToTop()}
+			role="button"
+			tabindex="0"
+			aria-label="Scroll to top"
+		></div>
 	</div>
 	<div class="middle" class:headerMinimized>
 		<Nav />
