@@ -26,7 +26,7 @@
 	<div class="island left" class:headerMinimized>
 		<div class="size-10 bg-destructive rounded-full"></div>
 	</div>
-	<div class="ocean" class:headerMinimized>
+	<div class="middle" class:headerMinimized>
 		<Nav />
 	</div>
 	<div class="island right" class:headerMinimized>
@@ -47,34 +47,38 @@
       bg-background bg-opacity-60 backdrop-blur-sm
 			shadow-lg
 			opacity-100;
+
 		transition:
 			transform 0.3s ease-in-out,
 			opacity 0.3s ease-in-out;
-	}
-	.backdrop.headerMinimized {
-		@apply -translate-y-full opacity-0;
+
+		&.headerMinimized {
+			@apply -translate-y-full opacity-0;
+		}
 	}
 
 	.island {
 		@apply p-2 
 			transition-transform ease-in-out duration-500;
 	}
+
 	.left {
-	}
-	.left.headerMinimized {
-		@apply scale-75;
+		&.headerMinimized {
+			@apply scale-75;
+		}
 	}
 	.right {
 		@apply translate-y-0;
+		&.headerMinimized {
+			@apply translate-x-full;
+		}
 	}
-	.right.headerMinimized {
-		@apply translate-x-full;
-	}
-	.ocean {
+
+	.middle {
 		@apply size-full flex;
 		@apply transition-transform ease-in-out duration-500;
-	}
-	.ocean.headerMinimized {
-		@apply -translate-y-full scale-x-0;
+		&.headerMinimized {
+			@apply -translate-y-full scale-x-0;
+		}
 	}
 </style>
