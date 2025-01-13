@@ -30,19 +30,9 @@
 		margin: 0px;
 
 		text-align: left;
-		font-family: cursive;
-		font-size: 2rem;
-
-		/* mix-blend-mode: difference;
-		color: hsl(0, 0%, 0%);
-		text-shadow:
-			hsl(65, 60%, 65%) 0px 0px 10px,
-			hsl(65, 60%, 65%) 0px 0px 30px; */
-
-		/* color: hsl(0, 0%, 0%); */
-
+		font-family: 'Instrument Serif', cursive;
+		font-size: 3rem;
 		color: hsl(240, 100%, 70%);
-		/* text-shadow: hsl(65, 60%, 65%) 0px 0px 10px; */
-		text-shadow: 0 0 40px;
+		text-shadow: 0 0 30px;
 	}
 </style>
