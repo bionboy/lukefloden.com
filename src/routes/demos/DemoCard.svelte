@@ -11,7 +11,13 @@
 </script>
 
 <a href={props.route}>
-	<Card.Root class="flex flex-col aspect-square">
+	<Card.Root
+		class="
+		flex flex-col
+		aspect-square shadow-md
+		transition-transform hover:scale-105 
+	"
+	>
 		<Card.Header>
 			{#if props.title}
 				<Card.Title>{props.title}</Card.Title>

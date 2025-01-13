@@ -2,10 +2,14 @@
 	import '../app.pcss';
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from './$types';
-	import Header from '$lib/components/Header.svelte';
+	import { ModeWatcher } from 'mode-watcher';
+	import SiteHeader from './SiteHeader.svelte';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
 
-<Header />
-{@render children()}
+<ModeWatcher />
+<div class="relative flex flex-col">
+	<SiteHeader />
+	{@render children()}
+</div>

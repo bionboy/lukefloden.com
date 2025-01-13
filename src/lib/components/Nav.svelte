@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { cn } from '$lib/utils.js';
 
 	export type NavLocations = { route: string; name: string }[];
@@ -7,7 +8,11 @@
 		{ route: '/', name: 'Home' },
 		{ route: '/demos', name: 'Demos' }
 		// { route: '/about', name: 'About' },
-		// { route: '/contact', name: 'Contact' }
+		// { route: '/contact', name: 'Contact' },
+		// { route: '/1', name: 'About' },
+		// { route: '/2', name: 'Contact' },
+		// { route: '/3', name: 'About' },
+		// { route: '/4', name: 'Contact' }
 	];
 
 	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
@@ -17,14 +22,94 @@
 	export { className as class };
 </script>
 
-<nav class={cn('flex items-center space-x-4 lg:space-x-6', className)}>
-	{#each locations as { name, route }}
-		<a href={route}> {name} </a>
+<nav class={cn('flex justify-center items-center gap-4 lg:gap-6', className)}>
+	{#each locations as { name, route } (route)}
+		{@const active = $page.route.id === route}
+		<div class="nav-item" class:active>
+			<a href={route}>
+				<!-- ? IDK why i need this 'hey' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
+				<div class="hey">{name}</div>
+			</a>
+		</div>
 	{/each}
 </nav>
 
 <style lang="postcss">
-	a {
-		@apply text-muted-foreground hover:text-primary text-sm font-medium transition-colors;
+	.nav-item {
+		@apply transition-transform duration-150 ease-in;
+
+		a {
+			@apply text-sm font-medium 
+			text-muted-foreground;
+		}
+
+		&.active {
+			@apply scale-125;
+			a {
+				@apply text-primary;
+				.hey {
+					animation: floating 3s infinite ease-in-out;
+				}
+			}
+		}
+
+		&:hover,
+		&:focus-within {
+			@apply scale-125;
+
+			a {
+				@apply text-primary;
+				.hey {
+					animation-name: asdf;
+					animation-fill-mode: forwards;
+					animation-duration: 0.5s;
+					animation-iteration-count: 1;
+					animation-timing-function: linear(
+						0,
+						0.739 6.1%,
+						0.912 8.8%,
+						0.954 10.1%,
+						0.967 11.4%,
+						0.954 12.7%,
+						0.916 14%,
+						0.751 16.9%,
+						-0.304 29%,
+						-0.446 31.8%,
+						-0.511 34.5%,
+						-0.517 35.7%,
+						-0.509 37%,
+						-0.455 39.6%,
+						0.035 51.2%,
+						0.126 54.4%,
+						0.171 57.5%,
+						0.178 59.9%,
+						0.164 62.5%,
+						0.025 72.8%,
+						-0.017 78.2%,
+						-0.023 82.8%,
+						-0.004 93%,
+						0
+					);
+				}
+			}
+		}
+	}
+
+	@keyframes floating {
+		0% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-3px);
+		}
+	}
+
+	@keyframes asdf {
+		from {
+			transform: translateY(0px);
+		}
+		to {
+			transform: translateY(3px);
+		}
 	}
 </style>

@@ -19,9 +19,11 @@
 
 <style>
 	.home {
+		position: absolute;
+		width: 100vw;
+		height: 100dvh;
 		display: flex;
 		flex-direction: column;
-		height: 100dvh;
 	}
 
 	.title > p {
