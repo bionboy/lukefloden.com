@@ -1,3 +1,5 @@
+<!-- Inspiration for header: https://www.daisychainstudio.net/ (credit: https://twomuch.studio) -->
+
 <script lang="ts">
 	import Nav from '$lib/components/Nav.svelte';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
@@ -46,7 +48,7 @@
 <style lang="postcss">
 	.site-header {
 		@apply sticky z-10 top-0 w-screen h-16 
-			flex items-center 
+			flex items-center justify-between
       overflow-x-clip
 			gap-4;
 	}
@@ -84,7 +86,6 @@
 	}
 
 	.middle {
-		@apply size-full flex;
 		@apply transition-transform ease-in-out duration-500;
 		&.headerMinimized {
 			@apply -translate-y-full scale-x-0;
