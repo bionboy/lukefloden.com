@@ -9,15 +9,15 @@
 	<Parallax>
 		{#snippet titleContent()}
 			<div class="title">
-				<p>Welcome to my site...</p>
-				<p>things are in flux right now...</p>
-				<p>but that's ok...</p>
+				<h1>Welcome to my site...</h1>
+				<h1>things are in flux right now...</h1>
+				<h1>but that's ok...</h1>
 			</div>
 		{/snippet}
 	</Parallax>
 </div>
 
-<style>
+<style lang="postcss">
 	.home {
 		position: absolute;
 		width: 100vw;
@@ -26,12 +26,14 @@
 		flex-direction: column;
 	}
 
-	.title > p {
+	.title > h1 {
 		margin: 0px;
 
 		text-align: left;
 		font-family: 'Instrument Serif', cursive;
 		font-size: 3rem;
+		font-weight: 400;
+		line-height: 4rem;
 		color: hsl(240, 100%, 70%);
 		text-shadow: 0 0 30px;
 	}

@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	// const { title = '', children }: { children: Snippet; title: string } = $props();
-	const { children, title = '' } = $props();
+	const { children, title = '' }: { children: Snippet; title: string } = $props();
 </script>
 
 <div class="demo-container">
 	{#if title}
-		<h2>{title}</h2>
+		<h3>{title}</h3>
 	{/if}
 	<div class="demo-content">
 		{@render children()}
@@ -21,7 +20,7 @@
 		text-align: center;
 	}
 
-	h2 {
+	h3 {
 		background-color: hsl(240, 100%, 80%);
 		border-radius: 0.5rem;
 
