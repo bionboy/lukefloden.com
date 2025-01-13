@@ -10,12 +10,16 @@
 <div class="gallery">
 	<DemoCard
 		title="Parallax Hero"
-		description="User controlled parallax effect"
+		description="Parallax effect hero component, moving on scroll or mouse"
 		route="demos/parallax"
 	>
 		<Parallax title="hi!" />
 	</DemoCard>
-	<DemoCard title="Always Level" description="asdf" route="demos/always-level">
+	<DemoCard
+		title="Always Level"
+		description="Keeping text on your screen level; despite your devices orientation"
+		route="demos/always-level"
+	>
 		<div class="always-level-container">
 			<AlwaysLevel />
 		</div>
@@ -32,7 +36,7 @@
 
 	<!-- * Fill in future spots, so for now our demo cards look less lonely  -->
 	{#each { length: 22 } as _, index}
-		<div class=" bg-accent size-full aspect-square"></div>
+		<div class="bg-accent size-full aspect-square"></div>
 	{/each}
 </div>
 
