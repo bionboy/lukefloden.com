@@ -6,8 +6,8 @@
 
 	const defaultLocations = [
 		{ route: '/', name: 'Home' },
-		{ route: '/demos', name: 'Demos' }
 		// { route: '/about', name: 'About' },
+		{ route: '/demos', name: 'Demos' }
 		// { route: '/contact', name: 'Contact' },
 		// { route: '/1', name: 'About' },
 		// { route: '/2', name: 'Contact' },

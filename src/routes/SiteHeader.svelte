@@ -51,6 +51,9 @@
 			flex items-center justify-between
       overflow-x-clip
 			gap-4;
+
+		/* Disables the view-transistion usage outside of this component */
+		view-transition-name: header;
 	}
 
 	.backdrop {
