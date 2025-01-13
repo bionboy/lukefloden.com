@@ -1,20 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* using @import instead of @tailwind to allow subsequent import statements after these */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.instrument-serif-regular {
-	font-family: 'Instrument Serif', serif;
-	font-weight: 400;
-	font-style: normal;
-}
-
-.instrument-serif-regular-italic {
-	font-family: 'Instrument Serif', serif;
-	font-weight: 400;
-	font-style: italic;
-}
+@import 'fonts.pcss';
+@import 'typography.pcss';
 
 @layer base {
 	:root {
