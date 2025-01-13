@@ -20,22 +20,13 @@
 		description="Keeping text on your screen level; despite your devices orientation"
 		route="demos/always-level"
 	>
-		<div class="always-level-container">
+		<div class="h-full flex place-items-center bg-[hsl(160,100%,90%)]">
 			<AlwaysLevel />
 		</div>
-		<style>
-			.always-level-container {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 100%;
-				background-color: hsl(160, 100%, 90%);
-			}
-		</style>
 	</DemoCard>
 
 	<!-- * Fill in future spots, so for now our demo cards look less lonely  -->
-	{#each { length: 22 } as _, index}
+	{#each Array(22) as _}
 		<div class="bg-accent size-full aspect-square"></div>
 	{/each}
 </div>
