@@ -34,7 +34,10 @@
 		<Button onclick={scrollToTop} variant="link" size="icon">
 			<Star
 				size="2rem"
-				class={cn('transition-all fill-yellow-400', headerMinimized && ' stroke-yellow-400')}
+				class={cn(
+					'transition-all fill-yellow-400 hover:-rotate-12',
+					headerMinimized && ' stroke-yellow-400'
+				)}
 			></Star>
 		</Button>
 	</div>
