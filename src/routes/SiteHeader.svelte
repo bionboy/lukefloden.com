@@ -3,6 +3,9 @@
 <script lang="ts">
 	import Nav from '$lib/components/Nav.svelte';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { cn } from '$lib/utils';
+	import { Star } from 'lucide-svelte';
 
 	let hovering = $state(false);
 	const hoverTrue = () => (hovering = true);
@@ -28,14 +31,12 @@
 >
 	<div class="backdrop" class:headerMinimized></div>
 	<div class="island left" class:headerMinimized>
-		<div
-			class="size-10 bg-destructive rounded-full"
-			onclick={scrollToTop}
-			onkeydown={(e) => e.key === 'Enter' && scrollToTop()}
-			role="button"
-			tabindex="0"
-			aria-label="Scroll to top"
-		></div>
+		<Button onclick={scrollToTop} variant="link" size="icon">
+			<Star
+				size="2rem"
+				class={cn('transition-all fill-yellow-400', headerMinimized && ' stroke-yellow-400')}
+			></Star>
+		</Button>
 	</div>
 	<div class="middle" class:headerMinimized>
 		<Nav />
@@ -78,7 +79,7 @@
 
 	.left {
 		&.headerMinimized {
-			@apply scale-75;
+			@apply scale-75 rotate-[25deg];
 		}
 	}
 	.right {
