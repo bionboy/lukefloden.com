@@ -1,35 +1,27 @@
 <script lang="ts">
-	//  import Sun from "svelte-radix/Sun.svelte";
-	//  import Moon from "svelte-radix/Moon.svelte";
-
-	import { resetMode, setMode } from 'mode-watcher';
+	import { toggleMode, mode } from 'mode-watcher';
+	import { Moon, Sun } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { cn } from '$lib/utils';
+
+	const iconTailwind = 'icon size-[1.5rem] transition-all duration-500 absolute rotate-0';
 </script>
 
-<DropdownMenu.Root>
-	<DropdownMenu.Trigger asChild let:builder>
-		<Button builders={[builder]} size="icon">
-			<!-- TODO(@bionboy, 2025-01-08): Add Sun and Moon components -->
-			<!-- <Sun -->
-			<div class="icon rotate-0 scale-100 dark:-rotate-90 dark:scale-0"></div>
-			<!-- <Moon -->
-			<div
-				class="icon absolute rotate-90 scale-0 dark:rotate-0
-				dark:scale-100"
-			></div>
-			<span class="sr-only">Toggle theme</span>
-		</Button>
-	</DropdownMenu.Trigger>
-	<DropdownMenu.Content align="end">
-		<DropdownMenu.Item on:click={() => setMode('light')}>Light</DropdownMenu.Item>
-		<DropdownMenu.Item on:click={() => setMode('dark')}>Dark</DropdownMenu.Item>
-		<DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
-	</DropdownMenu.Content>
-</DropdownMenu.Root>
+<Button on:click={toggleMode} variant="outline" size="icon" class="overflow-clip relative">
+	<!-- TODO(@bionboy, 2025-01-13): See if I can get rid of this strange syntax 
+			after upgrading the shad ui svelte port.
+			Or if I need to fix my tailwind config
+		-->
+	<Sun class={cn(iconTailwind, $mode === 'dark' && '-rotate-90 translate-y-10')} />
+	<Moon class={cn(iconTailwind, $mode === 'light' && 'rotate-90 translate-y-10')} />
+	<span class="sr-only">Toggle theme</span>
+</Button>
 
 <style lang="postcss">
 	.icon {
-		@apply size-[1.2rem] transition-all;
+		@apply transition-all;
+	}
+	.icon:hover {
+		@apply animate-spin duration-100 ease-linear;
 	}
 </style>
