@@ -20,7 +20,7 @@
 		const transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
 
 		if (textElement) textElement.style.transform = transform;
-		if (cubeElement) cubeElement.style.transform = transform;
+		// if (cubeElement) cubeElement.style.transform = transform;
 	}
 </script>
 

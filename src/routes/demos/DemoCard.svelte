@@ -14,7 +14,7 @@
 	<Card.Root
 		class="
 		flex flex-col
-		aspect-square shadow-md
+		aspect-square shadow-md shadow-border
 		transition-transform hover:scale-105 
 	"
 	>
