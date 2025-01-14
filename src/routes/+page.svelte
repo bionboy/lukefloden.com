@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 	import Parallax from './demos/parallax/Parallax.svelte';
 	import { Star } from 'lucide-svelte';
+	import Cloud from '$lib/components/Cloud.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -14,7 +15,12 @@
 </script>
 
 {#snippet titleContent()}
-	<div class="title">
+	{#if $mode === 'light'}
+		<div class="absolute top-1/2 z-[1] scale-[2.5]">
+			<Cloud />
+		</div>
+	{/if}
+	<div class="title z-[2]">
 		<h1>Welcome to my site...</h1>
 		<h1>things are in flux right now...</h1>
 		<h1>but that's ok...</h1>
@@ -52,13 +58,14 @@
 
 	.title > h1 {
 		margin: 0px;
-
 		text-align: left;
+		/* TODO: pick a better fallback font to avoid layout shift */
 		font-family: 'Instrument Serif', cursive;
-		font-size: 3rem;
-		font-weight: 400;
-		line-height: 4rem;
-		color: hsl(240, 100%, 70%);
 		text-shadow: 0 0 30px;
+
+		@apply text-accent 
+			text-4xl leading-[4rem]
+			font-normal
+			dark:text-5xl dark:leading-[4rem];
 	}
 </style>
