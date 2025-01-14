@@ -8,6 +8,7 @@
 		foregroundContent?: Snippet;
 		midgroundContent?: Snippet;
 		backgroundContent?: Snippet;
+		includeBackground?: boolean;
 		moveWithScroll?: boolean;
 		moveWithMouse?: boolean;
 	};
@@ -18,6 +19,7 @@
 		foregroundContent,
 		midgroundContent,
 		backgroundContent,
+		includeBackground = true,
 		moveWithScroll = true,
 		moveWithMouse = true
 	}: Props = $props();
@@ -53,6 +55,7 @@
 
 <div
 	class="hero"
+	class:with-background={includeBackground}
 	role="presentation"
 	onmousemove={(event) => (mouse = { x: event.clientX, y: event.clientY })}
 	bind:clientWidth={hero.width}
@@ -140,11 +143,13 @@
 		justify-content: center;
 		overflow: clip;
 		height: 100%;
-		background-image: linear-gradient(
-			to bottom right in hsl,
-			hsl(180, 100%, 55%),
-			hsl(215, 100%, 74%)
-		);
+		&.with-background {
+			background-image: linear-gradient(
+				to bottom right in hsl,
+				hsl(180, 100%, 55%),
+				hsl(215, 100%, 74%)
+			);
+		}
 	}
 
 	.hero-content {

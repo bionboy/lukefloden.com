@@ -1,20 +1,44 @@
 <script lang="ts">
+	import { mode } from 'mode-watcher';
 	import type { PageData } from './$types';
 	import Parallax from './demos/parallax/Parallax.svelte';
+	import { Star } from 'lucide-svelte';
 
 	let { data }: { data: PageData } = $props();
+
+	const getRandomRotation = () => {
+		const rotationRange = 90;
+		const rotation = (Math.random() - 0.5) * rotationRange;
+		return rotation + 'deg';
+	};
 </script>
 
+{#snippet titleContent()}
+	<div class="title">
+		<h1>Welcome to my site...</h1>
+		<h1>things are in flux right now...</h1>
+		<h1>but that's ok...</h1>
+	</div>
+{/snippet}
+
+{#snippet star()}
+	<div class="rotate-0" style:--tw-rotate={getRandomRotation()}>
+		<Star size="3rem" class="stroke-yellow-400 fill-yellow-400"></Star>
+	</div>
+{/snippet}
+
 <div class="home">
-	<Parallax>
-		{#snippet titleContent()}
-			<div class="title">
-				<h1>Welcome to my site...</h1>
-				<h1>things are in flux right now...</h1>
-				<h1>but that's ok...</h1>
-			</div>
-		{/snippet}
-	</Parallax>
+	{#if $mode === 'dark'}
+		<Parallax
+			{titleContent}
+			foregroundContent={star}
+			midgroundContent={star}
+			backgroundContent={star}
+			includeBackground={false}
+		></Parallax>
+	{:else}
+		<Parallax {titleContent}></Parallax>
+	{/if}
 </div>
 
 <style lang="postcss">
