@@ -1,5 +1,6 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
-import type { Config } from 'tailwindcss';
+import { type Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
 	darkMode: ['class'],
@@ -38,7 +39,8 @@ const config: Config = {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
-					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
+					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
+					2: 'hsl(var(--accent2) / <alpha-value>)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
@@ -59,7 +61,18 @@ const config: Config = {
 				jersey15: ['Jersey\\ 15']
 			}
 		}
-	}
+	},
+	plugins: [
+		plugin(function ({ addUtilities }) {
+			addUtilities({
+				'.center-container': {
+					display: 'flex',
+					'justify-content': 'center',
+					'align-items': 'center'
+				}
+			});
+		})
+	]
 };
 
 export default config;
