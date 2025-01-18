@@ -1,27 +1,46 @@
 <script lang="ts">
-	import { toggleMode, mode } from 'mode-watcher';
-	import { Moon, Sun } from 'lucide-svelte';
+	import { mode, toggleMode, resetMode, setMode } from 'mode-watcher';
+	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import { cn } from '$lib/utils';
 
-	const iconTailwind = 'icon size-[1.5rem] transition-all duration-500 absolute rotate-0';
+	// TODO(@bionboy, 2025-01-17): Use the `Mode` type from the mode-watcher package somehow
+	type colorThemeMode = 'light' | 'dark' | 'system';
+
+	let selectedMode: colorThemeMode = $state($mode ?? 'system');
+
+	const rotateMode = () => {
+		switch (selectedMode) {
+			case 'light':
+				setMode((selectedMode = 'dark'));
+				break;
+			case 'dark':
+				selectedMode = 'system';
+				resetMode();
+				break;
+			case 'system':
+				setMode((selectedMode = 'light'));
+				break;
+			default:
+				resetMode();
+				break;
+		}
+	};
 </script>
 
-<Button on:click={toggleMode} variant="outline" size="icon" class="overflow-clip relative">
-	<!-- TODO(@bionboy, 2025-01-13): See if I can get rid of this strange syntax 
-			after upgrading the shad ui svelte port.
-			Or if I need to fix my tailwind config
-		-->
-	<Sun class={cn(iconTailwind, $mode === 'dark' && '-rotate-90 translate-y-10')} />
-	<Moon class={cn(iconTailwind, $mode === 'light' && 'rotate-90 translate-y-10')} />
-	<span class="sr-only">Toggle theme</span>
+<Button on:click={rotateMode} variant="outline" size="icon" class="relative overflow-clip">
+	<div class="icon" class:selected={selectedMode !== 'light'}><Sun /></div>
+	<div class="icon" class:selected={selectedMode !== 'dark'}><Moon /></div>
+	<div class="icon" class:selected={selectedMode !== 'system'}><SunMoon /></div>
+	<span class="sr-only">Rotate theme options</span>
 </Button>
 
 <style lang="postcss">
 	.icon {
-		@apply transition-all;
-	}
-	.icon:hover {
-		@apply animate-spin duration-100 ease-linear;
+		@apply absolute size-full
+		center-container
+		transition-transform duration-700;
+		&.selected {
+			@apply rotate-90 translate-y-10;
+		}
 	}
 </style>
