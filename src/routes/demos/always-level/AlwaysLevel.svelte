@@ -27,12 +27,9 @@
 <svelte:window ondeviceorientation={handleDeviceOrientation} />
 
 <!-- <Cube bind:cubeElement /> -->
-<p class="leveled" bind:this={textElement}>Place your phone flat on a table please!</p>
+<p class="border-4 border-dashed border-accent-2 rounded-2xl p-2 m-4" bind:this={textElement}>
+	Place your phone flat on a table please!
+</p>
 
 <style>
-	.leveled {
-		border: 3px dashed red;
-		border-radius: 1em;
-		padding: 0.5em;
-	}
 </style>

@@ -26,7 +26,7 @@
 				<Card.Description>{props.description}</Card.Description>
 			{/if}
 		</Card.Header>
-		<Card.Content class=" flex-1 flex-grow ">
+		<Card.Content class="flex-grow">
 			{@render props.children?.()}
 		</Card.Content>
 	</Card.Root>

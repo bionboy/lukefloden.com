@@ -20,7 +20,7 @@
 		description="Keeping text on your screen level; despite your devices orientation"
 		route="demos/always-level"
 	>
-		<div class="h-full flex place-content-center place-items-center bg-[hsl(160,100%,90%)]">
+		<div class="h-full flex place-content-center place-items-center bg-accent text-accent-2">
 			<AlwaysLevel />
 		</div>
 	</DemoCard>

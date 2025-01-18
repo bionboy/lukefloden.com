@@ -6,7 +6,7 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<div style:background-color="hsl(160, 100%, 90%)">
+<div class="bg-accent text-accent-2">
 	<div class="centered">
 		<DeviceOrientationPermissionRequester isIosSafari={data.isIosSafari} />
 	</div>
