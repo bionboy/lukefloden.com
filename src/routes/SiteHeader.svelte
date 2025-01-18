@@ -13,7 +13,7 @@
 
 	let headerHeight = $state(0);
 	let scrollY: number = $state(0);
-	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 1 - 1);
+	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 2 - 1);
 
 	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
@@ -22,6 +22,7 @@
 
 <div
 	class="site-header"
+	class:headerMinimized
 	role="navigation"
 	bind:clientHeight={headerHeight}
 	onmouseovercapture={hoverTrue}
@@ -29,7 +30,6 @@
 	onfocuscapture={hoverTrue}
 	onblurcapture={hoverFalse}
 >
-	<div class="backdrop" class:headerMinimized></div>
 	<div class="island left" class:headerMinimized>
 		<Button onclick={scrollToTop} variant="link" size="icon">
 			<Star
@@ -49,9 +49,13 @@
 	</div>
 </div>
 
+<div class="backdrop" class:headerMinimized></div>
+
 <style lang="postcss">
 	.site-header {
-		@apply sticky z-10 top-0 w-screen h-16 
+		@apply w-screen h-16 
+			fixed
+			z-10 
 			flex items-center justify-between
       overflow-x-clip
 			gap-4;
@@ -61,10 +65,10 @@
 	}
 
 	.backdrop {
-		@apply -z-[1] absolute size-full
-      bg-background bg-opacity-60 backdrop-blur-sm
-			shadow-lg
-			opacity-100;
+		@apply w-screen h-16
+			sticky top-0 z-[9]
+      bg-background bg-opacity-30 backdrop-blur-md
+			shadow-lg;
 
 		transition:
 			transform 0.3s ease-in-out,
@@ -76,7 +80,8 @@
 	}
 
 	.island {
-		@apply p-2 
+		@apply p-2
+			center-container
 			transition-transform ease-in-out duration-500;
 	}
 
