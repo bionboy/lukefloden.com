@@ -16,7 +16,7 @@
 
 {#snippet titleContent()}
 	{#if $mode === 'light'}
-		<div class="absolute top-1/2 z-[1] scale-[2.5]">
+		<div class="absolute top-1/2 z-[1] scale-[1.8] sm:scale-[2.5] md:scale-[2.5] lg:scale-[3]">
 			<Cloud />
 		</div>
 	{/if}
@@ -64,8 +64,10 @@
 		text-shadow: 0 0 30px;
 
 		@apply text-accent 
-			text-4xl leading-[4rem]
+			text-3xl sm:text-4xl  lg:text-5xl
+			/* leading-[4rem] */
 			font-normal
-			dark:text-5xl dark:leading-[4rem];
+			dark:text-4xl md:dark:text-5xl 
+			dark:leading-[4rem];
 	}
 </style>
