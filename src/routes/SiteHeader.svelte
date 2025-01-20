@@ -8,17 +8,27 @@
 	import { Star } from 'lucide-svelte';
 
 	let hovering = $state(false);
+	let headerHeight = $state(0);
+	const scroll = $state({
+		y: 0,
+		yPrev: 0,
+		up: false
+	});
+	let headerMinimized: boolean = $derived(
+		!hovering && !scroll.up && scroll.y > headerHeight * 2 - 1
+	);
+
 	const hoverTrue = () => (hovering = true);
 	const hoverFalse = () => (hovering = false);
-
-	let headerHeight = $state(0);
-	let scrollY: number = $state(0);
-	let headerMinimized: boolean = $derived(!hovering && scrollY > headerHeight * 2 - 1);
-
 	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+	const onscroll = () => {
+		scroll.up = scrollY - scroll.yPrev < 0;
+		scroll.yPrev = scrollY;
+	};
 </script>
 
-<svelte:window bind:scrollY />
+<svelte:window bind:scrollY={scroll.y} {onscroll} />
 
 <div
 	class="site-header header-size"
