@@ -21,7 +21,7 @@
 <svelte:window bind:scrollY />
 
 <div
-	class="site-header"
+	class="site-header header-size"
 	class:headerMinimized
 	role="navigation"
 	bind:clientHeight={headerHeight}
@@ -49,12 +49,16 @@
 	</div>
 </div>
 
-<div class="backdrop" class:headerMinimized></div>
+<div class="backdrop header-size" class:headerMinimized></div>
+
+<div class="header-size"></div>
 
 <style lang="postcss">
+	.header-size {
+		@apply w-screen h-16;
+	}
 	.site-header {
-		@apply w-screen h-16 
-			fixed
+		@apply fixed
 			z-10 
 			flex items-center justify-between
       overflow-x-clip
@@ -65,8 +69,8 @@
 	}
 
 	.backdrop {
-		@apply w-screen h-16
-			sticky top-0 z-[9]
+		@apply fixed
+			z-[9]
       bg-background bg-opacity-30 backdrop-blur-md
 			shadow-lg;
 
