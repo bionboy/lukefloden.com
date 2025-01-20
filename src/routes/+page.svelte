@@ -2,16 +2,9 @@
 	import { mode } from 'mode-watcher';
 	import type { PageData } from './$types';
 	import Parallax from './demos/parallax/Parallax.svelte';
-	import { Star } from 'lucide-svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
 
 	let { data }: { data: PageData } = $props();
-
-	const getRandomRotation = () => {
-		const rotationRange = 90;
-		const rotation = (Math.random() - 0.5) * rotationRange;
-		return rotation + 'deg';
-	};
 
 	import { setDocumentBodyTailwind } from '$lib/setBackground';
 	setDocumentBodyTailwind($mode !== 'dark' ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
@@ -30,24 +23,8 @@
 	</div>
 {/snippet}
 
-{#snippet star()}
-	<div class="rotate-0" style:--tw-rotate={getRandomRotation()}>
-		<Star size="3rem" class="stroke-yellow-400 fill-yellow-400"></Star>
-	</div>
-{/snippet}
-
 <div class="home bg-background">
-	{#if $mode === 'dark'}
-		<Parallax
-			{titleContent}
-			foregroundContent={star}
-			midgroundContent={star}
-			backgroundContent={star}
-			includeBackground={false}
-		></Parallax>
-	{:else}
-		<Parallax {titleContent}></Parallax>
-	{/if}
+	<Parallax {titleContent}></Parallax>
 </div>
 
 <style lang="postcss">

@@ -2,7 +2,8 @@
 	import type { Snippet } from 'svelte';
 	import { createPositions } from './islandPositions.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
-	import type ArrowUp_0_1 from 'lucide-svelte/icons/arrow-up-0-1';
+	import { mode } from 'mode-watcher';
+	import { Star } from 'lucide-svelte';
 
 	type Props = {
 		title?: string;
@@ -37,7 +38,7 @@
 		}
 	});
 
-	let positions = $derived([
+	let islandPositions = $derived([
 		createPositions(hero.width, hero.height, 5),
 		createPositions(hero.width, hero.height, 10),
 		createPositions(hero.width, hero.height, 20)
@@ -62,14 +63,23 @@
 		};
 	}
 
+	const getRandomRotation = () => {
+		const rotationRange = 90;
+		const rotation = (Math.random() - 0.5) * rotationRange;
+		return rotation + 'deg';
+	};
+
 	let parallaxShift = $derived(getShift());
+
+	let defaultIslandContent = $derived($mode === 'light' ? cloud : star);
 </script>
 
 <svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
 
 <div
 	class="hero"
-	class:with-background={includeBackground}
+	class:light-background={includeBackground && $mode === 'light'}
+	class:dark-background={includeBackground && $mode === 'dark'}
 	role="presentation"
 	onmousemove={(event: MouseEvent) => {
 		// mouse = { x: event.clientX, y: event.clientY };
@@ -82,15 +92,15 @@
 	style:--y-shift={parallaxShift.y}
 >
 	<div class="parallax">
-		{#each positions[2] as coords}
+		{#each islandPositions[2] as coords}
 			{@render island('background', coords[0], coords[1], backgroundContent)}
 		{/each}
 		<div class="blur-panel background"></div>
-		{#each positions[1] as coords}
+		{#each islandPositions[1] as coords}
 			{@render island('midground', coords[0], coords[1], midgroundContent)}
 		{/each}
 		<div class="blur-panel midground"></div>
-		{#each positions[0] as coords}
+		{#each islandPositions[0] as coords}
 			{@render island('foreground', coords[0], coords[1], foregroundContent)}
 		{/each}
 		<div class="blur-panel foreground"></div>
@@ -106,12 +116,18 @@
 
 {#snippet island(level: string = 'foreground', x: number = 0, y: number = 0, content?: Snippet)}
 	<div class="island {level}" style="left:{x}px; top:{y}px;">
-		{@render (content ?? cloud)()}
+		{@render (content ?? defaultIslandContent)()}
 	</div>
 {/snippet}
 
 {#snippet cloud()}
 	<Cloud />
+{/snippet}
+
+{#snippet star()}
+	<div class="rotate-0" style:--tw-rotate={getRandomRotation()}>
+		<Star size="3rem" class="stroke-yellow-400 fill-yellow-400"></Star>
+	</div>
 {/snippet}
 
 <style lang="postcss">
@@ -122,12 +138,15 @@
 		justify-content: center;
 		overflow: clip;
 		height: 100%;
-		&.with-background {
+		&.light-background {
 			background-image: linear-gradient(
 				to bottom right in hsl,
 				hsl(180, 100%, 55%),
 				hsl(215, 100%, 74%)
 			);
+		}
+		&.dark-background {
+			@apply bg-black;
 		}
 	}
 
@@ -150,7 +169,7 @@
 
 	.hero-title {
 		font-size: 4rem;
-		color: hsl(180, 20%, 30%);
+		/* color: hsl(180, 20%, 30%); */
 	}
 
 	.parallax {
