@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import { createPositions } from './islandPositions.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
+	import type ArrowUp_0_1 from 'lucide-svelte/icons/arrow-up-0-1';
 
 	type Props = {
 		title?: string;
@@ -25,40 +26,56 @@
 		moveWithMouse = true
 	}: Props = $props();
 
-	let scrollY = $state(0);
+	let scroll = $state({ x: 0, y: 0 });
 	let mouse = $state({ x: 0, y: 0 });
-	let hero = $state({ width: 0, height: 0 });
+	let hero = $state({
+		width: 0,
+		height: 0,
+		offset: {
+			x: 0,
+			y: 0
+		}
+	});
 
 	let positions = $derived([
 		createPositions(hero.width, hero.height, 5),
 		createPositions(hero.width, hero.height, 10),
-		createPositions(hero.width, hero.height, 30)
+		createPositions(hero.width, hero.height, 20)
 	]);
 
 	function getShift(scale: number = 1) {
-		// const offsetX = 0;
-		// const offsetY = 0;
-		const offsetX = -hero.width / 2;
-		const offsetY = -hero.height / 2;
+		let input = { x: 0, y: 0 };
 
-		const x = moveWithMouse ? mouse.x : 0;
-		const y = (moveWithMouse ? mouse.y : 0) + (moveWithScroll ? scrollY : 0);
-		const tx = offsetX + x * scale;
-		const ty = offsetY + y * scale;
+		if (moveWithMouse) {
+			if (mouse.x !== 0) input.x = mouse.x - hero.width / 2;
+			if (mouse.y !== 0) input.y = mouse.y - hero.height / 2;
+		}
 
-		return { x: tx + 'px', y: ty + 'px' };
+		if (moveWithScroll) {
+			input.x += scroll.x;
+			input.y += scroll.y;
+		}
+
+		return {
+			x: input.x * scale + 'px',
+			y: input.y * scale + 'px'
+		};
 	}
 
 	let parallaxShift = $derived(getShift());
 </script>
 
-<svelte:window bind:scrollY />
+<svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
 
 <div
 	class="hero"
 	class:with-background={includeBackground}
 	role="presentation"
-	onmousemove={(event) => (mouse = { x: event.clientX, y: event.clientY })}
+	onmousemove={(event: MouseEvent) => {
+		// mouse = { x: event.clientX, y: event.clientY };
+		mouse = { x: event.layerX, y: event.layerY };
+		// mouse = { x: event.screenX, y: event.screenY };
+	}}
 	bind:clientWidth={hero.width}
 	bind:clientHeight={hero.height}
 	style:--x-shift={parallaxShift.x}
@@ -66,14 +83,17 @@
 >
 	<div class="parallax">
 		{#each positions[2] as coords}
-			{@render island('back', coords[0], coords[1], backgroundContent)}
+			{@render island('background', coords[0], coords[1], backgroundContent)}
 		{/each}
+		<div class="blur-panel background"></div>
 		{#each positions[1] as coords}
-			{@render island('mid', coords[0], coords[1], midgroundContent)}
+			{@render island('midground', coords[0], coords[1], midgroundContent)}
 		{/each}
+		<div class="blur-panel midground"></div>
 		{#each positions[0] as coords}
-			{@render island('fore', coords[0], coords[1], foregroundContent)}
+			{@render island('foreground', coords[0], coords[1], foregroundContent)}
 		{/each}
+		<div class="blur-panel foreground"></div>
 	</div>
 	<div class="hero-content">
 		{#if titleContent}
@@ -84,8 +104,8 @@
 	</div>
 </div>
 
-{#snippet island(level: string = 'fore', x: number = 0, y: number = 0, content?: Snippet)}
-	<div class="island parallax-{level}ground" style="left:{x}px; top:{y}px;">
+{#snippet island(level: string = 'foreground', x: number = 0, y: number = 0, content?: Snippet)}
+	<div class="island {level}" style="left:{x}px; top:{y}px;">
 		{@render (content ?? cloud)()}
 	</div>
 {/snippet}
@@ -94,7 +114,7 @@
 	<Cloud />
 {/snippet}
 
-<style>
+<style lang="postcss">
 	.hero {
 		position: relative;
 		display: flex;
@@ -118,6 +138,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		@apply pointer-events-none;
+
+		/* 
+		 	TODO: 3d tilting card effect
+			https://www.youtube.com/watch?v=Z-3tPXf9a7M
+		*/
+		/* transform: rotate3d(0.1, 0.1, 0, calc(var(--asdf-shift, 0) * 0.1)); */
 	}
 
 	.hero-title {
@@ -126,7 +154,19 @@
 	}
 
 	.parallax {
-		position: relative;
+		@apply absolute size-full;
+	}
+
+	.blur-panel {
+		@apply absolute size-full;
+		&.background {
+			@apply backdrop-blur-[1px];
+		}
+		&.midground {
+			@apply backdrop-blur-[1px];
+		}
+		&.foreground {
+		}
 	}
 
 	.island {
@@ -137,32 +177,37 @@
 
 		position: absolute;
 
-		padding: 10px 20px;
-		font-size: 2rem;
-		width: fit-content;
-
-		transform: translate(
+		/* 
+			shift inner content to center of coordinates 
+			then translate based on input
+		*/
+		transform: translate(-50%, -50%)
+			translate(
 				calc(var(--x-shift) * var(--shift-scale)),
 				calc(var(--y-shift) * var(--shift-scale))
 			)
 			scale(var(--size-scale));
-		filter: blur(var(--blur-amount));
-		opacity: var(--opacity);
-	}
 
-	.parallax-foreground {
-		--shift-scale: 0.8;
-	}
-	.parallax-midground {
-		--shift-scale: 0.5;
-		--size-scale: 0.7;
-		--blur-amount: 1px;
-		--opacity: 0.9;
-	}
-	.parallax-background {
-		--shift-scale: 0.2;
-		--size-scale: 0.5;
-		--blur-amount: 2px;
-		--opacity: 0.7;
+		opacity: var(--opacity);
+
+		/* ! Blur on every element is bad for performance */
+		/* TODO: instead, add a blur "panel" just in front of each layer */
+		/* filter: blur(var(--blur-amount)); */
+
+		&.foreground {
+			--shift-scale: 0.8;
+			--size-scale: 1;
+			--opacity: 0.9;
+		}
+		&.midground {
+			--shift-scale: 0.5;
+			--size-scale: 0.7;
+			--opacity: 0.9;
+		}
+		&.background {
+			--shift-scale: 0.2;
+			--size-scale: 0.5;
+			--opacity: 0.8;
+		}
 	}
 </style>
