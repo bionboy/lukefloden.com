@@ -7,7 +7,7 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<div class="gallery">
+<div class="gallery bg-background">
 	<DemoCard
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"

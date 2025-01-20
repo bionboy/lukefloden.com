@@ -12,6 +12,9 @@
 		const rotation = (Math.random() - 0.5) * rotationRange;
 		return rotation + 'deg';
 	};
+
+	import { setDocumentBodyTailwind } from '$lib/setBackground';
+	setDocumentBodyTailwind($mode !== 'dark' ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 {#snippet titleContent()}
@@ -33,7 +36,7 @@
 	</div>
 {/snippet}
 
-<div class="home">
+<div class="home bg-background">
 	{#if $mode === 'dark'}
 		<Parallax
 			{titleContent}
