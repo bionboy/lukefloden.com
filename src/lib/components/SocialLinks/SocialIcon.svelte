@@ -1,22 +1,22 @@
 <script lang="ts">
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import type { Snippet } from 'svelte';
+	import type { ClassValue } from 'svelte/elements';
 
 	interface props {
 		title: string;
 		href: string;
-		size?: string;
 		svgProps?: object;
 		children: Snippet;
 	}
-	let { title, href, size = '4rem', svgProps, children }: props = $props();
+	let { title, href, svgProps, children }: props = $props();
 </script>
 
 <Tooltip.Root openDelay={300}>
 	<Tooltip.Trigger>
 		<a {href}>
 			<svg
-				class={[`logo size-[${size}]`, title]}
+				class={[`logo size-16`, title]}
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				preserveAspectRatio="xMidYMid"
