@@ -7,6 +7,12 @@
 	import { cn } from '$lib/utils';
 	import { Star } from 'lucide-svelte';
 
+	interface Props {
+		headerStyle?: 'default' | 'rounded';
+	}
+
+	let { headerStyle = 'default' }: Props = $props();
+
 	let hovering = $state(false);
 	let headerHeight = $state(0);
 	const scroll = $state({
@@ -31,8 +37,7 @@
 <svelte:window bind:scrollY={scroll.y} {onscroll} />
 
 <div
-	class="site-header header-size"
-	class:headerMinimized
+	class={['site-header header-shape', headerStyle, { headerMinimized }]}
 	role="navigation"
 	bind:clientHeight={headerHeight}
 	onmouseovercapture={hoverTrue}
@@ -55,18 +60,22 @@
 		<Nav />
 	</div>
 	<div class="island right" class:headerMinimized>
-		<ThemeSwitcher />
+		<ThemeSwitcher class={[headerStyle === 'rounded' && 'rounded-full']} />
 	</div>
 </div>
 
-<div class="backdrop header-size" class:headerMinimized></div>
+<div class={['backdrop header-shape', headerStyle, { headerMinimized }]}></div>
 
-<div class="header-size"></div>
+<div class={['header-shape', headerStyle, { headerMinimized }]}></div>
 
 <style lang="postcss">
-	.header-size {
+	.header-shape {
 		@apply w-screen h-16;
+		&.rounded {
+			@apply w-auto h-16 inset-2 px-2 rounded-full;
+		}
 	}
+
 	.site-header {
 		@apply fixed
 			z-10 

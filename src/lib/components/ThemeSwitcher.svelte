@@ -3,6 +3,10 @@
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 
+	import type { ClassValue } from 'svelte/elements';
+
+	const props: { class?: ClassValue } = $props();
+
 	// TODO(@bionboy, 2025-01-17): Use the `Mode` type from the mode-watcher package somehow
 	type colorThemeMode = 'light' | 'dark' | 'system';
 
@@ -27,7 +31,12 @@
 	};
 </script>
 
-<Button on:click={rotateMode} variant="outline" size="icon" class="relative overflow-clip">
+<Button
+	on:click={rotateMode}
+	variant="outline"
+	size="icon"
+	class={['relative overflow-clip', props.class]}
+>
 	<div class="icon" class:selected={selectedMode !== 'light'}><Sun /></div>
 	<div class="icon" class:selected={selectedMode !== 'dark'}><Moon /></div>
 	<div class="icon" class:selected={selectedMode !== 'system'}><SunMoon /></div>
