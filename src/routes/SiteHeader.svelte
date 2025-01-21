@@ -72,7 +72,8 @@
 	.header-shape {
 		@apply w-screen h-16;
 		&.rounded {
-			@apply w-auto h-16 inset-2 px-2 rounded-full;
+			/* TODO(@bionboy, 2025-01-21): Fix the rounding algorithm to not have bad edges, use apple rounding */
+			@apply w-auto h-16 inset-x-2 inset-y-3 px-2 rounded-full;
 		}
 	}
 
@@ -90,7 +91,9 @@
 	.backdrop {
 		@apply fixed
 			z-[9]
-      bg-background bg-opacity-30 backdrop-blur-md
+			bg-muted
+			bg-opacity-50
+			backdrop-blur-md
 			shadow-lg;
 
 		transition:
