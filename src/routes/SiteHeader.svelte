@@ -50,8 +50,10 @@
 			<Star
 				size="2rem"
 				class={cn(
-					'transition-all fill-yellow-400 hover:-rotate-12',
-					headerMinimized && ' stroke-yellow-400'
+					'transition-all duration-700',
+					'fill-accent-light stroke-background text-accent-light stroke-1',
+					'hover:duration-300 hover:-rotate-12 hover:scale-150',
+					headerMinimized && 'stroke-background drop-shadow-glow stroke-2'
 				)}
 			></Star>
 		</Button>
@@ -113,7 +115,7 @@
 
 	.left {
 		&.headerMinimized {
-			@apply scale-75 rotate-[25deg];
+			@apply scale-110 rotate-[20deg];
 		}
 	}
 	.right {
