@@ -13,7 +13,7 @@
 </script>
 
 <Tooltip.Root openDelay={300}>
-	<Tooltip.Trigger>
+	<Tooltip.Trigger class=" transition-transform hover:scale-110 hover:-rotate-12">
 		<a {href}>
 			<svg
 				class={[`logo size-16`, title]}

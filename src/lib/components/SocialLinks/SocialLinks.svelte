@@ -2,7 +2,7 @@
 	import { SocialIcon } from '.';
 </script>
 
-<div class="social-links flex gap-4">
+<div class="social-links flex gap-8 justify-center">
 	<SocialIcon
 		title="Bluesky"
 		href="https://bsky.app/profile/lukefloden.me"
