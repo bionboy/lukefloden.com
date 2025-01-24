@@ -40,7 +40,9 @@ const config: Config = {
 				accent: {
 					DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
 					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
-					2: 'hsl(var(--accent2) / <alpha-value>)'
+					2: 'hsl(var(--accent2) / <alpha-value>)',
+					light: 'hsl(var(--accent-light) / <alpha-value>)',
+					dark: 'hsl(var(--accent-dark) / <alpha-value>)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
@@ -59,6 +61,9 @@ const config: Config = {
 			fontFamily: {
 				sans: [...fontFamily.sans],
 				jersey15: ['Jersey\\ 15']
+			},
+			dropShadow: {
+				glow: ['0 0 5px', '0 0 10px', '0 0 20px']
 			}
 		}
 	},
