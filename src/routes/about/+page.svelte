@@ -15,68 +15,39 @@
 
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
 	<AboutCard title="Me">
-		<h4>I want the internet to feel like it did 10 years ago</h4>
 		<p>
-			I am nostalgic for an era of the internet that I was too young to be apart of. Focused on
-			actually connecting and sharing with each other. Fostering relationships and providing access
-			to the tools and knowledge to grow. I want the internet to make our lives better; not to treat
-			our attention as a resource.
+			<strong>I want the internet to feel like it did 10 years ago.</strong>
+			I am nostalgic for an era of the internet that I was too young to be apart of. Focused on actually
+			connecting and sharing with each other. Fostering relationships and providing access to the tools
+			and knowledge to grow. I want the internet to make our lives better; not to treat our attention
+			as a resource.
 		</p>
 		<p>That being said.... here are my socials!</p>
-		<br />
-		<SocialLinks></SocialLinks>
+		<div class="mt-8">
+			<SocialLinks></SocialLinks>
+		</div>
 	</AboutCard>
-	<AboutCard title="Career">
-		<h4>Front-end dev with an eye for design and a passion for UX</h4>
-		<ul>
-			<li>
-				I am a Front-end Developer with a passion for crafting intuitive and accessible user
-				experiences.
-			</li>
-			<li>
-				While my career has provided extensive full-stack experience, my passion lies in frontend
-				development, specializing in UI/UX design, web standards, accessibility, and thoughtful
-				architectural choices.
-			</li>
-			<li>
-				I strive to build products that feel seamless—a good tool should feel like an extension of
-				its user.
-			</li>
-			<li>
-				My startup experience has honed my ability to work within constraints, prioritize
-				effectively, and make a meaningful impact on product design and development.
-			</li>
-			<li>
-				Having contributed to the healthcare, construction, and audiovisual recording industries, I
-				bring versatile technical expertise and problem-solving skills.
-			</li>
-			<li>
-				With a Master’s in Computer Engineering, I support product decisions with a deep technical
-				knowledge, offering valuable insights into constraints, trade-offs, and possibilities.
-			</li>
-		</ul>
-
-		<p class="hidden">
+	<AboutCard title="Career" description="Front-end dev with an eye for design and a passion for UX">
+		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
 			experiences. While my career has provided extensive full-stack experience, my passion lies in
 			frontend development, specializing in UI/UX design, web standards, accessibility, and
 			thoughtful architectural choices. I strive to build products that feel seamless—a good tool
-			should feel like an extension of its user. My startup experience has honed my ability to work
-			within constraints, prioritize effectively, and make a meaningful impact on product design and
-			development. Having contributed to the healthcare, construction, and audiovisual recording
-			industries, I bring versatile technical expertise and problem-solving skills. With a Master’s
-			in Computer Engineering, I support product decisions with a deep technical knowledge, offering
-			valuable insights into constraints, trade-offs, and possibilities.
+			should feel like an extension of its user.
+		</p>
+		<p>
+			My startup experience has honed my ability to work within constraints, prioritize effectively,
+			and make a meaningful impact on product design and development. Having contributed to the
+			healthcare, construction, and audiovisual recording industries, I bring versatile technical
+			expertise and problem-solving skills.
+		</p>
+		<p>
+			With a Master’s in Computer Engineering, I support product decisions with a deep technical
+			knowledge, offering valuable insights into constraints, trade-offs, and possibilities.
 		</p>
 	</AboutCard>
 	<!-- <AboutCard title="this site"></AboutCard> -->
 </div>
 
 <style lang="postcss">
-	p,
-	ul {
-		/* font-size: large; */
-		/* font-size: xx-large; */
-		/* @apply font-thin text-xl; */
-	}
 </style>
