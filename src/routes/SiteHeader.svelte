@@ -36,46 +36,54 @@
 
 <svelte:window bind:scrollY={scroll.y} {onscroll} />
 
-<div
-	class={['site-header header-shape', headerStyle, { headerMinimized }]}
-	role="navigation"
-	bind:clientHeight={headerHeight}
-	onmouseovercapture={hoverTrue}
-	onmouseoutcapture={hoverFalse}
-	onfocuscapture={hoverTrue}
-	onblurcapture={hoverFalse}
->
-	<div class="island left" class:headerMinimized>
-		<Button onclick={scrollToTop} variant="link" size="icon">
-			<Star
-				size="2rem"
-				class={cn(
-					'transition-all duration-700',
-					'fill-accent-light stroke-background text-accent-light stroke-1',
-					'hover:duration-300 hover:-rotate-12 hover:scale-150',
-					headerMinimized && 'stroke-background drop-shadow-glow stroke-2'
-				)}
-			></Star>
-		</Button>
+<div class="header-container">
+	<div
+		class={['site-header header-shape', headerStyle, { headerMinimized }]}
+		role="navigation"
+		bind:clientHeight={headerHeight}
+		onmouseovercapture={hoverTrue}
+		onmouseoutcapture={hoverFalse}
+		onfocuscapture={hoverTrue}
+		onblurcapture={hoverFalse}
+	>
+		<div class="island left" class:headerMinimized>
+			<Button onclick={scrollToTop} variant="link" size="icon">
+				<Star
+					size="2rem"
+					class={cn(
+						'transition-all duration-700',
+						'fill-accent-light stroke-background text-accent-light stroke-1',
+						'hover:duration-300 hover:-rotate-12 hover:scale-150',
+						headerMinimized && 'stroke-background drop-shadow-glow stroke-2'
+					)}
+				></Star>
+			</Button>
+		</div>
+		<div class="middle" class:headerMinimized>
+			<Nav />
+		</div>
+		<div class="island right" class:headerMinimized>
+			<ThemeSwitcher class={[headerStyle === 'rounded' && 'rounded-full']} />
+		</div>
 	</div>
-	<div class="middle" class:headerMinimized>
-		<Nav />
-	</div>
-	<div class="island right" class:headerMinimized>
-		<ThemeSwitcher class={[headerStyle === 'rounded' && 'rounded-full']} />
-	</div>
+
+	<div class={['backdrop header-shape', headerStyle, { headerMinimized }]}></div>
+
+	<div class={['placeholder header-shape', headerStyle, { headerMinimized }]}></div>
 </div>
 
-<div class={['backdrop header-shape', headerStyle, { headerMinimized }]}></div>
-
-<div class={['header-shape', headerStyle, { headerMinimized }]}></div>
-
 <style lang="postcss">
+	.header-container {
+		view-transition-name: header;
+		@apply z-10;
+	}
+
 	.header-shape {
-		@apply w-screen h-16;
+		@apply w-screen h-16 mb-4;
+
 		&.rounded {
 			/* TODO(@bionboy, 2025-01-21): Fix the rounding algorithm to not have bad edges, use apple rounding */
-			@apply w-auto h-16 inset-x-2 inset-y-3 px-2 rounded-full;
+			@apply w-auto h-16 inset-x-2 inset-y-3 px-2 mb-8 rounded-full;
 		}
 	}
 
@@ -85,9 +93,6 @@
 			flex items-center justify-between
       overflow-x-clip
 			gap-4;
-
-		/* Disables the view-transistion usage outside of this component */
-		view-transition-name: header;
 	}
 
 	.backdrop {
