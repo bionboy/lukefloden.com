@@ -22,7 +22,9 @@
 
 <ModeWatcher />
 <div class="relative flex flex-col">
-	<SiteHeader headerStyle={Math.random() > 0.5 ? 'rounded' : 'default'} />
+	<SiteHeader headerStyle="rounded" />
+	<!-- <SiteHeader headerStyle="default" /> -->
+	<!-- <SiteHeader headerStyle={Math.random() > 0.5 ? 'rounded' : 'default'} /> -->
 	{@render children()}
 </div>
 
