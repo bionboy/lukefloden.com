@@ -74,6 +74,12 @@ const config: Config = {
 					display: 'flex',
 					'justify-content': 'center',
 					'align-items': 'center'
+				},
+				'.debug': {
+					'border-color': 'red !important',
+					'border-style': 'dashed !important',
+					'border-width': '1px !important',
+					'background-color': 'rgba(255, 0, 0, 0.25) !important'
 				}
 			});
 		})
