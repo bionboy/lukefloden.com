@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { SocialLinks } from '$lib/components/SocialLinks';
-	import * as Card from '$lib/components/ui/card';
 	import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
 
