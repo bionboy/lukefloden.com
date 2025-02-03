@@ -4,14 +4,10 @@
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from './DemoCard.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png';
-	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg';
 	import { Badge, GithubBadge } from '$lib/components/ui/badge';
-	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>
-
-<FullStaticBackground imgSrc={bgImg}></FullStaticBackground>
 
 <div class="gallery bg-backgroundd">
 	<DemoCard
