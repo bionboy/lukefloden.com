@@ -3,6 +3,7 @@
 
 	let props: {
 		imgSrc?: string;
+		imgAlt?: string;
 		children?: Snippet;
 	} = $props();
 </script>
@@ -11,7 +12,11 @@
 	{#if props.children}
 		{@render props.children()}
 	{:else if props.imgSrc}
-		<img src={props.imgSrc} class="size-full object-fill blur" />
+		<img
+			src={props.imgSrc}
+			class="size-full object-fill blur"
+			alt={props.imgAlt || 'abstract colorful gradient background'}
+		/>
 	{/if}
 </div>
 
