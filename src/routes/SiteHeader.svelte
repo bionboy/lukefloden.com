@@ -47,7 +47,13 @@
 		onblurcapture={hoverFalse}
 	>
 		<div class="island left" class:headerMinimized>
-			<Button name="scroll to top" onclick={scrollToTop} variant="link" size="icon">
+			<Button
+				onclick={scrollToTop}
+				variant="link"
+				size="icon"
+				name="scroll to top"
+				aria-label="scroll to top"
+			>
 				<Star
 					size="2rem"
 					class={cn(
