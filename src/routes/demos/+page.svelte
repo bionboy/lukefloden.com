@@ -3,7 +3,7 @@
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from './DemoCard.svelte';
-	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png';
+	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
 	import { Badge, GithubBadge } from '$lib/components/ui/badge';
 
 	let { data }: { data: PageData } = $props();
@@ -35,7 +35,7 @@
 		route="https://bionboy.github.io/PerlinPlane/"
 	>
 		<div class="size-full flex place-items-center overflow-clip rounded">
-			<img
+			<enhanced:img
 				class="rounded"
 				alt="a 2d plane with generated hills based on a noise algorithm. The different heights correspond to different colors"
 				src={perlinPlaneImg}
