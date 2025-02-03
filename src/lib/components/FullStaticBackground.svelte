@@ -16,7 +16,7 @@
 	{:else if props.imgSrc}
 		<enhanced:img
 			src={props.imgSrc}
-			class="size-full object-fill blur"
+			class="size-full object-fill"
 			alt={props.imgAlt || 'abstract colorful gradient background'}
 		/>
 	{/if}
