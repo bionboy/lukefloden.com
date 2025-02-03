@@ -1,5 +1,5 @@
 <script lang="ts">
-	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg';
+	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg?enhanced';
 	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { children } = $props();

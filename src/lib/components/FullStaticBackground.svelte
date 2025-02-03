@@ -1,18 +1,20 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { Picture } from 'vite-imagetools';
 
 	let props: {
-		imgSrc?: string;
+		imgSrc?: Picture;
 		imgAlt?: string;
 		children?: Snippet;
 	} = $props();
+	$inspect(props.imgSrc);
 </script>
 
 <div class="site-bg fixed -z-10 h-screen w-screen dark:brightness-50">
 	{#if props.children}
 		{@render props.children()}
 	{:else if props.imgSrc}
-		<img
+		<enhanced:img
 			src={props.imgSrc}
 			class="size-full object-fill blur"
 			alt={props.imgAlt || 'abstract colorful gradient background'}

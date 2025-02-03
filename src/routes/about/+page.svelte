@@ -2,7 +2,7 @@
 	import { SocialLinks } from '$lib/components/SocialLinks';
 	import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
-	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg';
+	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg?enhanced';
 	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { data }: { data: PageData } = $props();
