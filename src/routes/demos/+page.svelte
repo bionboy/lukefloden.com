@@ -47,7 +47,9 @@
 	</DemoCard>
 
 	<!-- * Fill in future spots, so for now our demo cards look less lonely  -->
-	<!-- {#each Array(3) as _} <div class="bg-border size-full aspect-square rounded-md"></div> {/each} -->
+	{#each Array(2) as _}
+		<div class="invisible bg-border size-full aspect-square rounded-md"></div>
+	{/each}
 </div>
 
 <style lang="postcss">
