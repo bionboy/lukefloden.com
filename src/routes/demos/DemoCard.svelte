@@ -15,7 +15,7 @@
 <a href={props.route}>
 	<Card.Root
 		class="
-		shadow-md shadow-border
+		drop-shadow-xl
 		transition-transform hover:scale-105 
 		overflow-clip
 	"

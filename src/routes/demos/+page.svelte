@@ -3,13 +3,17 @@
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from './DemoCard.svelte';
-	import perlinPlane from '$lib/assets/images/perlin-plane.png';
+	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png';
+	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg';
 	import { Badge, GithubBadge } from '$lib/components/ui/badge';
+	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>
 
-<div class="gallery bg-background">
+<FullStaticBackground imgSrc={bgImg}></FullStaticBackground>
+
+<div class="gallery bg-backgroundd">
 	<DemoCard
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"
@@ -38,7 +42,7 @@
 			<img
 				class="rounded"
 				alt="a 2d plane with generated hills based on a noise algorithm. The different heights correspond to different colors"
-				src={perlinPlane}
+				src={perlinPlaneImg}
 			/>
 		</div>
 		{#snippet footer()}
