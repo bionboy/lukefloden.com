@@ -28,6 +28,5 @@
 	{@render children()}
 </div>
 
-<style>
-	@import 'view-transition.pcss';
+<style lang="postcss">
 </style>

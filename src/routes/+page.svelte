@@ -34,6 +34,11 @@
 		height: 100dvh;
 		display: flex;
 		flex-direction: column;
+		/* TODO: 
+		   - fix view transition to and from home page
+			 - to do this lets make the home page a route instead of the top level layout/page
+		*/
+		/* view-transition-name: asdf; */
 	}
 
 	.title > h1 {

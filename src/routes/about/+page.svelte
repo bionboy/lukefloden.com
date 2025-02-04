@@ -2,8 +2,6 @@
 	import { SocialLinks } from '$lib/components/SocialLinks';
 	import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
-	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg?enhanced&blur=100';
-	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>
@@ -12,11 +10,8 @@
 	<title>About Me</title>
 </svelte:head>
 
-<FullStaticBackground imgSrc={bgImg}></FullStaticBackground>
-
-<h1 class="max-w-3xl mx-auto my-8">About: this, that, etc...</h1>
-
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
+	<h1 class="mx-auto">About: this, that, etc...</h1>
 	<AboutCard title="Me">
 		<p>
 			<strong>I want the internet to feel like it did 10 years ago.</strong>
