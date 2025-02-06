@@ -36,7 +36,8 @@
 
 <svelte:window bind:scrollY={scroll.y} {onscroll} />
 
-<div class="header-container">
+<!-- creating container and using overflow clip on it so that "inset" doesn't mess with clipping the contents -->
+<div class="header-container overflow-x-clip">
 	<div
 		class={['site-header header-shape', headerStyle, { headerMinimized }]}
 		role="navigation"
@@ -79,11 +80,6 @@
 </div>
 
 <style lang="postcss">
-	.header-container {
-		view-transition-name: header;
-		@apply z-10;
-	}
-
 	.header-shape {
 		@apply w-screen h-16 mb-4;
 
@@ -94,14 +90,16 @@
 	}
 
 	.site-header {
+		view-transition-name: header;
 		@apply fixed
 			z-10 
 			flex items-center justify-between
-      overflow-x-clip
 			gap-4;
 	}
 
 	.backdrop {
+		view-transition-name: header-backdrop;
+
 		@apply fixed
 			z-[9]
 			bg-muted
@@ -130,16 +128,15 @@
 		}
 	}
 	.right {
-		@apply translate-y-0;
 		&.headerMinimized {
-			@apply translate-x-full;
+			@apply translate-x-20;
 		}
 	}
 
 	.middle {
-		@apply transition-transform ease-in-out duration-500;
+		@apply transition-[transform,opacity] ease-in-out duration-500;
 		&.headerMinimized {
-			@apply -translate-y-full scale-x-0;
+			@apply -translate-y-full -scale-x-0 opacity-0;
 		}
 	}
 </style>
