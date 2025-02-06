@@ -22,8 +22,8 @@
 		{@const active = $page.route.id === route}
 		<div class="nav-item" class:active>
 			<a href={route}>
-				<!-- ? IDK why i need this 'hey' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
-				<div class="hey">{name}</div>
+				<!-- ? IDK why i need this 'link-content' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
+				<div class="link-content">{name}</div>
 			</a>
 		</div>
 	{/each}
@@ -42,7 +42,7 @@
 			@apply scale-125;
 			a {
 				@apply text-primary;
-				.hey {
+				.link-content {
 					animation: floating 3s infinite ease-in-out;
 				}
 			}
@@ -54,8 +54,8 @@
 
 			a {
 				@apply text-primary;
-				.hey {
-					animation-name: asdf;
+				.link-content {
+					animation-name: wiggle;
 					animation-fill-mode: forwards;
 					animation-duration: 0.5s;
 					animation-iteration-count: 1;
@@ -99,7 +99,7 @@
 		}
 	}
 
-	@keyframes asdf {
+	@keyframes wiggle {
 		from {
 			transform: translateY(0px);
 		}

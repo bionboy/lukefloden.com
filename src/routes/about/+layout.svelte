@@ -12,6 +12,6 @@
 
 <style lang="postcss">
 	.page {
-		view-transition-name: asdf;
+		view-transition-name: page-content;
 	}
 </style>

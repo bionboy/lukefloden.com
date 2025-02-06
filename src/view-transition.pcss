@@ -24,31 +24,16 @@
 	}
 }
 
-/* :root::view-transition-old(asdf) { */
-::view-transition-old(asdf) {
+::view-transition-old(page-content) {
 	animation:
 		90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
 		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
-::view-transition-new(asdf) {
+::view-transition-new(page-content) {
 	animation:
 		210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
 		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
-}
-
-::view-transition-group(asdf) {
-	background: transparent !important;
-}
-
-:root {
-	/* view-transition-name: root-transition; */
-	/* background: transparent !important; */
-}
-
-body {
-	/* background: transparent !important; */
-	/* background-color: red !important; */
 }
 
 @media (prefers-reduced-motion) {

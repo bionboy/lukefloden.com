@@ -38,7 +38,7 @@
 		   - fix view transition to and from home page
 			 - to do this lets make the home page a route instead of the top level layout/page
 		*/
-		/* view-transition-name: asdf; */
+		/* view-transition-name: page-content; */
 	}
 
 	.title > h1 {
