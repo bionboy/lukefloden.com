@@ -20,6 +20,9 @@ importers:
       mode-watcher:
         specifier: ^0.5.0
         version: 0.5.0(svelte@5.19.1)
+      vite-imagetools:
+        specifier: ^7.0.5
+        version: 7.0.5(rollup@4.27.3)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0

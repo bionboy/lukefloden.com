@@ -7,7 +7,6 @@
 		imgAlt?: string;
 		children?: Snippet;
 	} = $props();
-	$inspect(props.imgSrc);
 </script>
 
 <div class="site-bg fixed -z-10 h-screen w-screen dark:brightness-50">
@@ -18,7 +17,16 @@
 			src={props.imgSrc}
 			class="size-full object-fill"
 			alt={props.imgAlt || 'abstract colorful gradient background'}
+			loading="eager"
+			fetchpriority="high"
 		/>
+		<!-- TODO(@bionboy, 2025-02-10):
+		       - make sure i'm using 'sizes' correctly so it loads smaller ones faster
+					 - make sure i need loading="eager"
+					 - and fetchpriority="high".
+		-->
+		<!-- sizes="100px" -->
+		<!-- sizes="min(1280px, 100vw)" -->
 	{/if}
 </div>
 
