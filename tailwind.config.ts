@@ -80,6 +80,12 @@ const config: Config = {
 					'border-style': 'dashed !important',
 					'border-width': '1px !important',
 					'background-color': 'rgba(255, 0, 0, 0.25) !important'
+				},
+				'.debug-2': {
+					'border-color': 'green !important',
+					'border-style': 'dashed !important',
+					'border-width': '1px !important',
+					'background-color': 'rgba(0, 255, 0, 0.25) !important'
 				}
 			});
 		})
