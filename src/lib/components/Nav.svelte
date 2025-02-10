@@ -5,7 +5,7 @@
 	export type NavLocations = { route: string; name: string }[];
 
 	const defaultLocations = [
-		{ route: '/', name: 'Home' },
+		{ route: '/home', name: 'Home' },
 		{ route: '/about', name: 'About' },
 		{ route: '/demos', name: 'Demos' }
 	];

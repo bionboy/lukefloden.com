@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { mode } from 'mode-watcher';
 	import type { PageData } from './$types';
-	import Parallax from './demos/parallax/Parallax.svelte';
+	import Parallax from '../demos/parallax/Parallax.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
 
 	let { data }: { data: PageData } = $props();
@@ -23,22 +23,26 @@
 	</div>
 {/snippet}
 
-<div class="home bg-background">
+<div class="hero bg-background">
 	<Parallax {titleContent}></Parallax>
+</div>
+<div class="after-hero mt-[--after-hero-offset]">
+	<!-- TODO(@bionboy, 2025-02-10): put some content here and add a gradient or something moving that shows the user they can scroll down -->
+	<!-- <p>hey</p> -->
 </div>
 
 <style lang="postcss">
-	.home {
+	:root {
+		--hero-offset: -4rem;
+		--hero-height: calc(100dvh - var(--hero-offset));
+		--after-hero-offset: calc(100dvh + var(--hero-offset) + -2rem);
+	}
+
+	.hero {
 		position: absolute;
+		top: var(--hero-offset);
+		height: var(--hero-height);
 		width: 100vw;
-		height: 100dvh;
-		display: flex;
-		flex-direction: column;
-		/* TODO: 
-		   - fix view transition to and from home page
-			 - to do this lets make the home page a route instead of the top level layout/page
-		*/
-		/* view-transition-name: page-content; */
 	}
 
 	.title > h1 {
