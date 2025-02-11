@@ -4,6 +4,7 @@
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from './DemoCard.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
+	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
 	import { Badge, GithubBadge } from '$lib/components/ui/badge';
 
 	let { data }: { data: PageData } = $props();
@@ -43,6 +44,23 @@
 		</div>
 		{#snippet footer()}
 			<GithubBadge href="https://github.com/bionboy/PerlinPlane" />
+		{/snippet}
+	</DemoCard>
+
+	<DemoCard
+		title="Granulp5"
+		description="A web granular sampler and visualizer using p5.js"
+		route="https://bionboy.github.io/Granulp5/"
+	>
+		<div class="size-full flex place-items-center overflow-clip rounded">
+			<enhanced:img
+				class="rounded"
+				alt="a 2d plane with generated hills based on a noise algorithm. The different heights correspond to different colors"
+				src={granulp5}
+			/>
+		</div>
+		{#snippet footer()}
+			<GithubBadge href="https://github.com/bionboy/Granulp5" />
 		{/snippet}
 	</DemoCard>
 
