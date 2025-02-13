@@ -3,6 +3,7 @@ import type { LayoutServerLoad } from './$types';
 // import { dev } from '$app/environment';
 
 export const load: LayoutServerLoad = async ({ url }) => {
+	// TODO(@bionboy, 2025-02-13): Move these redirects to a middleware in hooks.server.ts
 	middlewareRedirctFromBaseURL(url);
 	middlewareUnderConstruction(url);
 };
