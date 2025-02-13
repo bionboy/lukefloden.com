@@ -25,7 +25,7 @@
 			<SocialLinks></SocialLinks>
 		</div>
 	</AboutCard>
-	<AboutCard title="Career" description="Front-end dev with an eye for design and a passion for UX">
+	<AboutCard title="Career" subtitle="Front-end dev with an eye for design and a passion for UX">
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
 			experiences. While my career has provided extensive full-stack experience, my passion lies in

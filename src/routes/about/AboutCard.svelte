@@ -5,20 +5,12 @@
 </script>
 
 <Card.Root class="bg-secondary">
-	<!-- <Card.Header class="flex flex-row justify-start"> -->
 	<Card.Header>
 		<Card.Title tag="h2">
-			<h2>
-				{props.title}
-			</h2>
+			{props.title}
 		</Card.Title>
-
-		{#if props.description}
-			<Card.Description>
-				<h4>
-					{props.description}
-				</h4>
-			</Card.Description>
+		{#if props.subtitle}
+			<h4>{props.subtitle}</h4>
 		{/if}
 	</Card.Header>
 	<Card.Content>
