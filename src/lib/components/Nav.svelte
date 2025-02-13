@@ -11,13 +11,9 @@
 	];
 
 	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
-
-	// This is the excepted way to use props that use keywords in Svelte (https://svelte.dev/docs/svelte/legacy-export-let#Renaming-props)
-	let className: string | undefined | null = undefined;
-	export { className as class };
 </script>
 
-<nav class={cn('flex justify-center items-center gap-4 lg:gap-6', className)}>
+<nav class={cn('flex justify-center items-center gap-4 lg:gap-6')}>
 	{#each locations as { name, route } (route)}
 		{@const active = $page.route.id === route}
 		<div class="nav-item" class:active>
