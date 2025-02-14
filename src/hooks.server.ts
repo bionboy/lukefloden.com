@@ -1,11 +1,12 @@
-import { redirect } from '@sveltejs/kit';
-import type { LayoutServerLoad } from './$types';
+import { redirect, type Handle } from '@sveltejs/kit';
 // import { dev } from '$app/environment';
 
-export const load: LayoutServerLoad = async ({ url }) => {
-	// TODO(@bionboy, 2025-02-13): Move these redirects to a middleware in hooks.server.ts
+export const handle: Handle = async ({ event, resolve }) => {
+	const url = event.url;
 	middlewareRedirctFromBaseURL(url);
 	middlewareUnderConstruction(url);
+
+	return resolve(event);
 };
 
 function middlewareUnderConstruction(url: URL) {
