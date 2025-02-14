@@ -32,11 +32,8 @@
 
 <style lang="postcss">
 	.site-bg {
-		/* transition: background-color 0.5s; */
 		view-transition-name: static-bg;
 	}
 
-	::view-transition-group(static-bg) {
-		/* animation: none !important; */
-	}
+	/* see /Users/bb/github/mine/my-site/src/view-transition.pcss  */
 </style>

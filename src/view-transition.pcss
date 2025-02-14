@@ -1,7 +1,10 @@
 /* https://svelte.dev/blog/view-transitions */
 
-/* TODO */
-/*--slide-in-distance: 100px;*/
+:root {
+	--slide-distance: 100vw;
+	--slide-duration: 600ms;
+	--fade-duration: 300ms;
+}
 
 @keyframes fade-in {
 	from {
@@ -15,25 +18,24 @@
 }
 @keyframes slide-from-right {
 	from {
-		transform: translateX(100px);
+		transform: translateX(var(--slide-distance));
 	}
 }
 @keyframes slide-to-left {
 	to {
-		transform: translateX(-100px);
+		transform: translateX(calc(-1 * var(--slide-distance)));
 	}
 }
 
 ::view-transition-old(page-content) {
-	animation:
-		90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	animation: var(--slide-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	/* var(--fade-duration) cubic-bezier(0.4, 0, 1, 1) both fade-out, */
 }
 
 ::view-transition-new(page-content) {
 	animation:
-		210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+		var(--fade-duration) cubic-bezier(0, 0, 0.2, 1) both fade-in 100ms,
+		var(--slide-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right 100ms;
 }
 
 @media (prefers-reduced-motion) {
@@ -42,4 +44,10 @@
 	::view-transition-new(*) {
 		animation: none !important;
 	}
+}
+
+::view-transition-group(static-bg),
+::view-transition-image-pair(static-bg) {
+	animation-duration: var(--slide-duration);
+	animation-timing-function: ease-in-out;
 }
