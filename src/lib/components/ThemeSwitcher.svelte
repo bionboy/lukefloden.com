@@ -1,28 +1,24 @@
 <script lang="ts">
-	import { mode, toggleMode, resetMode, setMode } from 'mode-watcher';
+	import { mode, setMode, resetMode, type ColorThemeMode, ThemeMode } from '$lib/theme';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
-
 	import type { ClassValue } from 'svelte/elements';
 
 	const props: { class?: ClassValue } = $props();
 
-	// TODO(@bionboy, 2025-01-17): Use the `Mode` type from the mode-watcher package somehow
-	type colorThemeMode = 'light' | 'dark' | 'system';
-
-	let selectedMode: colorThemeMode = $state($mode ?? 'system');
+	let selectedMode: ColorThemeMode = $state($mode ?? ThemeMode.SYSTEM);
 
 	const rotateMode = () => {
 		switch (selectedMode) {
-			case 'light':
-				setMode((selectedMode = 'dark'));
+			case ThemeMode.LIGHT:
+				setMode((selectedMode = ThemeMode.DARK));
 				break;
-			case 'dark':
-				selectedMode = 'system';
+			case ThemeMode.DARK:
+				selectedMode = ThemeMode.SYSTEM;
 				resetMode();
 				break;
-			case 'system':
-				setMode((selectedMode = 'light'));
+			case ThemeMode.SYSTEM:
+				setMode((selectedMode = ThemeMode.LIGHT));
 				break;
 			default:
 				resetMode();
@@ -37,9 +33,9 @@
 	size="icon"
 	class={['relative overflow-clip', props.class]}
 >
-	<div class="icon" class:selected={selectedMode !== 'light'}><Sun /></div>
-	<div class="icon" class:selected={selectedMode !== 'dark'}><Moon /></div>
-	<div class="icon" class:selected={selectedMode !== 'system'}><SunMoon /></div>
+	<div class="icon" class:selected={selectedMode !== ThemeMode.LIGHT}><Sun /></div>
+	<div class="icon" class:selected={selectedMode !== ThemeMode.DARK}><Moon /></div>
+	<div class="icon" class:selected={selectedMode !== ThemeMode.SYSTEM}><SunMoon /></div>
 	<span class="sr-only">Rotate theme options</span>
 </Button>
 

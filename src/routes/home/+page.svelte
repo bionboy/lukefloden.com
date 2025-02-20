@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mode } from 'mode-watcher';
+	import { mode, ThemeMode } from '$lib/theme';
 	import type { PageData } from './$types';
 	import Parallax from '../demos/parallax/Parallax.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
@@ -7,11 +7,11 @@
 	let { data }: { data: PageData } = $props();
 
 	import { setDocumentBodyTailwind } from '$lib/setBackground';
-	setDocumentBodyTailwind($mode !== 'dark' ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
+	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 {#snippet titleContent()}
-	{#if $mode === 'light'}
+	{#if $mode === ThemeMode.LIGHT}
 		<div class="absolute top-1/2 z-[1] scale-[1.8] sm:scale-[2.5] md:scale-[2.5] lg:scale-[3]">
 			<Cloud />
 		</div>
