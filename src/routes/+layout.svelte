@@ -1,12 +1,11 @@
 <script lang="ts">
 	import '../app.pcss';
 	import type { Snippet } from 'svelte';
-	import type { LayoutData } from './$types';
-	import { ModeWatcher } from 'mode-watcher';
 	import SiteHeader from './SiteHeader.svelte';
 	import { onNavigate } from '$app/navigation';
+	import { ModeWatcher } from '$lib/theme';
 
-	let { data, children }: { data: LayoutData; children: Snippet } = $props();
+	let { children }: { children: Snippet } = $props();
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
