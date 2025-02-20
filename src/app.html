@@ -1,66 +1,68 @@
 <!doctype html>
 <html lang="en-us">
+	<head>
+		<title>Luke Floden</title>
 
-<head>
-	<title>Luke Floden</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
+		<meta
+			name="description"
+			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+		/>
+		<meta name="robots" content="index, follow" />
+		<!-- css and tw color --accent -->
+		<meta name="theme-color" content="hsl(48 96% 53%)" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="hsl(240 100% 70%)" media="(prefers-color-scheme: dark)" />
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
-	<meta name="description"
-		content="Personal website of web-developer Luke Floden; including web demos, about me, and more!" />
-	<meta name="robots" content="index, follow" />
-	<!-- css and tw color --accent -->
-	<meta name="theme-color" content="hsl(48 96% 53%)" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="hsl(240 100% 70%)" media="(prefers-color-scheme: dark)">
+		<!-- TODO: should i set something like this, does SvelteKit do this? -->
+		<!-- <meta http-equiv="content-security-policy" content="default-src https:" /> -->
 
-	<!-- TODO: should i set something like this, does SvelteKit do this? -->
-	<!-- <meta http-equiv="content-security-policy" content="default-src https:" /> -->
+		<!-- default external links to open in a new tab -->
+		<base target="_blank" />
 
-	<!-- default external links to open in a new tab -->
-	<base target="_blank" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 
-	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-
-	<!--
+		<!--
 		25-02-03 (@bionboy): Turning this off because SEO report from lighthouse says this is bad... 
 		<link rel="canonical" href="https://www.lukefloden.me" />
 	-->
 
-	<!-- TODO: safari specific icons -->
-	<!-- <link rel="apple-touch-icon" sizes="180x180" href="...png" /> -->
-	<!-- <link rel="mask-icon" href="...svg" color="#226DAA" /> -->
+		<!-- TODO: safari specific icons -->
+		<!-- <link rel="apple-touch-icon" sizes="180x180" href="...png" /> -->
+		<!-- <link rel="mask-icon" href="...svg" color="#226DAA" /> -->
 
-	<!-- TODO: use OpenGraph meta tags to control link previews of the site https://ogp.me/ -->
-	<!-- OpenGraph (Facebook link preview, etc.) -->
-	<!-- check FB preview: https://developers.facebook.com/tools/debug/?q=https://lukefloden.me -->
-	<meta property="og:title" content="Luke Floden" />
-	<meta property="og:description"
-		content="Personal website of web-developer Luke Floden; including web demos, about me, and more!" />
-	<!-- <meta property="og:image" content="https://www.lukefloden.me/...png" /> -->
-	<!-- <meta property="og:image:alt" content="" /> -->
-	<meta property="og:url" content="https://www.lukefloden.me" />
+		<!-- TODO: use OpenGraph meta tags to control link previews of the site https://ogp.me/ -->
+		<!-- OpenGraph (Facebook link preview, etc.) -->
+		<!-- check FB preview: https://developers.facebook.com/tools/debug/?q=https://lukefloden.me -->
+		<meta property="og:title" content="Luke Floden" />
+		<meta
+			property="og:description"
+			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+		/>
+		<!-- <meta property="og:image" content="https://www.lukefloden.me/...png" /> -->
+		<!-- <meta property="og:image:alt" content="" /> -->
+		<meta property="og:url" content="https://www.lukefloden.me" />
 
-	<!-- Twitter/X link preview-->
-	<!-- check Twitter preview: https://cards-dev.x.com/validator -->
-	<meta name="twitter:title" content="Luke Floden" />
-	<meta name="twitter:description"
-		content="Personal website of web-developer Luke Floden; including web demos, about me, and more!" />
-	<meta name="twitter:url" content="https://www.lukefloden.me/?src=twitter" />
-	<!-- <meta name="twitter:image:src" content="" /> -->
-	<!-- <meta name="twitter:image:alt" content="" /> -->
-	<meta name="twitter:creator" content="@lukefloden" />
-	<!-- <meta name="twitter:site" content="@perfmattersconf" /> -->
+		<!-- Twitter/X link preview-->
+		<!-- check Twitter preview: https://cards-dev.x.com/validator -->
+		<meta name="twitter:title" content="Luke Floden" />
+		<meta
+			name="twitter:description"
+			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+		/>
+		<meta name="twitter:url" content="https://www.lukefloden.me/?src=twitter" />
+		<!-- <meta name="twitter:image:src" content="" /> -->
+		<!-- <meta name="twitter:image:alt" content="" /> -->
+		<meta name="twitter:creator" content="@lukefloden" />
+		<!-- <meta name="twitter:site" content="@perfmattersconf" /> -->
 
+		%sveltekit.head%
+	</head>
 
-	%sveltekit.head%
-</head>
-
-<body data-sveltekit-preload-data="hover" style="
-		/* background-color: hsl(240, 100%, 70%); */
-		/* min-height:100vh; */
-		margin: 0px;
-">
-	<div style="display: contents">%sveltekit.body%</div>
-</body>
-
+	<body
+		data-sveltekit-preload-data="hover"
+		style="/* background-color: hsl(240, 100%, 70%); */ /* min-height:100vh; */ margin: 0px"
+	>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
 </html>
