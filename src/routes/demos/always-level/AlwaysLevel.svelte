@@ -1,6 +1,6 @@
 <script lang="ts">
 	let textElement: HTMLDivElement;
-	let cubeElement: HTMLDivElement;
+	// let cubeElement: HTMLDivElement;
 
 	function handleDeviceOrientation(event: DeviceOrientationEvent) {
 		const alpha = event.alpha || 0;
