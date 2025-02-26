@@ -15,7 +15,7 @@ h4 {
 }
 
 p {
-	@apply leading-7 [&:not(:first-child)]:mt-6;
+	@apply leading-7 [&:not(:first-child)]:mt-4;
 }
 
 blockquote {
@@ -28,4 +28,18 @@ ul {
 
 code {
 	@apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+}
+
+a {
+	color: oklch(from hsl(var(--accent-dark)) l c h);
+	text-decoration: underline;
+	transition: color 0.2s ease;
+
+	&:visited {
+		color: oklch(from hsl(var(--accent-dark)) l c calc(h + 20));
+	}
+
+	&:is(:link, :visited):hover {
+		color: oklch(from hsl(var(--accent2-dark)) l c calc(h - 20));
+	}
 }

@@ -91,3 +91,20 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+@layer base {
+	:root {
+		scroll-behavior: smooth;
+	}
+
+	/* Anchor link highlighting */
+	:target {
+		animation: highlight 2s ease-out;
+	}
+
+	@keyframes highlight {
+		from {
+			@apply bg-accent;
+		}
+	}
+}
