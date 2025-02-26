@@ -17,7 +17,7 @@
 	{#each locations as { name, route } (route)}
 		{@const active = $page.route.id === route}
 		<div class="nav-item" class:active>
-			<a href={route}>
+			<a href={route} class="no-underline">
 				<!-- ? IDK why i need this 'link-content' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
 				<div class="link-content">{name}</div>
 			</a>

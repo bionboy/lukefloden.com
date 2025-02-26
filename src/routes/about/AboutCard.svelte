@@ -1,12 +1,18 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
+	import type { Snippet } from 'svelte';
 
-	let props = $props();
+	let props: {
+		title?: string;
+		subtitle?: string;
+		id?: string;
+		children?: Snippet;
+	} = $props();
 </script>
 
 <Card.Root class="bg-secondary">
 	<Card.Header>
-		<Card.Title tag="h2">
+		<Card.Title tag="h2" class="" id={props.id || props.title}>
 			{props.title}
 		</Card.Title>
 		{#if props.subtitle}

@@ -6,7 +6,7 @@
 	let { href, children }: { href: string; children?: Snippet } = $props();
 </script>
 
-<Badge variant="tag-github" {href}>
+<Badge variant="secondary" {href}>
 	{#if children}
 		{@render children?.()}
 	{:else}
