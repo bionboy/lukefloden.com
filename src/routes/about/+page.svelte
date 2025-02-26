@@ -13,7 +13,7 @@
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
 	<h1 class="mx-auto">About: this, that, etc...</h1>
 	<AboutCard title="Me">
-		<p>
+		<p id="nostalgia">
 			<strong>I want the internet to feel like it did 10 years ago.</strong>
 			I am nostalgic for an era of the internet that I was too young to be apart of. Focused on actually
 			connecting and sharing with each other. Fostering relationships and providing access to the tools
@@ -24,6 +24,29 @@
 		<div class="mt-8">
 			<SocialLinks></SocialLinks>
 		</div>
+	</AboutCard>
+	<AboutCard title="What I'm working on">
+		<h3>This Site</h3>
+		<!-- TODO: add a popup that shows an image of my old site on hover or click of "last iteration" -->
+		<p>
+			I started working on this site because my <strong>last iteration</strong> was years ago and
+			nothing really more than a "linktree" or virtual business card. Not really something that
+			reflects my sentiments <a href="#nostalgia">above</a>.
+		</p>
+		<p>
+			I've used this as an opportunity to finally dive into new tools, frameworks, utilities, and
+			concepts that I previously was not able to (<em>ie. in a commercial environment</em>). Some of
+			those being (but not exhaustive):
+		</p>
+		<ul>
+			<li>Svelte 5</li>
+			<li>SvelteKit</li>
+			<li>OKLCH color space</li>
+			<li>Shadcn UI (<em>Svelte specific version</em>)</li>
+			<li>...</li>
+		</ul>
+		<!-- TODO -->
+		<!-- <h3>Shaders</h3> -->
 	</AboutCard>
 	<AboutCard title="Career" subtitle="Front-end dev with an eye for design and a passion for UX">
 		<p>

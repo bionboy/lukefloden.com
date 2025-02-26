@@ -1,17 +1,27 @@
+h1,
+h2,
+h3,
+h4 {
+	@apply scroll-m-20
+		tracking-tight
+		transition-colors
+	  mt-2 first:mt-0;
+}
+
 h1 {
-	@apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+	@apply text-4xl font-extrabold lg:text-5xl;
 }
 
 h2 {
-	@apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors mt-2 first:mt-0;
+	@apply text-3xl font-semibold;
 }
 
 h3 {
-	@apply scroll-m-20 text-2xl font-semibold tracking-tight;
+	@apply text-2xl font-semibold;
 }
 
 h4 {
-	@apply scroll-m-20 text-xl font-semibold tracking-tight;
+	@apply text-xl font-semibold;
 }
 
 p {
@@ -42,4 +52,8 @@ a {
 	&:is(:link, :visited):hover {
 		color: oklch(from hsl(var(--accent2-dark)) l c calc(h - 20));
 	}
+}
+
+em {
+	@apply text-muted-foreground;
 }
