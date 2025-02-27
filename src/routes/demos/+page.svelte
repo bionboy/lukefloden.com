@@ -1,15 +1,16 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import { fade } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from './DemoCard.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
 	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
 
-	let { data }: { data: PageData } = $props();
+	let placeholders = ['more', 'to', 'come', ':)'];
 </script>
 
-<div class="gallery bg-backgroundd">
+<div class="gallery">
 	<DemoCard
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"
@@ -36,7 +37,7 @@
 		route="https://bionboy.github.io/PerlinPlane/"
 		github="https://github.com/bionboy/PerlinPlane"
 	>
-		<div class="size-full flex place-items-center overflow-clip rounded">
+		<div class="demo-card-image">
 			<enhanced:img
 				class="rounded"
 				alt="a 2d plane with generated hills based on a noise algorithm. The different heights correspond to different colors"
@@ -52,7 +53,7 @@
 		route="https://bionboy.github.io/Granulp5/"
 		github="https://github.com/bionboy/Granulp5"
 	>
-		<div class="size-full flex place-items-center overflow-clip rounded">
+		<div class="demo-card-image">
 			<enhanced:img
 				class="rounded"
 				alt="a 2d plane with generated hills based on a noise algorithm. The different heights correspond to different colors"
@@ -62,8 +63,14 @@
 	</DemoCard>
 
 	<!-- * Fill in future spots, so for now our demo cards look less lonely  -->
-	{#each Array(2)}
-		<div class="invisible bg-border size-full aspect-square rounded-md"></div>
+	{#each placeholders.map((_, i) => i).filter((i) => placeholders[i]) as i (i)}
+		<div animate:flip={{ duration: 500, delay: 100 }} transition:fade={{ duration: 200 }}>
+			<DemoCard class="opacity-30" onremove={() => (placeholders[i] = '')}>
+				<div class="h-full flex place-content-center place-items-center text-6xl">
+					{placeholders[i]}
+				</div>
+			</DemoCard>
+		</div>
 	{/each}
 </div>
 
@@ -71,5 +78,9 @@
 	.gallery {
 		@apply grid gap-4 m-5;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
+
+	.demo-card-image {
+		@apply size-full flex place-items-center overflow-clip rounded;
 	}
 </style>
