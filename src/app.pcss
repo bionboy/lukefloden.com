@@ -97,9 +97,11 @@
 		scroll-behavior: smooth;
 	}
 
-	/* Anchor link highlighting */
 	:target {
-		animation: highlight 2s ease-out;
+		/* Add global scroll margin to match header height */
+		@apply scroll-mt-24;
+		/* Anchor link highlighting */
+		animation: highlight 4s ease-out;
 	}
 
 	@keyframes highlight {
