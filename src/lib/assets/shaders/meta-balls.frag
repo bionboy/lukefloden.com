@@ -76,7 +76,7 @@ void metaBalls(in vec2 st, inout vec4 canvas) {
   metaBall(st, metaCanvas, funk, r, vec2(offsetX, .55f + sin(u_time * 2.f) * wiggleFactor));
   metaBall(st, metaCanvas, funk, r, vec2(offsetX + sin(u_time * 2.f) * wiggleFactor, .5f));
   metaBall(st, metaCanvas, funk, r, vec2(offsetX - sin(u_time + .5f * 2.f) * wiggleFactor, .5f));
-  metaBall(st, metaCanvas, funk, r, vec2(u_mouse.x, u_mouse.y));
+  metaBall(st, metaCanvas, funk, r + .025f, vec2(u_mouse.x, u_mouse.y));
 
   // canvas += metaCanvas;
   // canvas *= metaCanvas;

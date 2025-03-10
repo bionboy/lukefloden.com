@@ -27,6 +27,8 @@
 			class="size-full dark:invert"
 			role="presentation"
 			onmousemove={(event) => (mouseOverMetaballs = getNormalizedMouseCoords(event))}
+			onmouseleave={() => (mouseOverMetaballs = [-1, -1])}
+			onblur={() => (mouseOverMetaballs = [-1, -1])}
 		>
 			<WebGlShader
 				code={shaderMetaballs}
