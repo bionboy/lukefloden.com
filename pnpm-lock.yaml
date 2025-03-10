@@ -72,6 +72,9 @@ importers:
       prettier-plugin-svelte:
         specifier: ^3.2.6
         version: 3.3.2(prettier@3.3.3)(svelte@5.19.1)
+      svader:
+        specifier: ^0.5.4
+        version: 0.5.4(svelte@5.19.1)
       svelte:
         specifier: ^5.19.1
         version: 5.19.1
@@ -1810,6 +1813,11 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  svader@0.5.4:
+    resolution: {integrity: sha512-GPTMNjK+S9+l5f5eDGC1L+6QMUE0T8FkM131XxxITLyueT7FU2NkjIQqtLWjygWJ8SQU2ODIymdXqpYLuK3Cyw==}
+    peerDependencies:
+      svelte: ^5.0.0||^4.0.0
+
   svelte-check@4.1.0:
     resolution: {integrity: sha512-AflEZYqI578KuDZcpcorPSf597LStxlkN7XqXi38u09zlHODVKd7c+7OuubGzbhgGRUqNTdQCZ+Ga96iRXEf2g==}
     engines: {node: '>= 18.0.0'}
@@ -3531,6 +3539,10 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  svader@0.5.4(svelte@5.19.1):
+    dependencies:
+      svelte: 5.19.1
 
   svelte-check@4.1.0(picomatch@4.0.2)(svelte@5.19.1)(typescript@5.7.2):
     dependencies:
