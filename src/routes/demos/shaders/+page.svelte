@@ -1,24 +1,44 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-	// import Parallax from './parallax/Parallax.svelte';
-	// import AlwaysLevel from './always-level/AlwaysLevel.svelte';
+	import { WebGlShader } from 'svader';
+	import shaderMetaballs from '$lib/assets/shaders/meta-balls.frag?raw';
 	import DemoCard from '../DemoCard.svelte';
-	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
-	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
 
-	let placeholders = ['more', 'to', 'come', ':)'];
+	// init it out of frame
+	let mouseOverMetaballs: [number, number] = $state([-1, -1]);
+
+	function getNormalizedMouseCoords(event: MouseEvent): [number, number] {
+		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+		const x = (event.clientX - rect.left) / rect.width;
+		const y = (event.clientY - rect.top) / rect.height;
+		// shader expects origin to be bottom left not top left, hence 1 - y
+		return [x, 1 - y];
+	}
 </script>
 
 <div class="gallery">
 	<DemoCard
-		title="Parallax Hero"
-		description="Parallax effect hero component, moving on scroll or mouse"
-		tags={['Svelte', 'CSS']}
-		route="demos/parallax"
+		title="Meta Balls"
+		description="A simple shader for metaballs"
+		tags={['GLSL', 'WebGL']}
+		route="demos/shaders/meta-balls"
 		github=""
 	>
-		<!-- <Parallax title="hi!" /> -->
+		<div
+			class="size-full dark:invert"
+			role="presentation"
+			onmousemove={(event) => (mouseOverMetaballs = getNormalizedMouseCoords(event))}
+		>
+			<WebGlShader
+				code={shaderMetaballs}
+				parameters={[
+					{ name: 'u_resolution', value: 'resolution' },
+					{ name: 'u_mouse', type: 'vec2', value: mouseOverMetaballs },
+					{ name: 'u_time', value: 'time' }
+				]}
+			>
+				<div class="fallback">WebGL not supported in this environment.</div>
+			</WebGlShader>
+		</div>
 	</DemoCard>
 </div>
 
@@ -26,9 +46,5 @@
 	.gallery {
 		@apply grid gap-4 m-5;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	}
-
-	.demo-card-image {
-		@apply size-full flex place-items-center overflow-clip rounded;
 	}
 </style>
