@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { WebGlShader } from 'svader';
-	import shaderShapes from '$lib/assets/shaders/shapes.frag?raw';
+	import shaderHoverGrid from '$lib/assets/shaders/hover-grid.frag?raw';
+	import { getNormalizedMouseCoords } from '../helpers';
 
 	let mouse: [number, number] = $state([-1, -1]);
 </script>
 
-<div class="size-full">
+<div
+	class="size-full"
+	role="presentation"
+	onmousemove={(event) => (mouse = getNormalizedMouseCoords(event))}
+	onmouseleave={() => (mouse = [-1, -1])}
+	onblur={() => (mouse = [-1, -1])}
+>
 	<WebGlShader
-		code={shaderShapes}
+		code={shaderHoverGrid}
 		parameters={[
 			{ name: 'u_resolution', value: 'resolution' },
 			{ name: 'u_mouse', type: 'vec2', value: mouse },

@@ -3,6 +3,7 @@
 	import MetaBalls from '../shaders/meta-balls/MetaBalls.svelte';
 	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
 	import Shapes from '../shaders/shapes/Shapes.svelte';
+	import HoverGrid from './hover-grid/HoverGrid.svelte';
 
 	const bg1 = 'bg-slate-200 dark:bg-slate-800';
 	const bg2 = 'bg-stone-200 dark:bg-stone-700';
@@ -55,16 +56,13 @@
 	<div class="header {bg1}">
 		<div class="title-cell">
 			<h1>
-				<a href="/demos/shaders/meta-balls"> Meta Balls </a>
+				<a href="/demos/shaders/meta-balls"> Hover Grid </a>
 			</h1>
 		</div>
 		<div class="description-cell">
 			<Card.Root class="max-w-3xl mx-auto my-2">
 				<Card.Content>
-					<p>
-						Meta Balls is a demo of meta balls. It is a demo of meta balls. It is a demo of meta
-						balls. It is a demo of meta balls. It is a demo of meta balls.
-					</p>
+					<p>Hover Grid is a demo....... BLAAAHHHHHH</p>
 				</Card.Content>
 			</Card.Root>
 		</div>
@@ -72,7 +70,7 @@
 	<div class="shared-content-container">
 		<div class="content-cell {bg1}">
 			<AspectRatio ratio={1} class="size-full">
-				<MetaBalls />
+				<HoverGrid />
 			</AspectRatio>
 		</div>
 		<div class="content-cell {bg2}">
