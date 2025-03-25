@@ -18,6 +18,14 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
+vec2 squareAspectAndNormalize(in vec2 st, in vec2 resolution) {
+  st = st.xy / resolution;
+  float ratio = min(resolution.x, resolution.y);
+  st.x *= resolution.x / ratio;
+  st.y *= resolution.y / ratio;
+  return st;
+}
+
 void paint(inout vec4 canvas, vec4 brush, float pct) {
   if (pct <= 0.0f) {
     return;
@@ -85,6 +93,7 @@ void metaBalls(in vec2 st, inout vec4 canvas) {
 
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
+  // vec2 st = squareAspectAndNormalize(gl_FragCoord.xy, u_resolution);
   vec4 canvas = vec4(0.0f, 0.0f, 0.0f, 0.0f);
 
   metaBalls(st, canvas);
