@@ -1,30 +1,29 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card/';
 	import MetaBalls from '../shaders/meta-balls/MetaBalls.svelte';
 	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
 	import Shapes from '../shaders/shapes/Shapes.svelte';
 	import HoverGrid from './hover-grid/HoverGrid.svelte';
+	import Circles from './circles/Circles.svelte';
+	import ShaderDescriptionCard from './ShaderDescriptionCard.svelte';
 
 	const bg1 = 'bg-slate-200 dark:bg-slate-800';
 	const bg2 = 'bg-stone-200 dark:bg-stone-700';
 </script>
 
 <div class="grouping">
-	<div class="header {bg1}">
+	<div class="header {bg1} ">
 		<div class="title-cell">
 			<h1>
 				<a href="/demos/shaders/meta-balls"> Meta Balls </a>
 			</h1>
 		</div>
 		<div class="description-cell">
-			<Card.Root class="max-w-3xl mx-auto my-2">
-				<Card.Content>
-					<p>
-						Meta Balls is a demo of meta balls. It is a demo of meta balls. It is a demo of meta
-						balls. It is a demo of meta balls. It is a demo of meta balls.
-					</p>
-				</Card.Content>
-			</Card.Root>
+			<ShaderDescriptionCard>
+				<p>
+					Meta Balls is a demo of meta balls. It is a demo of meta balls. It is a demo of meta
+					balls. It is a demo of meta balls. It is a demo of meta balls.
+				</p>
+			</ShaderDescriptionCard>
 		</div>
 	</div>
 	<div class="shared-content-container">
@@ -41,9 +40,11 @@
 	</div>
 	<div class="header {bg2}">
 		<div class="div5 description-cell">
-			<p>
-				Shapes is a demo of shapes. It is a demo of shapes. It is a demo of shapes. It is a demo
-			</p>
+			<ShaderDescriptionCard>
+				<p>
+					Shapes is a demo of shapes. It is a demo of shapes. It is a demo of shapes. It is a demo
+				</p>
+			</ShaderDescriptionCard>
 		</div>
 		<div class="div6 title-cell">
 			<h1>
@@ -56,38 +57,38 @@
 	<div class="header {bg1}">
 		<div class="title-cell">
 			<h1>
-				<a href="/demos/shaders/meta-balls"> Hover Grid </a>
+				<a href="/demos/shaders/hover-grid"> Hover Grid </a>
 			</h1>
 		</div>
 		<div class="description-cell">
-			<Card.Root class="max-w-3xl mx-auto my-2">
-				<Card.Content>
-					<p>Hover Grid is a demo....... BLAAAHHHHHH</p>
-				</Card.Content>
-			</Card.Root>
+			<ShaderDescriptionCard>
+				<p>Hover Grid is a demo....... BLAAAHHHHHH</p>
+			</ShaderDescriptionCard>
 		</div>
 	</div>
 	<div class="shared-content-container">
 		<div class="content-cell {bg1}">
-			<AspectRatio ratio={1} class="size-full">
+			<AspectRatio ratio={1} class="size-full bg-black">
 				<HoverGrid />
 			</AspectRatio>
 		</div>
 		<div class="content-cell {bg2}">
 			<AspectRatio ratio={1} class="size-full">
-				<Shapes />
+				<Circles />
 			</AspectRatio>
 		</div>
 	</div>
 	<div class="header {bg2}">
 		<div class="div5 description-cell">
-			<p>
-				Shapes is a demo of shapes. It is a demo of shapes. It is a demo of shapes. It is a demo
-			</p>
+			<ShaderDescriptionCard>
+				<p>
+					Circles is a demo of circles. It is a demo of circles. It is a demo of circles. It is a
+				</p>
+			</ShaderDescriptionCard>
 		</div>
 		<div class="div6 title-cell">
 			<h1>
-				<a href="/demos/shaders/shapes"> Shapes </a>
+				<a href="/demos/shaders/circles"> Circles </a>
 			</h1>
 		</div>
 	</div>
@@ -143,7 +144,7 @@
 	}
 
 	.title-cell {
-		@apply center-container font-jersey15;
+		@apply center-container px-0 sm:px-8 font-jersey15;
 	}
 
 	.description-cell {
