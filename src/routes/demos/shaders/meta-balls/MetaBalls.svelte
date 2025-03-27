@@ -20,6 +20,7 @@
 			{ name: 'u_mouse', type: 'vec2', value: mouse },
 			{ name: 'u_time', value: 'time' }
 		]}
+		forceAnimation={true}
 	>
 		<div class="fallback">WebGL not supported in this environment.</div>
 	</WebGlShader>
