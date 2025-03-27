@@ -1,38 +1,24 @@
 <script lang="ts">
 	import { mode, ThemeMode } from '$lib/theme';
-	import type { PageData } from './$types';
-	import Parallax from '../demos/parallax/Parallax.svelte';
-	import Cloud from '$lib/components/Cloud.svelte';
-
-	let { data }: { data: PageData } = $props();
-
 	import { setDocumentBodyTailwind } from '$lib/setBackground';
+	import Parallax from '../demos/parallax/Parallax.svelte';
 	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
+
+	const demoCount = 3;
+	let demoToDisplay = $state(0);
+
 	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
-{#snippet titleContent()}
-	<!-- {#if $mode === ThemeMode.LIGHT}
-		<div class="absolute top-1/2 z-[1] scale-[1.8] sm:scale-[2.5] md:scale-[2.5] lg:scale-[3]">
-			<Cloud />
-		</div>
-	{/if} -->
+<svelte:window
+	onkeypress={(e: KeyboardEvent) => {
+		console.log(e.key);
+		if (e.key !== 'Enter') return;
 
-	<div class="title z-[2] p-4 rounded-xl border-accent border-[1px] backdrop-blur-sm">
-		<!-- <div class="absolute inset-0 -z-[1] bg-transparent rounded-xl backdrop-blur-sm"> -->
-		<!-- -webkit-mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.8) 30%, transparent 60%); -->
-		<!-- mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.8) 30%, transparent 60%); -->
-		<!-- </div> -->
-		<h1>Welcome to my site...</h1>
-		<h1>
-			things are in flux
-			<!-- right now -->
-			...
-		</h1>
-		<h1>but that's ok...</h1>
-	</div>
-{/snippet}
+		demoToDisplay = (demoToDisplay + 1) % demoCount;
+	}}
+/>
 
 <!-- <div class="hero bg-background">
 	<Parallax {titleContent}></Parallax>
@@ -43,15 +29,24 @@
 	<div class="aspect-square h-[max(110vh,110vw)]">
  -->
 	<div class="aspect-square h-[max(60vh,60vw)] scale-[2]">
-		<!-- <Parallax {titleContent} /> -->
-		<MetaBalls />
-		<!-- <HoverGrid /> -->
+		{#if demoToDisplay === 0}
+			<MetaBalls />
+		{:else if demoToDisplay === 1}
+			<Parallax title="" />
+		{:else if demoToDisplay === 2}
+			<HoverGrid />
+		{/if}
 	</div>
 
-	<div class="fixed bottom-8 flex">
-		<div class="pointer-events-none m-0">
-			<!-- <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 pointer-events-none m-0"> -->
-			{@render titleContent()}
+	<div class="fixed bottom-8 pointer-events-none m-0">
+		<div class="title p-4 rounded-xl border-accent border-[1px] backdrop-blur-sm">
+			<h1>Welcome to my site...</h1>
+			<h1>
+				things are in flux
+				<!-- right now -->
+				...
+			</h1>
+			<h1>but that's ok...</h1>
 		</div>
 	</div>
 </div>
