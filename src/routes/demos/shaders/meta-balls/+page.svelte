@@ -1,9 +1,5 @@
 <script lang="ts">
-	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
 	import * as Card from '$lib/components/ui/card/';
-	import AboutCard from '../../../about/AboutCard.svelte';
-	import DemoContainer from '../../parallax/DemoContainer.svelte';
-	import DemosDisplay from '../../parallax/DemosDisplay.svelte';
 
 	// import type { PageData } from './$types';
 	import MetaBalls from './MetaBalls.svelte';
