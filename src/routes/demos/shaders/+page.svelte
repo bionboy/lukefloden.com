@@ -152,7 +152,8 @@
 	}
 
 	.title-cell {
-		@apply center-container px-0 sm:px-8 font-jersey15;
+		@apply center-container px-0 sm:px-8 
+		font-jersey15 text-accent-2 italic;
 	}
 
 	.description-cell {
