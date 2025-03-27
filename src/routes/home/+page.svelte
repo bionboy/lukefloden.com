@@ -38,14 +38,21 @@
 	<Parallax {titleContent}></Parallax>
 </div> -->
 <div class="hero center-container overflow-clip">
+	<!-- *  using 60% of max viewport dimension and scaling instead of 110%
+       *  to avoid performance issues with resolution being too high 
 	<div class="aspect-square h-[max(110vh,110vw)]">
+ -->
+	<div class="aspect-square h-[max(60vh,60vw)] scale-[2]">
 		<!-- <Parallax {titleContent} /> -->
 		<MetaBalls />
 		<!-- <HoverGrid /> -->
 	</div>
 
-	<div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 pointer-events-none">
-		{@render titleContent()}
+	<div class="fixed bottom-8 flex">
+		<div class="pointer-events-none m-0">
+			<!-- <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 pointer-events-none m-0"> -->
+			{@render titleContent()}
+		</div>
 	</div>
 </div>
 <div class="after-hero mt-[--after-hero-offset]">
@@ -78,7 +85,7 @@
 			/* text-shadow: 0 0 30px; */
 
 			@apply text-accent 
-			text-3xl sm:text-4xl  lg:text-5xl
+			text-2xl sm:text-3xl lg:text-4xl tracking-widest
 			/* leading-[4rem] */
 			/* font-normal */
 			/* dark:text-4xl md:dark:text-5xl  */
