@@ -14,7 +14,9 @@
 	<div class="header {bg1} ">
 		<div class="title-cell">
 			<h1>
-				<a href="/demos/shaders/meta-balls"> Meta Balls </a>
+				<!-- <a href="/demos/shaders/meta-balls"> -->
+				Meta Balls
+				<!-- </a> -->
 			</h1>
 		</div>
 		<div class="description-cell">
@@ -48,7 +50,9 @@
 		</div>
 		<div class="div6 title-cell">
 			<h1>
-				<a href="/demos/shaders/shapes"> Shapes </a>
+				<!-- <a href="/demos/shaders/shapes"> -->
+				Shapes
+				<!-- </a> -->
 			</h1>
 		</div>
 	</div>
@@ -57,7 +61,9 @@
 	<div class="header {bg1}">
 		<div class="title-cell">
 			<h1>
-				<a href="/demos/shaders/hover-grid"> Hover Grid </a>
+				<!-- <a href="/demos/shaders/hover-grid">  -->
+				Hover Grid
+				<!-- </a> -->
 			</h1>
 		</div>
 		<div class="description-cell">
@@ -88,7 +94,9 @@
 		</div>
 		<div class="div6 title-cell">
 			<h1>
-				<a href="/demos/shaders/circles"> Circles </a>
+				<!-- <a href="/demos/shaders/circles"> -->
+				Circles
+				<!-- </a> -->
 			</h1>
 		</div>
 	</div>
