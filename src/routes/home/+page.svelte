@@ -4,19 +4,23 @@
 	import Parallax from '../demos/parallax/Parallax.svelte';
 	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
+	import { Dices, Info } from 'lucide-svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 
 	const demoCount = 3;
 	let demoToDisplay = $state(0);
+
+	function nextDemo() {
+		demoToDisplay = (demoToDisplay + 1) % demoCount;
+	}
 
 	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 <svelte:window
 	onkeypress={(e: KeyboardEvent) => {
-		console.log(e.key);
-		if (e.key !== 'Enter') return;
-
-		demoToDisplay = (demoToDisplay + 1) % demoCount;
+		if (e.key !== 'Enter' && e.key !== ' ') return;
+		nextDemo();
 	}}
 />
 
@@ -38,8 +42,18 @@
 		{/if}
 	</div>
 
-	<div class="fixed bottom-8 pointer-events-none m-0">
-		<div class="title p-4 rounded-xl border-accent border-[1px] backdrop-blur-sm">
+	<div
+		class="fixed bottom-4 w-full
+			flex items-end justify-between
+	"
+	>
+		<!-- <Button class="island h-fit mx-4" variant="ghost" onclick={nextDemo}> -->
+		<button class="island demo-button" onclick={nextDemo}>
+			<Dices size={24} />
+		</button>
+		<!-- </Button> -->
+
+		<div class="island title pointer-events-none">
 			<h1>Welcome to my site...</h1>
 			<h1>
 				things are in flux
@@ -48,6 +62,10 @@
 			</h1>
 			<h1>but that's ok...</h1>
 		</div>
+
+		<button class="island demo-button invisible">
+			<Info size={32} />
+		</button>
 	</div>
 </div>
 <div class="after-hero mt-[--after-hero-offset]">
@@ -69,8 +87,19 @@
 		width: 100vw;
 	}
 
-	.title {
+	.island {
+		@apply border-accent border-[1px] backdrop-blur-sm p-4 rounded-xl;
 		background-color: oklch(from hsl(var(--accent)) calc(l * 0.8) c h / 0.2);
+	}
+
+	.demo-button {
+		@apply h-fit mx-4
+		text-accent
+		hover:text-accent-2
+		hover:border-accent-2;
+	}
+
+	.title {
 		& > h1 {
 			@apply relative m-0 text-left;
 
