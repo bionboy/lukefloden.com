@@ -92,15 +92,27 @@
 	}
 
 	.island {
-		@apply border-accent border-[1px] backdrop-blur-sm p-4 rounded-xl;
-		background-color: oklch(from hsl(var(--accent)) calc(l * 0.8) c h / 0.2);
-	}
+		--bg-color: var(--accent);
+		background-color: oklch(from hsl(var(--bg-color)) calc(l * 0.8) c h / 0.2);
 
-	.demo-button {
-		@apply h-fit mx-4
-		text-accent
-		hover:text-accent-2
-		hover:border-accent-2;
+		@apply backdrop-blur-sm 
+		outline
+		outline-1
+		outline-accent 
+		p-4 rounded-xl;
+
+		&.demo-button {
+			@apply h-fit mx-4
+				text-accent
+				hover:outline-accent-2
+				hover:outline-2
+				hover:text-accent-2
+				active:outline-4;
+
+			&:hover {
+				--bg-color: var(--accent2);
+			}
+		}
 	}
 
 	.title {
