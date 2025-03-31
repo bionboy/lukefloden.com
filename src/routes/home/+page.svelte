@@ -5,13 +5,19 @@
 	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
 	import { Dices, Info } from 'lucide-svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
 
-	const demoCount = 3;
-	let demoToDisplay = $state(0);
+	const demos = [
+		{ component: MetaBalls },
+		{ component: Parallax, props: { title: '', moveWithScroll: false } },
+		{ component: HoverGrid, hasOpaqueIsland: true }
+	];
+
+	let demoIndex = $state(2);
+	const opaqueIslandBg = $derived(demos[demoIndex].hasOpaqueIsland);
+	const DemoToDisplay = $derived(demos[demoIndex]);
 
 	function nextDemo() {
-		demoToDisplay = (demoToDisplay + 1) % demoCount;
+		demoIndex = (demoIndex + 1) % demos.length;
 	}
 
 	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
@@ -24,34 +30,26 @@
 	}}
 />
 
-<!-- <div class="hero bg-background">
-	<Parallax {titleContent}></Parallax>
-</div> -->
 <div class="hero center-container overflow-clip">
 	<!-- *  using 60% of max viewport dimension and scaling instead of 110%
-       *  to avoid performance issues with resolution being too high 
-	<div class="aspect-square h-[max(110vh,110vw)]">
- -->
-	<div class="aspect-square h-[max(60vh,60vw)] scale-[2]">
-		{#if demoToDisplay === 0}
-			<MetaBalls />
-		{:else if demoToDisplay === 1}
-			<Parallax title="" />
-		{:else if demoToDisplay === 2}
-			<HoverGrid />
-		{/if}
+       *  to avoid performance issues with resolution being too high -->
+	<div class="aspect-square h-[max(75vh,75vw)] scale-[1.5]">
+		<!-- {#key demoIndex} -->
+		{/* @ts-expect-error: its ok if props is missing */ null}
+		<DemoToDisplay.component {...DemoToDisplay.props} />
+		<!-- {/key} -->
 	</div>
 
 	<div
-		class="fixed bottom-4 w-full
+		class="bottom-bar fixed bottom-4 w-full
 			flex items-end justify-between
+			pointer-events-none
 	"
+		class:opaque-island-bg={opaqueIslandBg}
 	>
-		<!-- <Button class="island h-fit mx-4" variant="ghost" onclick={nextDemo}> -->
-		<button class="island demo-button" onclick={nextDemo}>
+		<button class="island demo-button pointer-events-auto" onclick={nextDemo}>
 			<Dices size={24} />
 		</button>
-		<!-- </Button> -->
 
 		<div class="island title pointer-events-none">
 			<h1>Welcome to my site...</h1>
@@ -81,10 +79,16 @@
 	}
 
 	.hero {
-		position: absolute;
+		position: fixed;
 		top: var(--hero-offset);
 		height: var(--hero-height);
 		width: 100vw;
+	}
+
+	.bottom-bar {
+		&.opaque-island-bg > .island {
+			@apply bg-card;
+		}
 	}
 
 	.island {
