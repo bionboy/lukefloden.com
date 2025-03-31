@@ -12,7 +12,7 @@
 		{ component: HoverGrid, hasOpaqueIsland: true }
 	];
 
-	let demoIndex = $state(2);
+	let demoIndex = $state(0);
 	const opaqueIslandBg = $derived(demos[demoIndex].hasOpaqueIsland);
 	const DemoToDisplay = $derived(demos[demoIndex]);
 
