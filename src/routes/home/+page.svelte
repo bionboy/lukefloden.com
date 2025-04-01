@@ -40,25 +40,19 @@
 		<!-- {/key} -->
 	</div>
 
-	<div
-		class="bottom-bar fixed bottom-4 w-full
-			flex items-end justify-between
-			pointer-events-none
-	"
-		class:opaque-island-bg={opaqueIslandBg}
-	>
+	<div class="bottom-bar" class:opaque-island-bg={opaqueIslandBg}>
 		<button class="island demo-button pointer-events-auto" onclick={nextDemo}>
 			<Dices size={24} />
 		</button>
 
 		<div class="island title pointer-events-none">
-			<h1>Welcome to my site...</h1>
+			<h1>Welcome to my site,</h1>
 			<h1>
 				things are in flux
 				<!-- right now -->
 				...
 			</h1>
-			<h1>but that's ok...</h1>
+			<h1>but that's ok! ✨🌟💫</h1>
 		</div>
 
 		<button class="island demo-button invisible">
@@ -86,6 +80,11 @@
 	}
 
 	.bottom-bar {
+		@apply fixed bottom-4 w-full
+			flex items-end 
+			justify-between
+			sm:justify-center
+			pointer-events-none;
 		&.opaque-island-bg > .island {
 			@apply bg-card;
 		}
