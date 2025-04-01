@@ -80,10 +80,20 @@ void metaBalls(in vec2 st, inout vec4 canvas) {
 
   float offsetX = .5f;
 
-  metaBall(st, metaCanvas, funk, r, vec2(offsetX, .45f + sin(u_time) * wiggleFactor));
-  metaBall(st, metaCanvas, funk, r, vec2(offsetX, .55f + sin(u_time * 2.f) * wiggleFactor));
-  metaBall(st, metaCanvas, funk, r, vec2(offsetX + sin(u_time * 2.f) * wiggleFactor, .5f));
-  metaBall(st, metaCanvas, funk, r, vec2(offsetX - sin(u_time + .5f * 2.f) * wiggleFactor, .5f));
+  // og version
+  float ballTime = u_time;
+  // metaBall(st, metaCanvas, funk, r, vec2(offsetX, .45f + sin(ballTime) * wiggleFactor));
+  // metaBall(st, metaCanvas, funk, r, vec2(offsetX, .55f + sin(ballTime * 2.f) * wiggleFactor));
+  // metaBall(st, metaCanvas, funk, r, vec2(offsetX + sin(ballTime * 2.f) * wiggleFactor, .5f));
+  // metaBall(st, metaCanvas, funk, r, vec2(offsetX - sin(ballTime + .5f * 2.f) * wiggleFactor, .5f));
+
+  // caro version with less straight lines
+  ballTime = u_time * 1.f;
+  metaBall(st, metaCanvas, funk, r, vec2(offsetX + sin(ballTime * .5f) * .1f, .45f + sin(ballTime * 2.f) * .1f));
+  metaBall(st, metaCanvas, funk, r + sin(ballTime) * .01f, vec2(offsetX, .55f + sin(ballTime * .5f) * wiggleFactor * .5f));
+  metaBall(st, metaCanvas, funk, r, vec2(offsetX + sin(ballTime * 2.f) * wiggleFactor, .5f));
+  metaBall(st, metaCanvas, funk, r, vec2(offsetX - sin(ballTime + .5f * 2.f) * wiggleFactor * .5f, .5f));
+
   metaBall(st, metaCanvas, funk, r, vec2(u_mouse.x, u_mouse.y));
 
   // canvas += metaCanvas;
