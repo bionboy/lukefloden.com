@@ -92,9 +92,8 @@
 	.site-header {
 		view-transition-name: header;
 		@apply fixed
-			z-10 
-			flex items-center justify-between
-			gap-4;
+			z-10
+			flex items-center justify-between;
 	}
 
 	.backdrop {

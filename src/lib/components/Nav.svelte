@@ -14,7 +14,7 @@
 	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
 </script>
 
-<nav class={cn('flex justify-center items-center gap-2 sm:gap-4 lg:gap-6')}>
+<nav class={cn('flex justify-center items-center gap-4 lg:gap-6')}>
 	{#each locations as { name, route } (route)}
 		{@const active = $page.route.id === route}
 		<div class="nav-item" class:active>
