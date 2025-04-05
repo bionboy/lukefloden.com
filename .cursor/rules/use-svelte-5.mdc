@@ -1,0 +1,10 @@
+---
+description: always use svelte 5
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+Always use Svelte 5; never any older version.
+Always use Svelte Runes mode; never suggest legacy mode.
