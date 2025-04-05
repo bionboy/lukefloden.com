@@ -5,10 +5,13 @@
 	import HoverGrid from './hover-grid/HoverGrid.svelte';
 	import Circles from './circles/Circles.svelte';
 	import ShaderDescriptionCard from './ShaderDescriptionCard.svelte';
+	import DemoSelector from '../DemoSelector.svelte';
 
 	const bg1 = 'bg-slate-200 dark:bg-slate-800';
 	const bg2 = 'bg-stone-200 dark:bg-stone-700';
 </script>
+
+<DemoSelector />
 
 <div class="grouping">
 	<div class="header {bg1} ">
