@@ -1,11 +1,8 @@
 <script lang="ts">
 	import DemoCard from '../DemoCard.svelte';
-	import DemoSelector from '../DemoSelector.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
 	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
 </script>
-
-<DemoSelector />
 
 <div class="gallery">
 	<DemoCard

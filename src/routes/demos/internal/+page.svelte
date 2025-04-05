@@ -4,13 +4,10 @@
 	import Parallax from '../parallax/Parallax.svelte';
 	import AlwaysLevel from '../always-level/AlwaysLevel.svelte';
 	import DemoCard from '../DemoCard.svelte';
-	import DemoSelector from '../DemoSelector.svelte';
 
 	// For placeholder demo cards
 	let placeholders = ['more', 'to', 'come', ':)'];
 </script>
-
-<DemoSelector />
 
 <div class="gallery">
 	<DemoCard

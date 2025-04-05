@@ -39,6 +39,15 @@
 <style lang="postcss">
 	.selector-container {
 		@apply w-full flex justify-center mb-6;
+
+		@apply sticky top-14 z-10 pb-4;
+		/* backdrop-filter: blur(8px); */
+		background: linear-gradient(
+			to bottom,
+			rgba(var(--background-rgb), 0.8) 0%,
+			rgba(var(--background-rgb), 0.6) 60%,
+			rgba(var(--background-rgb), 0) 100%
+		);
 	}
 
 	ul {
