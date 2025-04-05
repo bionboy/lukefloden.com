@@ -5,6 +5,7 @@
 	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
 	import { Dices, Info } from 'lucide-svelte';
+	import HomeDemoCard from './HomeDemoCard.svelte';
 
 	const demos = [
 		{ component: MetaBalls },
@@ -16,9 +17,7 @@
 	const opaqueIslandBg = $derived(demos[demoIndex].hasOpaqueIsland);
 	const DemoToDisplay = $derived(demos[demoIndex]);
 
-	function nextDemo() {
-		demoIndex = (demoIndex + 1) % demos.length;
-	}
+	const nextDemo = () => (demoIndex = (demoIndex + 1) % demos.length);
 
 	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
@@ -40,24 +39,26 @@
 		<!-- {/key} -->
 	</div>
 
-	<div class="bottom-bar" class:opaque-island-bg={opaqueIslandBg}>
-		<button class="island demo-button pointer-events-auto" onclick={nextDemo}>
+	<div class="bottom-bar">
+		<HomeDemoCard onclick={nextDemo} bgOpaque={opaqueIslandBg}>
 			<Dices size={24} />
-		</button>
+		</HomeDemoCard>
 
-		<div class="island title pointer-events-none">
-			<h1>Welcome to my site,</h1>
-			<h1>
-				things are in flux
-				<!-- right now -->
-				...
-			</h1>
-			<h1>but that's ok! ✨🌟💫</h1>
-		</div>
+		<HomeDemoCard bgOpaque={opaqueIslandBg}>
+			<div class="title pointer-events-none">
+				<h1>Welcome to my site,</h1>
+				<h1>
+					things are in flux
+					<!-- right now -->
+					...
+				</h1>
+				<h1>but that's ok! ✨🌟💫</h1>
+			</div>
+		</HomeDemoCard>
 
-		<button class="island demo-button invisible">
+		<HomeDemoCard bgOpaque={opaqueIslandBg} class="invisible">
 			<Info size={32} />
-		</button>
+		</HomeDemoCard>
 	</div>
 </div>
 <div class="after-hero mt-[--after-hero-offset]">
@@ -80,38 +81,13 @@
 	}
 
 	.bottom-bar {
-		@apply fixed bottom-4 w-full
-			flex items-end 
-			justify-between
-			sm:justify-center
+		@apply fixed w-full
+			px-4 bottom-4 
+			flex items-end gap-4
+			justify-between 
+			2xl:justify-center
+			2xl:gap-8
 			pointer-events-none;
-		&.opaque-island-bg > .island {
-			@apply bg-card;
-		}
-	}
-
-	.island {
-		--bg-color: var(--accent);
-		background-color: oklch(from hsl(var(--bg-color)) calc(l * 0.8) c h / 0.2);
-
-		@apply backdrop-blur-sm 
-		outline
-		outline-1
-		outline-accent 
-		p-4 rounded-xl;
-
-		&.demo-button {
-			@apply h-fit mx-4
-				text-accent
-				hover:outline-accent-2
-				hover:outline-2
-				hover:text-accent-2
-				active:outline-4;
-
-			&:hover {
-				--bg-color: var(--accent2);
-			}
-		}
 	}
 
 	.title {
@@ -123,8 +99,7 @@
 			@apply font-jersey15;
 			/* text-shadow: 0 0 30px; */
 
-			@apply text-accent 
-			text-2xl sm:text-3xl lg:text-4xl tracking-widest
+			@apply text-2xl sm:text-3xl lg:text-4xl tracking-widest
 			/* leading-[4rem] */
 			/* font-normal */
 			/* dark:text-4xl md:dark:text-5xl  */
