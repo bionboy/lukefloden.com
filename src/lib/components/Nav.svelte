@@ -16,7 +16,7 @@
 
 <nav class={cn('flex justify-center items-center gap-4 lg:gap-6')}>
 	{#each locations as { name, route } (route)}
-		{@const active = $page.route.id === route}
+		{@const active = $page.route.id?.startsWith(route)}
 		<div class="nav-item" class:active>
 			<a href={route} class="no-underline">
 				<!-- ? IDK why i need this 'link-content' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
