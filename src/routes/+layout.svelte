@@ -3,7 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 	import { ModeWatcher } from '$lib/theme';
-	import SiteHeader25 from './SiteHeader25.svelte';
+	import SiteHeader from './SiteHeader.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -21,7 +21,7 @@
 
 <ModeWatcher />
 <div class="relative flex flex-col">
-	<SiteHeader25 />
+	<SiteHeader />
 	{@render children()}
 </div>
 
