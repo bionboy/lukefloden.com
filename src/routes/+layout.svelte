@@ -4,7 +4,9 @@
 	import SiteHeader from './SiteHeader.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { ModeWatcher } from '$lib/theme';
-	import SiteHeaderNew from './SiteHeaderNew.svelte';
+	import SiteHeader2 from './SiteHeader2.svelte';
+	import SiteHeader3 from './SiteHeader3.svelte';
+	import SiteHeader25 from './SiteHeader25.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -23,7 +25,8 @@
 <ModeWatcher />
 <div class="relative flex flex-col">
 	<!-- <SiteHeader /> -->
-	<SiteHeaderNew />
+	<!-- <SiteHeaderNew /> -->
+	<SiteHeader25 />
 	<!-- <SiteHeader headerStyle={Math.random() > 0.5 ? 'rounded' : 'default'} /> -->
 	{@render children()}
 </div>

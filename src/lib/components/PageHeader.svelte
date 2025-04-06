@@ -1,19 +1,23 @@
 <!-- Inspiration for header: https://www.daisychainstudio.net/ (credit: https://twomuch.studio) -->
 
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	export interface Props {
 		class?: string;
 		headerStyle?: 'default' | 'rounded';
 		revealOnHover?: boolean;
 		revealOnFocus?: boolean;
 		hideOnScroll?: boolean;
+		children?: Snippet;
 	}
 
 	let {
 		headerStyle = 'rounded',
 		class: className,
 		revealOnHover = true,
-		hideOnScroll = true
+		hideOnScroll = true,
+		children
 	}: Props = $props();
 
 	let hovering = $state(false);
@@ -52,6 +56,7 @@
 		onblurcapture={hoverFalse}
 	>
 		<slot {headerMinimized} />
+		<!-- {@render children?.({ headerMinimized })} -->
 	</div>
 
 	<div class={['backdrop header-shape', className, headerStyle, { headerMinimized }]}></div>
@@ -77,15 +82,12 @@
 	}
 
 	.site-header {
-		view-transition-name: header;
 		@apply fixed
 			z-10
 			flex items-center justify-between;
 	}
 
 	.backdrop {
-		view-transition-name: header-backdrop;
-
 		@apply fixed
 			z-[9]
 			bg-muted
