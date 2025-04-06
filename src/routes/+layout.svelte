@@ -4,6 +4,7 @@
 	import SiteHeader from './SiteHeader.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { ModeWatcher } from '$lib/theme';
+	import SiteHeaderNew from './SiteHeaderNew.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -21,8 +22,8 @@
 
 <ModeWatcher />
 <div class="relative flex flex-col">
-	<SiteHeader headerStyle="rounded" />
-	<!-- <SiteHeader headerStyle="default" /> -->
+	<!-- <SiteHeader /> -->
+	<SiteHeaderNew />
 	<!-- <SiteHeader headerStyle={Math.random() > 0.5 ? 'rounded' : 'default'} /> -->
 	{@render children()}
 </div>
