@@ -2,24 +2,19 @@
 	import { page } from '$app/stores';
 	import { cn } from '$lib/utils.js';
 
-	export type NavLocations = { route: string; name: string }[];
+	// TODO
+	// type NavLocation = { route: string; name: string; defaultSubRoute?: string, subRoutes?: NavLocation[] };
+	// type NavLocations = NavLocation[];
+	export type NavLocations = { route: string; name: string; defaultSubRoute?: string }[];
 
-	const defaultLocations = [
-		{ route: '/home', name: 'Home' },
-		{ route: '/about', name: 'About' },
-		// { route: '/demos', name: 'Demos' },
-		{ route: '/demos/internal', name: 'Demos' },
-		{ route: '/demos/shaders', name: 'Shaders' }
-	];
-
-	let { locations = defaultLocations }: { locations?: NavLocations } = $props();
+	let { locations }: { locations: NavLocations } = $props();
 </script>
 
 <nav class={cn('flex justify-center items-center gap-4 lg:gap-6')}>
-	{#each locations as { name, route } (route)}
+	{#each locations as { name, route, defaultSubRoute } (route)}
 		{@const active = $page.route.id?.startsWith(route)}
 		<div class="nav-item" class:active>
-			<a href={route} class="no-underline">
+			<a href={defaultSubRoute || route} class="no-underline">
 				<!-- ? IDK why i need this 'link-content' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
 				<div class="link-content">{name}</div>
 			</a>
