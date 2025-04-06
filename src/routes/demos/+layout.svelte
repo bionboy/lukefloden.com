@@ -1,15 +1,21 @@
 <script lang="ts">
 	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg?enhanced&blur=100';
 	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
-	import DemoSelector from './DemoSelector.svelte';
+	import Nav from '$lib/components/Nav.svelte';
 
 	let { children } = $props();
+
+	const locations = [
+		{ route: '/demos/internal', name: 'Internal' },
+		{ route: '/demos/external', name: 'External' },
+		{ route: '/demos/shaders', name: 'Shaders' }
+	];
 </script>
 
-<FullStaticBackground imgSrc={bgImg}></FullStaticBackground>
+<FullStaticBackground imgSrc={bgImg} />
 
 <div class="page">
-	<DemoSelector />
+	<Nav {locations} />
 	{@render children()}
 </div>
 
