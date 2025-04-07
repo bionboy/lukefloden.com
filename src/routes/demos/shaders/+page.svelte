@@ -11,7 +11,7 @@
 </script>
 
 <div class="grouping">
-	<div class="header {bg1} ">
+	<div class="header {bg1}" id="meta-balls">
 		<div class="title-cell">
 			<h1>
 				<!-- <a href="/demos/shaders/meta-balls"> -->
@@ -21,10 +21,12 @@
 		</div>
 		<div class="description-cell">
 			<ShaderDescriptionCard>
-				<p>
-					Meta Balls is a demo of meta balls. It is a demo of meta balls. It is a demo of meta
-					balls. It is a demo of meta balls. It is a demo of meta balls.
-				</p>
+				<h3>
+					An artifact from a study on rendering circles. See also
+					<a href="#circles">Circles</a>.
+					<br />
+					Try hovering <em>(or tapping on mobile)</em>
+				</h3>
 			</ShaderDescriptionCard>
 		</div>
 	</div>
@@ -40,12 +42,12 @@
 			</AspectRatio>
 		</div>
 	</div>
-	<div class="header {bg2}">
+	<div class="header {bg2}" id="shapes">
 		<div class="div5 description-cell">
 			<ShaderDescriptionCard>
-				<p>
-					Shapes is a demo of shapes. It is a demo of shapes. It is a demo of shapes. It is a demo
-				</p>
+				<h3>
+					An exploration of what I could create with a handwritten function for rendering rectangles
+				</h3>
 			</ShaderDescriptionCard>
 		</div>
 		<div class="div6 title-cell">
@@ -58,7 +60,7 @@
 	</div>
 </div>
 <div class="grouping mt-4">
-	<div class="header {bg1}">
+	<div class="header {bg1}" id="hover-grid">
 		<div class="title-cell">
 			<h1>
 				<!-- <a href="/demos/shaders/hover-grid">  -->
@@ -68,7 +70,14 @@
 		</div>
 		<div class="description-cell">
 			<ShaderDescriptionCard>
-				<p>Hover Grid is a demo....... BLAAAHHHHHH</p>
+				<h3>
+					Created while experimenting with absolute and relative positioning. I created a grid
+					system to help with debugging.
+					<br />
+					Try hovering <em>(or tapping on mobile).</em>
+					<br />
+					<em> Two versions alternate every few seconds. </em>
+				</h3>
 			</ShaderDescriptionCard>
 		</div>
 	</div>
@@ -84,12 +93,14 @@
 			</AspectRatio>
 		</div>
 	</div>
-	<div class="header {bg2}">
+	<div class="header {bg2}" id="circles">
 		<div class="div5 description-cell">
 			<ShaderDescriptionCard>
-				<p>
-					Circles is a demo of circles. It is a demo of circles. It is a demo of circles. It is a
-				</p>
+				<h3>
+					Like with <a href="#meta-balls">Meta Balls</a>, this shader resulted from working with a
+					circle renderer. Discovering this interesting effect that resembles a lense flare is a
+					precursor to the meta balls shader.
+				</h3>
 			</ShaderDescriptionCard>
 		</div>
 		<div class="div6 title-cell">
@@ -157,5 +168,6 @@
 	}
 
 	.description-cell {
+		@apply font-jersey15;
 	}
 </style>
