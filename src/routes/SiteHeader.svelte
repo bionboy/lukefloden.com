@@ -63,7 +63,7 @@
 	{/snippet}
 </PageHeader>
 {#if subRoutes}
-	<PageHeader id="sub-routes" {headerStyle} class="max-w-64 max-h-10 mx-auto">
+	<PageHeader id="sub-routes" {headerStyle} class="max-w-64 max-h-10 mx-auto !mt-0">
 		{#snippet middle()}
 			<Nav locations={subRoutes} />
 		{/snippet}
