@@ -8,9 +8,20 @@
 	import HomeDemoCard from './HomeDemoCard.svelte';
 
 	const demos = [
-		{ component: MetaBalls },
-		{ component: Parallax, props: { title: '', moveWithScroll: false } },
-		{ component: HoverGrid, hasOpaqueIsland: true }
+		{
+			component: MetaBalls,
+			route: '/demos/shaders/#meta-balls'
+		},
+		{
+			component: Parallax,
+			props: { title: '', moveWithScroll: false },
+			route: '/demos/internal/parallax'
+		},
+		{
+			component: HoverGrid,
+			route: '/demos/shaders/#hover-grid',
+			hasOpaqueIsland: true
+		}
 	];
 
 	let demoIndex = $state(0);
@@ -56,9 +67,16 @@
 			</div>
 		</HomeDemoCard>
 
-		<HomeDemoCard bgOpaque={opaqueIslandBg} class="invisible">
-			<Info size={32} />
-		</HomeDemoCard>
+		<a href={DemoToDisplay.route}>
+			<HomeDemoCard
+				bgOpaque={opaqueIslandBg}
+				onclick={() => {
+					/* black function to give this card button styles */
+				}}
+			>
+				<Info size={32} />
+			</HomeDemoCard>
+		</a>
 	</div>
 </div>
 <div class="after-hero mt-[--after-hero-offset]">
