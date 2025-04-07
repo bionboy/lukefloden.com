@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import Parallax from '../parallax/Parallax.svelte';
-	import AlwaysLevel from '../always-level/AlwaysLevel.svelte';
+	import Parallax from './parallax/Parallax.svelte';
+	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from '../DemoCard.svelte';
 
 	// For placeholder demo cards
@@ -14,7 +14,7 @@
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"
 		tags={['Svelte', 'CSS']}
-		route="demos/parallax"
+		route="/demos/internal/parallax"
 		github="https://gist.github.com/bionboy/150a1f1c80a1df40737c5f0eec537b62"
 	>
 		<Parallax title="hi!" />
@@ -24,7 +24,7 @@
 		title="Always Level"
 		description="Keeping text on your screen level; despite your devices orientation"
 		tags={['Svelte', 'Device Orientation API']}
-		route="demos/always-level"
+		route="/demos/internal/always-level"
 	>
 		<div class="h-full flex place-content-center place-items-center bg-accent text-accent-2">
 			<AlwaysLevel />
