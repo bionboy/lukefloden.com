@@ -17,12 +17,12 @@
 		{ route: '/about', name: 'About' },
 		{
 			route: '/demos',
-			defaultSubRoute: '/demos/internal',
+			defaultSubRoute: '/demos/shaders',
 			name: 'Demos',
 			subRoutes: [
+				{ route: '/demos/shaders', name: 'Shaders' },
 				{ route: '/demos/internal', name: 'Internal' },
-				{ route: '/demos/external', name: 'External' },
-				{ route: '/demos/shaders', name: 'Shaders' }
+				{ route: '/demos/external', name: 'External' }
 			]
 		}
 	];
