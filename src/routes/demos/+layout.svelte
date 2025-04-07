@@ -5,13 +5,15 @@
 	let { children } = $props();
 </script>
 
-<FullStaticBackground imgSrc={bgImg}></FullStaticBackground>
+<FullStaticBackground imgSrc={bgImg} />
+
 <div class="page">
 	{@render children()}
 </div>
 
 <style lang="postcss">
 	.page {
+		/* @apply relative flex flex-col; */
 		view-transition-name: page-content;
 	}
 </style>

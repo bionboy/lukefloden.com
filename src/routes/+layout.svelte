@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.pcss';
 	import type { Snippet } from 'svelte';
-	import SiteHeader from './SiteHeader.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { ModeWatcher } from '$lib/theme';
+	import SiteHeader from './SiteHeader.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -21,9 +21,7 @@
 
 <ModeWatcher />
 <div class="relative flex flex-col">
-	<SiteHeader headerStyle="rounded" />
-	<!-- <SiteHeader headerStyle="default" /> -->
-	<!-- <SiteHeader headerStyle={Math.random() > 0.5 ? 'rounded' : 'default'} /> -->
+	<SiteHeader />
 	{@render children()}
 </div>
 
