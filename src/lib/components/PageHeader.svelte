@@ -3,21 +3,30 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
+	type IslandSnippet = Snippet<[{ headerMinimized: boolean }]>;
+
 	export interface Props {
+		id?: string;
 		class?: string;
 		headerStyle?: 'default' | 'rounded';
 		revealOnHover?: boolean;
 		revealOnFocus?: boolean;
 		hideOnScroll?: boolean;
 		children?: Snippet;
+		middle?: IslandSnippet;
+		left?: IslandSnippet;
+		right?: IslandSnippet;
 	}
 
 	let {
+		id = 'main',
 		headerStyle = 'rounded',
 		class: className,
-		revealOnHover = true,
+		revealOnHover = false,
 		hideOnScroll = true,
-		children
+		middle,
+		left,
+		right
 	}: Props = $props();
 
 	let hovering = $state(false);
@@ -54,14 +63,31 @@
 		onmouseoutcapture={hoverFalse}
 		onfocuscapture={hoverTrue}
 		onblurcapture={hoverFalse}
+		style:view-transition-name={`page-header-${id}`}
 	>
-		<slot {headerMinimized} />
-		<!-- {@render children?.({ headerMinimized })} -->
+		{#if left}
+			<div class="island left" class:headerMinimized>
+				{@render left({ headerMinimized })}
+			</div>
+		{/if}
+		{#if middle}
+			<div class="island middle" class:headerMinimized>
+				{@render middle({ headerMinimized })}
+			</div>
+		{/if}
+		{#if right}
+			<div class="island right" class:headerMinimized>
+				{@render right({ headerMinimized })}
+			</div>
+		{/if}
 	</div>
-
-	<div class={['backdrop header-shape', className, headerStyle, { headerMinimized }]}></div>
+	<div
+		class={['backdrop header-shape', className, headerStyle, { headerMinimized }]}
+		style:view-transition-name={`page-header-backdrop-${id}`}
+	></div>
 
 	<div class={['placeholder header-shape', className, headerStyle, { headerMinimized }]}></div>
+	<!-- style:view-transition-name={`page-header-placeholder-${id}`} -->
 </div>
 
 <style lang="postcss">
@@ -70,26 +96,25 @@
 
 		&.rounded {
 			/* TODO(@bionboy, 2025-01-21): Fix the rounding algorithm to not have bad edges, use apple rounding */
-			@apply w-auto h-16 
+			@apply w-auto 
+        h-14
         inset-x-2
         /* inset-y-3  */
-        mt-2
+        my-2
         px-2 
-        /* mb-8  */
-        mb-2
         rounded-full;
 		}
 	}
 
 	.site-header {
 		@apply fixed
-			z-10
+			z-30
 			flex items-center justify-between;
 	}
 
 	.backdrop {
 		@apply fixed
-			z-[9]
+			z-20
 			bg-muted
 			bg-opacity-50
 			backdrop-blur-md
@@ -122,7 +147,8 @@
 	}
 
 	.middle {
-		@apply transition-[transform,opacity] ease-in-out duration-500;
+		@apply mx-auto 
+      transition-[transform,opacity] ease-in-out duration-500;
 		&.headerMinimized {
 			@apply -translate-y-full -scale-x-0 opacity-0;
 		}
