@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Parallax from '../demos/parallax/Parallax.svelte';
+	import Parallax from '../demos/internal/parallax/Parallax.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>

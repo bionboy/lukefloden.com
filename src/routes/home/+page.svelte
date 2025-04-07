@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { mode, ThemeMode } from '$lib/theme';
 	import { setDocumentBodyTailwind } from '$lib/setBackground';
-	import Parallax from '../demos/parallax/Parallax.svelte';
+	import Parallax from '../demos/internal/parallax/Parallax.svelte';
 	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
 	import { Dices, Info } from 'lucide-svelte';
