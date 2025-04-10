@@ -99,7 +99,9 @@
 
 	:target {
 		/* Add global scroll margin to match header height */
-		@apply scroll-mt-24;
+		@apply /* scroll-mt-24 */ /* single header */
+		scroll-mt-32 /* header w/ sub header */;
+
 		/* Anchor link highlighting */
 		animation: highlight 4s ease-out;
 	}
