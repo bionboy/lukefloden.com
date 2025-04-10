@@ -25,29 +25,6 @@
 			<SocialLinks></SocialLinks>
 		</div>
 	</AboutCard>
-	<AboutCard id="working-on" title="What I'm working on">
-		<h3>This Site</h3>
-		<!-- TODO: add a popup that shows an image of my old site on hover or click of "last iteration" -->
-		<p>
-			I started working on this site because my <strong>last iteration</strong> was years ago and
-			nothing really more than a "linktree" or virtual business card. Not really something that
-			reflects my sentiments <a href="#nostalgia">above</a>.
-		</p>
-		<p>
-			I've used this as an opportunity to finally dive into new tools, frameworks, utilities, and
-			concepts that I previously was not able to (<em>ie. in a commercial environment</em>). Some of
-			those being (but not exhaustive):
-		</p>
-		<ul>
-			<li>Svelte 5</li>
-			<li>SvelteKit</li>
-			<li>OKLCH color space</li>
-			<li>Shadcn UI (<em>Svelte specific version</em>)</li>
-			<li>...</li>
-		</ul>
-		<!-- TODO -->
-		<!-- <h3>Shaders</h3> -->
-	</AboutCard>
 	<AboutCard
 		id="career"
 		title="Career"
@@ -72,6 +49,29 @@
 		</p>
 	</AboutCard>
 	<!-- <AboutCard title="this site"></AboutCard> -->
+	<AboutCard id="working-on" title="What I'm working on">
+		<h3>This Site</h3>
+		<!-- TODO: add a popup that shows an image of my old site on hover or click of "last iteration" -->
+		<p>
+			I started working on this site because my <strong>last iteration</strong> was years ago and
+			nothing really more than a "linktree" or virtual business card. Not really something that
+			reflects my sentiments <a href="#nostalgia">above</a>.
+		</p>
+		<p>
+			I've used this as an opportunity to finally dive into new tools, frameworks, utilities, and
+			concepts that I previously was not able to (<em>ie. in a commercial environment</em>). Some of
+			those being (but not exhaustive):
+		</p>
+		<ul>
+			<li>Svelte 5</li>
+			<li>SvelteKit</li>
+			<li>OKLCH color space</li>
+			<li>Shadcn UI (<em>Svelte specific version</em>)</li>
+			<li>...</li>
+		</ul>
+		<!-- TODO -->
+		<!-- <h3>Shaders</h3> -->
+	</AboutCard>
 </div>
 
 <style lang="postcss">
