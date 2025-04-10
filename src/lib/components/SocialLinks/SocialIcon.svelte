@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import type { Snippet } from 'svelte';
-	import type { ClassValue } from 'svelte/elements';
 
 	interface props {
 		title: string;
@@ -12,9 +11,17 @@
 	let { title, href, svgProps, children }: props = $props();
 </script>
 
-<Tooltip.Root openDelay={300}>
-	<Tooltip.Trigger class=" transition-transform hover:scale-110 hover:-rotate-12">
-		<a {href}>
+<Tooltip.Root openDelay={0} closeDelay={200}>
+	<!-- tabindex={-1} -->
+	<Tooltip.Trigger
+		class="transition-transform 
+			hover:scale-110 hover:-rotate-12
+			focus-within:scale-110 focus-within:-rotate-12
+		"
+		onclick={() => window.open(href)}
+	>
+		<!-- TODO: find out how to us a tag here, had to use onlick above so that focus still opens the tooltip -->
+		<a {href} tabindex={-1}>
 			<svg
 				class={[`logo size-16`, title]}
 				aria-hidden="true"

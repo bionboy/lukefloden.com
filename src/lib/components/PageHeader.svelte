@@ -46,8 +46,8 @@
 	const hoverFalse = () => (hovering = false);
 
 	const onscroll = () => {
-		scroll.up = scrollY - scroll.yPrev < 0;
-		scroll.yPrev = scrollY;
+		scroll.up = scroll.y - scroll.yPrev < 0;
+		scroll.yPrev = scroll.y;
 	};
 </script>
 
