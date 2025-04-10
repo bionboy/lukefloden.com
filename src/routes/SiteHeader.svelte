@@ -14,7 +14,15 @@
 
 	const locations = [
 		{ route: '/home', name: 'Home' },
-		{ route: '/about', name: 'About' },
+		{
+			route: '/about',
+			name: 'About',
+			subRoutes: [
+				{ route: '#me', name: 'Me' },
+				{ route: '#career', name: 'Career' },
+				{ route: '#working-on', name: 'Working On' }
+			]
+		},
 		{
 			route: '/demos',
 			defaultSubRoute: '/demos/shaders',

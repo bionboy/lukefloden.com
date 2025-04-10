@@ -12,7 +12,7 @@
 
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
 	<h1 class="mx-auto">About: this, that, etc...</h1>
-	<AboutCard title="Me">
+	<AboutCard id="me" title="Me">
 		<p id="nostalgia">
 			<strong>I want the internet to feel like it did 10 years ago.</strong>
 			I am nostalgic for an era of the internet that I was too young to be apart of. Focused on actually
@@ -25,7 +25,7 @@
 			<SocialLinks></SocialLinks>
 		</div>
 	</AboutCard>
-	<AboutCard title="What I'm working on">
+	<AboutCard id="working-on" title="What I'm working on">
 		<h3>This Site</h3>
 		<!-- TODO: add a popup that shows an image of my old site on hover or click of "last iteration" -->
 		<p>
@@ -48,7 +48,11 @@
 		<!-- TODO -->
 		<!-- <h3>Shaders</h3> -->
 	</AboutCard>
-	<AboutCard title="Career" subtitle="Front-end dev with an eye for design and a passion for UX">
+	<AboutCard
+		id="career"
+		title="Career"
+		subtitle="Front-end dev with an eye for design and a passion for UX"
+	>
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
 			experiences. While my career has provided extensive full-stack experience, my passion lies in

@@ -8,11 +8,17 @@
 	export type NavLocations = { route: string; name: string; defaultSubRoute?: string }[];
 
 	let { locations }: { locations: NavLocations } = $props();
+
+	const isActiveRoute = (route: string): boolean => {
+		const isRouteMatch = $page.route.id?.startsWith(route);
+		const isHashMatch = route.startsWith('#') && $page.url?.hash === route;
+		return isRouteMatch || isHashMatch;
+	};
 </script>
 
 <nav class={cn('flex justify-center items-center gap-4 lg:gap-6')}>
 	{#each locations as { name, route, defaultSubRoute } (route)}
-		{@const active = $page.route.id?.startsWith(route)}
+		{@const active = isActiveRoute(route)}
 		<div class="nav-item" class:active>
 			<a href={defaultSubRoute || route} class="no-underline">
 				<!-- ? IDK why i need this 'link-content' div, i couldn't get animations working on the a element again ¯\_(ツ)_/¯  -->
