@@ -8,7 +8,14 @@
 
 <Dialog.Root bind:open>
 	<Dialog.Trigger>
-		<Button variant="outline" class="outline outline-accent-2 text-accent-2">Resume</Button>
+		<Button
+			variant="outline"
+			class="text-accent-2
+		    outline outline-accent-2 -outline-offset-1
+				"
+		>
+			Resume!
+		</Button>
 	</Dialog.Trigger>
 	<Dialog.Content class="h-5/6 w-5/6 max-w-7xl ">
 		<!-- <Dialog.Header>
