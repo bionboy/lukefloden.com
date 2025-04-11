@@ -23,7 +23,7 @@
 			title="Resume"
 			type="application/pdf"
 			data={resume + '#view=FitH'}
-			class="m-auto pt-4 pb-0 px-0 size-full"
+			class="m-auto pt-4 pb-0 px-0 size-full dark:invert"
 		>
 			<p>Unable to display PDF. <a href={resume}>Download instead</a></p>
 		</object>

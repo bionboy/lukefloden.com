@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ResumePopup from './ResumePopup.svelte';
+	import ResumeDialog from './ResumeDialog.svelte';
 
 	import { SocialLinks } from '$lib/components/SocialLinks';
 	// import type { PageData } from './$types';
@@ -37,7 +37,7 @@
 		subtitle="Front-end dev with an eye for design and a passion for UX"
 	>
 		{#snippet topRightContent()}
-			<ResumePopup initialOpen={showResume} />
+			<ResumeDialog initialOpen={showResume} />
 		{/snippet}
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
