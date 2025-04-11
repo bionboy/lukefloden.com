@@ -33,7 +33,9 @@
 		@apply transition-transform duration-150 ease-in;
 
 		a {
-			@apply text-sm font-medium 
+			@apply text-lg
+		  font-jersey15 
+			tracking-wide
 			text-muted-foreground;
 		}
 
