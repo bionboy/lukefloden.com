@@ -60,7 +60,8 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans],
-				jersey15: ['Jersey\\ 15']
+				jersey15: ['Jersey\\ 15'],
+				shhh: ['shhh', ...fontFamily.sans]
 			},
 			dropShadow: {
 				glow: ['0 0 5px', '0 0 10px', '0 0 20px']

@@ -19,7 +19,7 @@
 </svelte:head>
 
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
-	<h1 class="mx-auto">About: this, that, etc...</h1>
+	<h1 class="mx-auto" style="font-family: 'shhh';">About: this, that, etc...</h1>
 	<AboutCard id="me" title="Me">
 		<p id="nostalgia">
 			<strong>I want the internet to feel like it did 10 years ago.</strong>
