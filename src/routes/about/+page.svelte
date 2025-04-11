@@ -1,15 +1,17 @@
 <script lang="ts">
 	import ResumeDialog from './ResumeDialog.svelte';
-
 	import { SocialLinks } from '$lib/components/SocialLinks';
-	// import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 
-	// let { data }: { data: PageData } = $props();
+	let showResumeOnLoad = $state(false);
 
-	// Check if "resume" is in URL parameters
-	let showResume = $derived($page.url.searchParams.has('resume'));
+	// This will run only on client-side after hydration
+	// $effect is not needed because we only care about the initial load
+	if (browser) {
+		showResumeOnLoad = $page.url.searchParams.has('resume');
+	}
 </script>
 
 <svelte:head>
@@ -37,7 +39,7 @@
 		subtitle="Front-end dev with an eye for design and a passion for UX"
 	>
 		{#snippet topRightContent()}
-			<ResumeDialog initialOpen={showResume} />
+			<ResumeDialog open={showResumeOnLoad} />
 		{/snippet}
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
