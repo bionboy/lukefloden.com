@@ -2,10 +2,14 @@
 	import ResumePopup from './ResumePopup.svelte';
 
 	import { SocialLinks } from '$lib/components/SocialLinks';
-	import type { PageData } from './$types';
+	// import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
+	import { page } from '$app/stores';
 
-	let { data }: { data: PageData } = $props();
+	// let { data }: { data: PageData } = $props();
+
+	// Check if "resume" is in URL parameters
+	let showResume = $derived($page.url.searchParams.has('resume'));
 </script>
 
 <svelte:head>
@@ -33,7 +37,7 @@
 		subtitle="Front-end dev with an eye for design and a passion for UX"
 	>
 		{#snippet topRightContent()}
-			<ResumePopup />
+			<ResumePopup initialOpen={showResume} />
 		{/snippet}
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
@@ -49,7 +53,7 @@
 			expertise and problem-solving skills.
 		</p>
 		<p>
-			With a Master’s in Computer Engineering, I support product decisions with a deep technical
+			With a Master's in Computer Engineering, I support product decisions with a deep technical
 			knowledge, offering valuable insights into constraints, trade-offs, and possibilities.
 		</p>
 	</AboutCard>

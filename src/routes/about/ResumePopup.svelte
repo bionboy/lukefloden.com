@@ -2,10 +2,12 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-2-0.pdf';
 	import Button from '$lib/components/ui/button/button.svelte';
+
+	let { initialOpen = false } = $props();
+	let open = $state(initialOpen);
 </script>
 
-<!-- <Dialog.Root open={true}> -->
-<Dialog.Root>
+<Dialog.Root bind:open>
 	<Dialog.Trigger>
 		<Button variant="outline" class="outline outline-accent-2 text-accent-2">Resume</Button>
 	</Dialog.Trigger>
