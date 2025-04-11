@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ResumePopup from './ResumePopup.svelte';
+
 	import { SocialLinks } from '$lib/components/SocialLinks';
 	import type { PageData } from './$types';
 	import AboutCard from './AboutCard.svelte';
@@ -30,6 +32,9 @@
 		title="Career"
 		subtitle="Front-end dev with an eye for design and a passion for UX"
 	>
+		{#snippet topRightContent()}
+			<ResumePopup />
+		{/snippet}
 		<p>
 			I am a Front-end Developer with a passion for crafting intuitive and accessible user
 			experiences. While my career has provided extensive full-stack experience, my passion lies in
