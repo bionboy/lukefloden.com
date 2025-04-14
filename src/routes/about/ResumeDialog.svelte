@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-2-0.pdf';
+	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-3-0.pdf';
 	import Button from '$lib/components/ui/button/button.svelte';
 
 	let { open = $bindable(false) } = $props();
