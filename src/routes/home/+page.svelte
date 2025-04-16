@@ -6,6 +6,7 @@
 	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
 	import { Dices, Info } from 'lucide-svelte';
 	import HomeDemoCard from './HomeDemoCard.svelte';
+	import HeroPage from '$lib/components/HeroPage.svelte';
 
 	const demos = [
 		{
@@ -40,7 +41,7 @@
 	}}
 />
 
-<div class="hero center-container overflow-clip">
+<HeroPage>
 	<!-- *  using 60% of max viewport dimension and scaling instead of 110%
        *  to avoid performance issues with resolution being too high -->
 	<div class="aspect-square h-[max(75vh,75vw)] scale-[1.5]">
@@ -78,26 +79,9 @@
 			</HomeDemoCard>
 		</a>
 	</div>
-</div>
-<div class="after-hero mt-[--after-hero-offset]">
-	<!-- TODO(@bionboy, 2025-02-10): put some content here and add a gradient or something moving that shows the user they can scroll down -->
-	<!-- <p>hey</p> -->
-</div>
+</HeroPage>
 
 <style lang="postcss">
-	:root {
-		--hero-offset: -4rem;
-		--hero-height: calc(100dvh - var(--hero-offset));
-		--after-hero-offset: calc(100dvh + var(--hero-offset) + -2rem);
-	}
-
-	.hero {
-		position: fixed;
-		top: var(--hero-offset);
-		height: var(--hero-height);
-		width: 100vw;
-	}
-
 	.bottom-bar {
 		@apply fixed w-full
 			px-4 bottom-4 
