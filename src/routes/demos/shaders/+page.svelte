@@ -135,9 +135,8 @@
 	}
 
 	.header {
-		@apply flex flex-wrap justify-between p-4
-		min-w-64
-		z-10
+		@apply flex flex-wrap justify-between gap-2
+		z-10 min-w-64 p-4
 		transition-all;
 		&:hover {
 			box-shadow: 0 0 10px 10px hsl(var(--accent));
@@ -163,7 +162,7 @@
 	}
 
 	.title-cell {
-		@apply center-container px-0 sm:px-8 
+		@apply center-container px-0 
 		font-jersey15 text-accent-2 italic;
 	}
 
