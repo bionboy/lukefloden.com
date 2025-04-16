@@ -23,7 +23,7 @@
 		headerStyle = 'rounded',
 		class: className,
 		revealOnHover = false,
-		hideOnScroll = true,
+		hideOnScroll = false,
 		middle,
 		left,
 		right
