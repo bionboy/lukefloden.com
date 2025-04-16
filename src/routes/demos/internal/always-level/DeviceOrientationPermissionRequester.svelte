@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from '$lib/components/ui/button/button.svelte';
+
 	let { isIosSafari } = $props();
 
 	let orientationEventPermission = $state('');
@@ -11,10 +13,10 @@
 	function requestIosSafariDeviceOrientation() {
 		if (
 			typeof DeviceOrientationEvent !== 'undefined' &&
-			// @ts-ignore
+			// @ts-expect-error blah blah
 			typeof DeviceOrientationEvent.requestPermission === 'function'
 		) {
-			// @ts-ignore
+			// @ts-expect-error blah blah
 			DeviceOrientationEvent.requestPermission()
 				.then((permissionState: string) => {
 					orientationEventPermission = permissionState;
@@ -32,11 +34,5 @@
 </script>
 
 {#if isIosSafari && orientationEventPermission !== 'granted'}
-	<button onclick={requestIosSafariDeviceOrientation}>Request iOS Safari Device Orientation</button>
+	<Button onclick={requestIosSafariDeviceOrientation}>Request iOS Safari Device Orientation</Button>
 {/if}
-
-<style>
-	button {
-		margin: 10px;
-	}
-</style>
