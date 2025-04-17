@@ -12,7 +12,7 @@
 
 <div class="grouping">
 	<div class="header {bg1}" id="meta-balls">
-		<div class="title-cell">
+		<div class="title-cell gradient-text">
 			<h1>
 				<!-- <a href="/demos/shaders/meta-balls"> -->
 				Meta Balls
@@ -43,14 +43,14 @@
 		</div>
 	</div>
 	<div class="header {bg2}" id="shapes">
-		<div class="div5 description-cell">
+		<div class="description-cell">
 			<ShaderDescriptionCard>
 				<h3>
 					An exploration of what I could create with a handwritten function for rendering rectangles
 				</h3>
 			</ShaderDescriptionCard>
 		</div>
-		<div class="div6 title-cell">
+		<div class="title-cell gradient-text">
 			<h1>
 				<!-- <a href="/demos/shaders/shapes"> -->
 				Shapes
@@ -61,7 +61,7 @@
 </div>
 <div class="grouping mt-4">
 	<div class="header {bg1}" id="hover-grid">
-		<div class="title-cell">
+		<div class="title-cell gradient-text">
 			<h1>
 				<!-- <a href="/demos/shaders/hover-grid">  -->
 				Hover Grid
@@ -94,7 +94,7 @@
 		</div>
 	</div>
 	<div class="header {bg2}" id="circles">
-		<div class="div5 description-cell">
+		<div class="description-cell">
 			<ShaderDescriptionCard>
 				<h3>
 					Like with <a href="#meta-balls">Meta Balls</a>, this shader resulted from working with a
@@ -103,7 +103,7 @@
 				</h3>
 			</ShaderDescriptionCard>
 		</div>
-		<div class="div6 title-cell">
+		<div class="title-cell gradient-text">
 			<h1>
 				<!-- <a href="/demos/shaders/circles"> -->
 				Circles
@@ -162,7 +162,7 @@
 	}
 
 	.title-cell {
-		@apply center-container px-0 
+		@apply center-container px-4
 		font-jersey15 text-accent-2 italic;
 	}
 
