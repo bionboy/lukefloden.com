@@ -14,7 +14,7 @@
 <Card.Root class="bg-secondary">
 	<Card.Header>
 		<div class="flex justify-between items-center">
-			<Card.Title tag="h2" class="" id={props.id || props.title}>
+			<Card.Title tag="h2" class="gradient-text pb-2" id={props.id || props.title}>
 				{props.title}
 			</Card.Title>
 			<div>

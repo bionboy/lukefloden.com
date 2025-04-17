@@ -14,7 +14,7 @@
 		    outline outline-accent-2 -outline-offset-1
 				"
 		>
-			Resume!
+			<p class="gradient-text">Resume!</p>
 		</Button>
 	</Dialog.Trigger>
 	<Dialog.Content class="h-5/6 w-5/6 max-w-7xl ">
