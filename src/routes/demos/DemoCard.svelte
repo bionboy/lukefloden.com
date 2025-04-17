@@ -32,7 +32,7 @@
 		<AspectRatio ratio={1} class="flex flex-col">
 			<Card.Header>
 				{#if props.title}
-					<Card.Title class="mr-6">
+					<Card.Title class="mr-6 gradient-text">
 						{props.title}
 					</Card.Title>
 				{/if}
