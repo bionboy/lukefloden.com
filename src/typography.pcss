@@ -58,3 +58,23 @@ a {
 em {
 	@apply text-muted-foreground;
 }
+
+@layer base {
+	.gradient-text {
+		/* background: linear-gradient(to right in oklch, oklch(70% 80% 340) 0%, oklch(70% 80% 200) 100%); */
+		--gradient-color: hsl(var(--accent2));
+		/* --gradient-color-2: hsl(from var(--gradient-color) calc(h * 0.85) s l); */
+		--gradient-color-2: oklch(from var(--gradient-color) l calc(c * 2) calc(h * 0.9));
+
+		background: linear-gradient(
+			to right in oklch,
+			var(--gradient-color) 0%,
+			var(--gradient-color-2) 100%
+		);
+
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
+	}
+}
