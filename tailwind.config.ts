@@ -77,15 +77,17 @@ const config: Config = {
 					'align-items': 'center'
 				},
 				'.debug': {
-					'border-color': 'red !important',
-					'border-style': 'dashed !important',
-					'border-width': '1px !important',
+					'outline-color': 'red !important',
+					'outline-style': 'dashed !important',
+					'outline-width': '1px !important',
+					'outline-offset': '1px !important',
 					'background-color': 'rgba(255, 0, 0, 0.25) !important'
 				},
 				'.debug-2': {
-					'border-color': 'green !important',
-					'border-style': 'dashed !important',
-					'border-width': '1px !important',
+					'outline-color': 'green !important',
+					'outline-style': 'dashed !important',
+					'outline-width': '1px !important',
+					'outline-offset': '1px !important',
 					'background-color': 'rgba(0, 255, 0, 0.25) !important'
 				}
 			});
