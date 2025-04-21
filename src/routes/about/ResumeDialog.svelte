@@ -2,13 +2,14 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-4-0.pdf';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { track } from '@vercel/analytics';
 
 	let { open = $bindable(false) } = $props();
 
 	const trackResumeView = (status: 'requested' | 'success' | 'fallback') => {
 		console.log(`Tracking resume view: ${status}`);
-		track('ResumeView', { status, resumeVersion: '2.4.0' });
+		// ! Vercel Analytics are paid and I don't want to pay for it now
+		// import { track } from '@vercel/analytics';
+		// 	track('ResumeView', { status, resumeVersion: '2.4.0' });
 	};
 </script>
 
