@@ -2,8 +2,14 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-3-0.pdf';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { track } from '@vercel/analytics';
 
 	let { open = $bindable(false) } = $props();
+
+	const trackResumeView = (status: 'requested' | 'success' | 'fallback') => {
+		console.log(`Tracking resume view: ${status}`);
+		track('ResumeView', { status });
+	};
 </script>
 
 <Dialog.Root bind:open>
@@ -13,6 +19,7 @@
 			class="text-accent-2
 		    outline outline-accent-2 -outline-offset-1
 				"
+			onclick={() => trackResumeView('requested')}
 		>
 			<p class="gradient-text">Resume!</p>
 		</Button>
@@ -32,8 +39,12 @@
 			class="size-full
 			  mx-auto mt-4 pb-0 px-0
 				dark:invert"
+			onload={() => trackResumeView('success')}
 		>
-			<p>Unable to display PDF. <a href={resume}>Download instead</a></p>
+			<p>
+				Unable to display PDF.
+				<a href={resume} onclick={() => trackResumeView('fallback')}> Download instead </a>
+			</p>
 		</object>
 	</Dialog.Content>
 </Dialog.Root>
