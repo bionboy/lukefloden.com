@@ -5,7 +5,7 @@
 	let { children }: { children: Snippet } = $props();
 </script>
 
-<Card.Root class="max-w-xl mx-auto my-2 bg-accent-2/30">
+<Card.Root class="max-w-xl mx-auto bg-accent-2/30">
 	<Card.Content class="">
 		{@render children()}
 	</Card.Content>

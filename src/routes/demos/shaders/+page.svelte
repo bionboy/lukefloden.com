@@ -135,7 +135,7 @@
 	}
 
 	.header {
-		@apply flex flex-wrap justify-between gap-2
+		@apply flex flex-wrap sm:flex-nowrap justify-between gap-2
 		z-10 min-w-64 p-4
 		transition-all;
 		&:hover {
@@ -162,11 +162,18 @@
 	}
 
 	.title-cell {
-		@apply center-container px-4
+		@apply center-container 
+		px-2 sm:px-4
 		font-jersey15 text-accent-2 italic;
 	}
 
 	.description-cell {
-		@apply font-jersey15;
+		@apply font-jersey15
+
+		w-full sm:w-auto;
+	}
+
+	h3 {
+		@apply text-lg;
 	}
 </style>
