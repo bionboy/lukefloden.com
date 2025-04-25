@@ -75,8 +75,11 @@
 			those being (but not exhaustive):
 		</p>
 		<ul>
-			<li>Svelte 5</li>
-			<li>SvelteKit</li>
+			<li>
+				<a href="/demos/shaders">Shaders</a>: GLSL,
+				<a href="https://thebookofshaders.com/">the book of shaders</a>, Svader
+			</li>
+			<li>Svelte 5, SvelteKit</li>
 			<li>OKLCH color space</li>
 			<li>Shadcn UI (<em>Svelte specific version</em>)</li>
 			<li>...</li>
