@@ -42,22 +42,23 @@
 			<ResumeDialog open={showResumeOnLoad} />
 		{/snippet}
 		<p>
-			I am a Front-end Developer with a passion for crafting intuitive and accessible user
-			experiences. While my career has provided extensive full-stack experience, my passion lies in
-			frontend development, specializing in UI/UX design, web standards, accessibility, and
-			thoughtful architectural choices. I strive to build products that feel seamless—a good tool
+			Full-stack Dev with a passion for intuitive/accessible UX. Specializing in UI/UX design, web
+			standards, accessibility, etc. I strive to build products that feel seamless—a good tool
 			should feel like an extension of its user.
 		</p>
 		<p>
 			My startup experience has honed my ability to work within constraints, prioritize effectively,
-			and make a meaningful impact on product design and development. Having contributed to the
-			healthcare, construction, and audiovisual recording industries, I bring versatile technical
-			expertise and problem-solving skills.
+			and make a meaningful impact on product design and development. I've worked in the healthcare,
+			construction, and audiovisual recording industries.
 		</p>
-		<p>
-			With a Master's in Computer Engineering, I support product decisions with a deep technical
-			knowledge, offering valuable insights into constraints, trade-offs, and possibilities.
-		</p>
+
+		<ul>
+			<li>5+ years with startups in the healthcare and sustainability sectors</li>
+			<li>3+ years building web applications with React/Laravel</li>
+			<li>Project lead of distributed teams and mentoring junior developers</li>
+			<li>Typescript, React, SvelteKit, Laravel</li>
+			<li>Sentry, Fly.io, Vercel, AWS, GCP</li>
+		</ul>
 	</AboutCard>
 	<!-- <AboutCard title="this site"></AboutCard> -->
 	<AboutCard id="working-on" title="What I'm working on">
