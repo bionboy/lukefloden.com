@@ -1,3 +1,5 @@
+<!-- Inspired by https://codepen.io/HejChristian/full/YPzLbYX -->
+
 <script lang="ts">
 	interface Props {
 		img: string;
