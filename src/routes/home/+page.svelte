@@ -58,13 +58,9 @@
 
 		<HomeDemoCard bgOpaque={opaqueIslandBg}>
 			<div class="title pointer-events-none">
-				<h1>Welcome to my site,</h1>
-				<h1>
-					things are in flux
-					<!-- right now -->
-					...
-				</h1>
-				<h1>but that's ok! ✨🌟💫</h1>
+				<h1>Welcome to my site!</h1>
+				<h1>Have a look around,</h1>
+				<h1>and <a class="pointer-events-auto" href="/about"> get to know me </a></h1>
 			</div>
 		</HomeDemoCard>
 
@@ -93,8 +89,8 @@
 	}
 
 	.title {
-		& > h1 {
-			@apply relative m-0 text-left;
+		& h1 {
+			@apply relative m-0;
 
 			/* TODO: pick a better fallback font to avoid layout shift */
 			/* font-family: 'Instrument Serif', cursive; */
