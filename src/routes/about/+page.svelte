@@ -4,6 +4,7 @@
 	import AboutCard from './AboutCard.svelte';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
+	import Holographic from '$lib/components/Holographic.svelte';
 
 	let showResumeOnLoad = $state(false);
 
@@ -33,6 +34,15 @@
 			<SocialLinks></SocialLinks>
 		</div>
 	</AboutCard>
+	<Holographic
+		img="https://assets.codepen.io/2153413/mandala-base.png"
+		mask="https://assets.codepen.io/2153413/mandala-mask.png"
+	/>
+	<Holographic
+		img="https://assets.codepen.io/2153413/beetle-base.png"
+		mask="https://assets.codepen.io/2153413/beetle-mask.png"
+	/>
+
 	<AboutCard
 		id="career"
 		title="Career"
