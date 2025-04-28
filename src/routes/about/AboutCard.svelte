@@ -11,10 +11,10 @@
 	} = $props();
 </script>
 
-<Card.Root class="bg-secondary">
+<Card.Root class="bg-secondary" id={props.id || props.title}>
 	<Card.Header>
 		<div class="flex justify-between items-center">
-			<Card.Title tag="h2" class="gradient-text pb-2" id={props.id || props.title}>
+			<Card.Title tag="h2" class="gradient-text pb-2">
 				{props.title}
 			</Card.Title>
 			<div>
