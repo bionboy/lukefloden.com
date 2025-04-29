@@ -4,6 +4,7 @@
 	import AboutCard from './AboutCard.svelte';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
+	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
 
 	let showResumeOnLoad = $state(false);
 
@@ -86,6 +87,20 @@
 		</ul>
 		<!-- TODO -->
 		<!-- <h3>Shaders</h3> -->
+	</AboutCard>
+	<AboutCard id="torc">
+		{#snippet titleContent()}
+			Looking for work? Community?
+			<br />
+			Are you in "tech"?
+		{/snippet}
+		{#snippet topRightContent()}
+			<TorcLogo />
+		{/snippet}
+		<p>
+			Torc has been a great community and resource for my career. I've met some great people there,
+			<a href="https://platform.torc.dev/#/r/SZ3zpvZ8/cp">Check it out!</a>
+		</p>
 	</AboutCard>
 </div>
 

@@ -7,6 +7,7 @@
 		subtitle?: string;
 		id?: string;
 		children?: Snippet;
+		titleContent?: Snippet;
 		topRightContent?: Snippet;
 	} = $props();
 </script>
@@ -14,8 +15,12 @@
 <Card.Root class="bg-secondary" id={props.id || props.title}>
 	<Card.Header>
 		<div class="flex justify-between items-center">
-			<Card.Title tag="h2" class="gradient-text pb-2">
-				{props.title}
+			<Card.Title tag="h2" class="gradient-text pb-2 leading-10 text-pretty">
+				{#if props.titleContent}
+					{@render props.titleContent()}
+				{:else}
+					{props.title}
+				{/if}
 			</Card.Title>
 			<div>
 				{@render props.topRightContent?.()}
