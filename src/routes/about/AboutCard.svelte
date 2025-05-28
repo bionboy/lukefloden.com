@@ -14,7 +14,7 @@
 
 <Card.Root class="bg-secondary" id={props.id || props.title}>
 	<Card.Header>
-		<div class="flex justify-between items-center">
+		<div class="flex justify-between items-center flex-wrap">
 			<Card.Title tag="h2" class="gradient-text pb-2 leading-10 text-pretty">
 				{#if props.titleContent}
 					{@render props.titleContent()}

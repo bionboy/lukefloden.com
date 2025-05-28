@@ -95,7 +95,9 @@
 			Are you in "tech"?
 		{/snippet}
 		{#snippet topRightContent()}
-			<TorcLogo />
+			<div class="my-2">
+				<TorcLogo />
+			</div>
 		{/snippet}
 		<p>
 			Torc has been a great community and resource for my career. I've met some great people there,
