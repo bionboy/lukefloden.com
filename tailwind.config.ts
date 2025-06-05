@@ -89,6 +89,13 @@ const config: Config = {
 					'outline-width': '1px !important',
 					'outline-offset': '1px !important',
 					'background-color': 'rgba(0, 255, 0, 0.25) !important'
+				},
+				'.debug-3': {
+					'outline-color': 'blue !important',
+					'outline-style': 'dashed !important',
+					'outline-width': '1px !important',
+					'outline-offset': '1px !important',
+					'background-color': 'rgba(0, 0, 255, 0.25) !important'
 				}
 			});
 		})
