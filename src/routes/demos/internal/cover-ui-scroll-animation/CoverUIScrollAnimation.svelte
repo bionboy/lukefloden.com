@@ -16,39 +16,33 @@
 -->
 
 <script lang="ts">
-	// TODO: replace with my own images
-	const coverImages = [
-		'https://assets.codepen.io/89905/coverflow--Front-1024x1024.jpg',
-		'https://assets.codepen.io/89905/coverflow--A-Thousand-Clouds-Front-Cover-1024x1024.jpg',
-		'https://assets.codepen.io/89905/coverflow--Odd-World-EP-SMALL-1024x1024.png',
-		'https://assets.codepen.io/89905/coverflow--Forest-Blue-Pre-LR-1024x1024.png',
-		'https://assets.codepen.io/89905/coverflow--MOM-Remixes-1024x1024.jpg',
-		'https://assets.codepen.io/89905/coverflow--ALONE-TOGETHER-remix-V71-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Nature-Therapy-Pre-LR-550x550.png',
-		'https://assets.codepen.io/89905/coverflow--Deep-Dive-Ambient-Edits-V8-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Alpine-Koresma-x-Aroth-Artwork-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Out-Of-the-Dark-Cover-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--2020-06-07-Marley-Carroll-Single-Blue-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Deep-Dive-EP-Cover-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Blackrose-Cover-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--FW-Imagine-Gold-Remixes2-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--We-Are-COVER-MAIN-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Bath-House-Flat-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Pronoia-JPG-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Lapa9Theory-Cracking-Stores-no-Loci-logo-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--EMANCIPATOR_MOM_AlbumCover-2000px-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--MURGE-ep-cvr-3000x3000-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--Emancipator_Laybrinth-ART-01-4000x4000-at-300dpi-550x550.jpg',
-		'https://assets.codepen.io/89905/coverflow--cover-550x550.jpg'
-	];
+	import { albums as albumsData, type Album } from './Album';
+
+	let {
+		albums = albumsData,
+		onAlbumClick
+	}: {
+		albums?: Album[];
+		onAlbumClick?: (album: Album) => void;
+	} = $props();
 </script>
 
-<!-- <div class="cards-wrapper" style:--cover-size={coverSize}> -->
 <div class="cards-wrapper">
 	<ul class="cards">
-		{#each coverImages as coverImage}
+		{#each albums as album (album.id)}
 			<li>
-				<img src={coverImage} width="1200" height="1200" alt="…" />
+				<button class="image-button" onclick={() => onAlbumClick?.(album)} type="button">
+					<!-- <img src={coverImage} width="1200" height="1200" alt="…" /> -->
+					<img
+						aria-hidden="false"
+						draggable="false"
+						src={album.image}
+						alt=""
+						loading="eager"
+						sizes="(min-width: 1280px) 232px, 192px"
+					/>
+					<!-- <img src={coverImage} alt="" width="1200" height="1200" /> -->
+				</button>
 			</li>
 		{/each}
 	</ul>
@@ -56,7 +50,6 @@
 
 <style lang="postcss">
 	.cards-wrapper {
-		/* container-type: inline-size; */
 		container-type: size;
 		container-name: cards;
 
@@ -67,7 +60,8 @@
       justify-center
       items-center
       size-full
-      bg-background/60
+			rounded-xl
+			bg-black/60
       border-muted border-[1px];
 
 		overflow-x: scroll;
@@ -105,7 +99,7 @@
 					margin-inline-end: 50cqi;
 				}
 
-				img {
+				button img {
 					width: 100%;
 					height: auto;
 
@@ -127,8 +121,7 @@
 	}
 
 	.cards,
-	.cards li,
-	.cards li img {
+	.cards * {
 		transform-style: preserve-3d;
 	}
 

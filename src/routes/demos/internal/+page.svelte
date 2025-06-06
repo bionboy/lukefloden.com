@@ -4,7 +4,7 @@
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from '../DemoCard.svelte';
-	import CoverUiScrollAnimationSpotify from './cover-ui-scroll-animation/CoverUIScrollAnimationSpotify.svelte';
+	import CoverUIScrollAnimation from './cover-ui-scroll-animation/CoverUIScrollAnimation.svelte';
 
 	// For placeholder demo cards
 	let placeholders = ['more', 'to', 'come', ':)'];
@@ -17,7 +17,7 @@
 		tags={['Svelte', 'CSS']}
 		route="/demos/internal/cover-ui-scroll-animation"
 	>
-		<CoverUiScrollAnimationSpotify />
+		<CoverUIScrollAnimation />
 	</DemoCard>
 	<DemoCard
 		title="Parallax Hero"

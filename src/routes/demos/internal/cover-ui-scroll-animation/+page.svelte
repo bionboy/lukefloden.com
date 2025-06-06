@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CoverUIScrollAnimationSpotify from './CoverUIScrollAnimationSpotify.svelte';
+	import CoverUIScrollAnimation from './CoverUIScrollAnimation.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { albums as albumsData, getAlbumEmbedURL, getAlbumURL, type Album } from './Album';
 
@@ -16,8 +16,8 @@
 
 <div class="w-full center-container">
 	<div class="w-full m-8 max-w-6xl flex flex-col gap-10 items-center">
-		<div class="w-full aspect-square sm:aspect-[21/9] rounded-xl overflow-clip">
-			<CoverUIScrollAnimationSpotify {albums} {onAlbumClick} />
+		<div class="w-full aspect-square sm:aspect-[21/9] overflow-clip">
+			<CoverUIScrollAnimation {albums} {onAlbumClick} />
 		</div>
 		<!-- ! has to be h-9.5rem because on dark mode you will see white in the background overflow -->
 		<iframe
