@@ -3,7 +3,7 @@
 	import * as Card from '$lib/components/ui/card';
 	import { albums as albumsData, getAlbumEmbedURL, getAlbumURL, type Album } from './Album';
 
-	// TODO: For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
+	// TODO (https://github.com/bionboy/my-site/issues/14): For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
 	const albums = albumsData.sort(() => Math.random() - 0.5);
 
 	let album = $state(albums[0]);

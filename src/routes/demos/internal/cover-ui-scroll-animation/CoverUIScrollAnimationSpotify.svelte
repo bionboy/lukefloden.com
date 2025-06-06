@@ -1,10 +1,12 @@
 <!--
   TODO:
+- https://github.com/bionboy/my-site/issues/16
   - [ ] Make covers flip and scale up towards user when clicked
     - with info about them
     - or like the back of the cover
     - or let the user rotate them with a 3d transform
       - like an inspect mode in a game
+- https://github.com/bionboy/my-site/issues/15
   - [ ] style the scrollbar
   - [ ] add in new carousel browser features for
     - [ ] scroll bar
