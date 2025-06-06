@@ -4,12 +4,21 @@
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from '../DemoCard.svelte';
+	import CoverUIScrollAnimation from './cover-ui-scroll-animation/CoverUIScrollAnimation.svelte';
 
 	// For placeholder demo cards
 	let placeholders = ['more', 'to', 'come', ':)'];
 </script>
 
 <div class="gallery">
+	<DemoCard
+		title="Cover UI Scroll Animation"
+		description="A CSS only carousel inspired by &quot;Cover Flow&quot;"
+		tags={['Svelte', 'CSS', 'Container Queries']}
+		route="/demos/internal/cover-ui-scroll-animation"
+	>
+		<CoverUIScrollAnimation />
+	</DemoCard>
 	<DemoCard
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"
@@ -19,7 +28,6 @@
 	>
 		<Parallax title="hi!" />
 	</DemoCard>
-
 	<DemoCard
 		title="Always Level"
 		description="Keeping text on your screen level; despite your devices orientation"
