@@ -11,6 +11,7 @@
 		foregroundContent?: Snippet;
 		midgroundContent?: Snippet;
 		backgroundContent?: Snippet;
+		islandScale?: number;
 		includeBackground?: boolean;
 		moveWithScroll?: boolean;
 		moveWithMouse?: boolean;
@@ -22,6 +23,7 @@
 		foregroundContent,
 		midgroundContent,
 		backgroundContent,
+		islandScale = 1.0,
 		includeBackground = true,
 		moveWithScroll = true,
 		moveWithMouse = true
@@ -116,7 +118,9 @@
 
 {#snippet island(level: string = 'foreground', x: number = 0, y: number = 0, content?: Snippet)}
 	<div class="island {level}" style="left:{x}px; top:{y}px;">
-		{@render (content ?? defaultIslandContent)()}
+		<div class="island-content" style="transform: scale({islandScale})">
+			{@render (content ?? defaultIslandContent)()}
+		</div>
 	</div>
 {/snippet}
 

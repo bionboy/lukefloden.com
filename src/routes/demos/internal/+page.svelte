@@ -26,7 +26,7 @@
 		route="/demos/internal/parallax"
 		github="https://gist.github.com/bionboy/150a1f1c80a1df40737c5f0eec537b62"
 	>
-		<Parallax title="hi!" />
+		<Parallax title="hi!" islandScale={0.3} />
 	</DemoCard>
 	<DemoCard
 		title="Always Level"
