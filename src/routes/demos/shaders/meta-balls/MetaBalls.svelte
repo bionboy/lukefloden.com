@@ -3,16 +3,19 @@
 	import { WebGlShader } from 'svader';
 	import shaderCode from '$lib/assets/shaders/meta-balls.frag?raw';
 
-	let mouse: [number, number] = $state([-1, -1]);
+	const defaultMouseCoords: [number, number] = [-1, -1];
+
+	let mouse: [number, number] = $state(defaultMouseCoords);
 </script>
 
 <div
 	class="size-full dark:invert"
 	role="presentation"
 	onmousemove={(event) => (mouse = getNormalizedMouseCoords(event))}
-	onmouseleave={() => (mouse = [-1, -1])}
-	onblur={() => (mouse = [-1, -1])}
 >
+	<!-- * for now turn off reset of mouse coords to avoid performance issue when start of rendering mouse metaball -->
+	<!-- onmouseleave={() => (mouse = defaultMouseCoords)} -->
+	<!-- onblur={() => (mouse = defaultMouseCoords)} -->
 	<WebGlShader
 		code={shaderCode}
 		parameters={[
