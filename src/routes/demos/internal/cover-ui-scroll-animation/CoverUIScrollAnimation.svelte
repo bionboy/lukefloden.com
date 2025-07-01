@@ -76,9 +76,7 @@
 
 			li {
 				@apply p-0 m-0;
-				/* margin between li should be inversely proportional to the screen width */
-				/* margin-inline: clamp(0.5rem, calc(2rem - 2cqi), 1rem); */
-				margin-inline: 0.5rem;
+				margin-inline: 0.5cqi;
 
 				display: inline-block;
 				width: var(--cover-size);
