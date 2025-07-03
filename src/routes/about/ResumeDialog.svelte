@@ -1,7 +1,8 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
 	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-4-0.pdf';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
 
 	let { open = $bindable(false) } = $props();
 
@@ -14,16 +15,13 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Trigger>
-		<Button
-			variant="outline"
-			class="text-accent-2
-		    outline outline-accent-2 -outline-offset-1
-				"
-			onclick={() => trackResumeView('requested')}
-		>
-			<p class="gradient-text">Resume!</p>
-		</Button>
+	<Dialog.Trigger
+		class={cn(
+			buttonVariants({ variant: 'outline' }),
+			'text-accent-2 outline outline-accent-2 -outline-offset-1 '
+		)}
+	>
+		<p class="gradient-text">Resume!</p>
 	</Dialog.Trigger>
 	<Dialog.Content class="h-5/6 w-5/6 max-w-7xl ">
 		<object

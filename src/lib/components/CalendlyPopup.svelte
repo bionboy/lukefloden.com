@@ -42,5 +42,5 @@
 	variant="outline"
 	class={cn('text-accent-2 outline outline-accent-2 -outline-offset-1', className)}
 >
-	{text}
+	<p class="gradient-text">{text}</p>
 </Button>
