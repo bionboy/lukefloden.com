@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
+	import CalendlyPopup from '$lib/components/CalendlyPopup.svelte';
 
 	let showResumeOnLoad = $state(false);
 
@@ -32,6 +33,14 @@
 		<p>That being said.... here are my socials!</p>
 		<div class="mt-8">
 			<SocialLinks></SocialLinks>
+		</div>
+		<div class="mt-4">
+			<CalendlyPopup
+				url="https://calendly.com/luke-floden/30min"
+				text="Let's Chat!"
+				as="span"
+				class="text-lg font-semibold underline decoration-2 underline-offset-2"
+			/>
 		</div>
 	</AboutCard>
 	<AboutCard
