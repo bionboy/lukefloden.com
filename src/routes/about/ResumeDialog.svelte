@@ -26,13 +26,6 @@
 		</Button>
 	</Dialog.Trigger>
 	<Dialog.Content class="h-5/6 w-5/6 max-w-7xl ">
-		<!-- <Dialog.Header>
-			<Dialog.Title>Are you sure absolutely sure?</Dialog.Title>
-			<Dialog.Description>
-				This action cannot be undone. This will permanently delete your account and remove your data
-				from our servers.
-			</Dialog.Description>
-		</Dialog.Header> -->
 		<object
 			title="Resume"
 			type="application/pdf"

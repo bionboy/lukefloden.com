@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { cn } from '$lib/utils.js';
+	import Button from './ui/button/button.svelte';
 
 	interface CalendlyPopupProps {
 		/** The Calendly URL to open in the popup */
@@ -9,97 +9,38 @@
 		text: string;
 		/** Optional CSS class to apply to the trigger element */
 		class?: string;
-		/** Whether to render as a button or span element */
-		as?: 'button' | 'span' | 'a';
 	}
 
-	let { url, text, class: className = '', as = 'button' }: CalendlyPopupProps = $props();
-
-	let calendlyLoaded = $state(false);
-	let calendlyElement = $state<HTMLElement | undefined>(undefined);
-
-	onMount(() => {
-		// Load Calendly CSS
-		const cssLink = document.createElement('link');
-		cssLink.href = 'https://assets.calendly.com/assets/external/widget.css';
-		cssLink.rel = 'stylesheet';
-		document.head.appendChild(cssLink);
-
-		// Load Calendly JS
-		const script = document.createElement('script');
-		script.src = 'https://assets.calendly.com/assets/external/widget.js';
-		script.type = 'text/javascript';
-		script.async = true;
-		script.onload = () => {
-			calendlyLoaded = true;
-		};
-		document.head.appendChild(script);
-
-		// Cleanup function
-		return () => {
-			// Remove the CSS link
-			document.head.removeChild(cssLink);
-			// Remove the script
-			document.head.removeChild(script);
-		};
-	});
+	let { url, text, class: className = '' }: CalendlyPopupProps = $props();
 
 	const handleClick = (event: Event) => {
 		event.preventDefault();
 
-		if (!calendlyLoaded) {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const wind = window as any;
+
+		if (typeof wind.Calendly === 'undefined') {
 			console.warn('Calendly widget is not loaded yet');
 			return;
 		}
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		if (typeof (window as any).Calendly !== 'undefined') {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(window as any).Calendly.initPopupWidget({ url });
-		}
+		wind.Calendly.initPopupWidget({ url });
 	};
 </script>
 
-{#if as === 'button'}
-	<button
-		bind:this={calendlyElement}
-		onclick={handleClick}
-		class={cn(
-			'text-primary hover:text-primary/80 transition-colors duration-200 cursor-pointer',
-			className
-		)}
-		disabled={!calendlyLoaded}
-	>
-		{text}
-	</button>
-{:else if as === 'a'}
-	<a
-		bind:this={calendlyElement}
-		href="#"
-		onclick={handleClick}
-		class={cn(
-			'text-primary hover:text-primary/80 transition-colors duration-200 cursor-pointer',
-			className
-		)}
-	>
-		{text}
-	</a>
-{:else}
-	<span
-		bind:this={calendlyElement}
-		onclick={handleClick}
-		class={cn(
-			'text-primary hover:text-primary/80 transition-colors duration-200 cursor-pointer',
-			className
-		)}
-		role="button"
-		tabindex="0"
-		onkeydown={(e) => {
-			if (e.key === 'Enter' || e.key === ' ') {
-				handleClick(e);
-			}
-		}}
-	>
-		{text}
-	</span>
-{/if}
+<svelte:head>
+	<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+	<script
+		src="https://assets.calendly.com/assets/external/widget.js"
+		type="text/javascript"
+		async
+	></script>
+</svelte:head>
+
+<Button
+	onclick={handleClick}
+	variant="outline"
+	class={cn('text-accent-2 outline outline-accent-2 -outline-offset-1', className)}
+>
+	{text}
+</Button>
