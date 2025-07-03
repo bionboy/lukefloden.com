@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
+	import CalendlyPopup from '$lib/components/CalendlyPopup.svelte';
 
 	let showResumeOnLoad = $state(false);
 
@@ -22,6 +23,9 @@
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">
 	<h1 class="mx-auto gradient-text" style="font-family: 'shhh';">About: this, that, etc...</h1>
 	<AboutCard id="me" title="Me">
+		{#snippet topRightContent()}
+			<CalendlyPopup url="https://calendly.com/luke-floden/30min" text="Let's Chat!" />
+		{/snippet}
 		<p id="nostalgia">
 			<strong>I want the internet to feel like it did 10 years ago.</strong>
 			I am nostalgic for an era of the internet that I was too young to be apart of. Focused on actually
