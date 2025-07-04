@@ -6,22 +6,24 @@
 	type $$Props = Props;
 	type $$Events = Events;
 
-	let className: $$Props['class'] = undefined;
-	export let variant: $$Props['variant'] = 'default';
-	export let size: $$Props['size'] = 'default';
-	export let builders: $$Props['builders'] = [];
-	export { className as class };
+	const {
+		class: className,
+		variant = 'default',
+		size = 'default',
+		builders = [],
+		...restProps
+	}: $$Props = $props();
 
-	$: computedClass = cn(buttonVariants({ variant, size, className }));
+	// @ts-expect-error - Type compatibility issue with clsx/tailwind-variants
+	const computedClass = $derived(cn(buttonVariants({ variant, size, className })));
 </script>
 
+<!-- @ts-expect-error - Complex type unions from bits-ui -->
 <ButtonPrimitive.Root
 	{builders}
 	class={computedClass}
 	type="button"
-	{...$$restProps}
-	on:click
-	on:keydown
+	{...restProps}
 >
 	<slot />
 </ButtonPrimitive.Root>
