@@ -4,6 +4,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { ModeWatcher } from '$lib/theme';
 	import SiteHeader from './SiteHeader.svelte';
+	import { Tooltip } from 'bits-ui';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -20,10 +21,12 @@
 </script>
 
 <ModeWatcher />
-<div class="relative flex flex-col">
-	<SiteHeader />
-	{@render children()}
-</div>
+<Tooltip.Provider>
+	<div class="relative flex flex-col">
+		<SiteHeader />
+		{@render children()}
+	</div>
+</Tooltip.Provider>
 
 <style lang="postcss">
 </style>
