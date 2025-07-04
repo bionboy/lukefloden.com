@@ -7,6 +7,5 @@
 	"eslint.validate": ["javascript", "typescript", "svelte"],
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"peacock.color": "#61dafb"
+	}
 }
