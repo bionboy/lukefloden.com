@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import { enhancedImages } from '@sveltejs/enhanced-img';
+import devtoolsJson from 'vite-plugin-devtools-json';
 
 export default defineConfig({
 	plugins: [
@@ -22,6 +23,7 @@ export default defineConfig({
 			// domains: ['*.custom.com'],
 			/** custom certification directory */
 			// certDir: '/Users/.../.devServer/cert'
-		})
+		}),
+		devtoolsJson()
 	]
 });
