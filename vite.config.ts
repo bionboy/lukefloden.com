@@ -14,8 +14,8 @@ export default defineConfig({
 				authToken: process.env.SENTRY_AUTH_TOKEN
 			}
 		}),
-		sveltekit(),
 		enhancedImages(),
+		sveltekit(),
 		basicSsl({
 			/** name of certification */
 			// name: 'test',

@@ -11,11 +11,13 @@
 	export let size: $$Props['size'] = 'default';
 	export let builders: $$Props['builders'] = [];
 	export { className as class };
+
+	$: computedClass = cn(buttonVariants({ variant, size, className }));
 </script>
 
 <ButtonPrimitive.Root
 	{builders}
-	class={cn(buttonVariants({ variant, size, className }))}
+	class={computedClass}
 	type="button"
 	{...$$restProps}
 	on:click
