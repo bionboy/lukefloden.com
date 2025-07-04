@@ -9,7 +9,8 @@ export default defineConfig({
 		sentrySvelteKit({
 			sourceMapsUploadOptions: {
 				org: 'luke-floden',
-				project: 'javascript-sveltekit'
+				project: 'javascript-sveltekit',
+				authToken: process.env.SENTRY_AUTH_TOKEN
 			}
 		}),
 		sveltekit(),
