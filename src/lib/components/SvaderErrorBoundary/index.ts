@@ -1,0 +1,1 @@
+export { default as SvaderErrorBoundary } from './SvaderErrorBoundary.svelte';

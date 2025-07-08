@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getNormalizedMouseCoords } from '../helpers';
-	import { WebGlShader } from 'svader';
+	import { SvaderErrorBoundary } from '$lib/components/SvaderErrorBoundary';
 	import shaderCode from '$lib/assets/shaders/circles.frag?raw';
 
 	let mouse: [number, number] = $state([-1, -1]);
@@ -13,7 +13,7 @@
 	onmouseleave={() => (mouse = [-1, -1])}
 	onblur={() => (mouse = [-1, -1])}
 >
-	<WebGlShader
+	<SvaderErrorBoundary
 		code={shaderCode}
 		parameters={[
 			{ name: 'u_resolution', value: 'resolution' },
@@ -22,5 +22,5 @@
 		]}
 	>
 		<div class="fallback">WebGL not supported in this environment.</div>
-	</WebGlShader>
+	</SvaderErrorBoundary>
 </div>

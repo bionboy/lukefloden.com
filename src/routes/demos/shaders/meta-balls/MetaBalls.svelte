@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getNormalizedMouseCoords } from '../helpers';
-	import { WebGlShader } from 'svader';
+	import { SvaderErrorBoundary } from '$lib/components/SvaderErrorBoundary';
 	import shaderCode from '$lib/assets/shaders/meta-balls.frag?raw';
 
 	const defaultMouseCoords: [number, number] = [-1, -1];
@@ -16,7 +16,7 @@
 	<!-- * for now turn off reset of mouse coords to avoid performance issue when start of rendering mouse metaball -->
 	<!-- onmouseleave={() => (mouse = defaultMouseCoords)} -->
 	<!-- onblur={() => (mouse = defaultMouseCoords)} -->
-	<WebGlShader
+	<SvaderErrorBoundary
 		code={shaderCode}
 		parameters={[
 			{ name: 'u_resolution', value: 'resolution' },
@@ -26,5 +26,5 @@
 		forceAnimation={true}
 	>
 		<div class="fallback">WebGL not supported in this environment.</div>
-	</WebGlShader>
+	</SvaderErrorBoundary>
 </div>
