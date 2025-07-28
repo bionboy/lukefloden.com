@@ -9,8 +9,8 @@ export default defineConfig({
 	plugins: [
 		sentrySvelteKit({
 			sourceMapsUploadOptions: {
-				org: 'luke-floden',
-				project: 'javascript-sveltekit',
+				org: process.env.SENTRY_ORG,
+				project: process.env.SENTRY_PROJECT,
 				authToken: process.env.SENTRY_AUTH_TOKEN
 			}
 		}),
