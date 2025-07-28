@@ -1,4 +1,24 @@
-# Links
+# Personal website and portfolio of me, Luke Floden.
 
-main: https://lukefloden.me
-w/o dns: https://my-site-puce-mu.vercel.app
+> [lukefloden.com](https://lukefloden.com)
+
+## Details
+
+Built with:
+
+- SvelteKit
+- TailwindCSS
+- Shadcn Svelte
+
+Deployed with:
+
+- Hosting on Vercel
+- Sentry for error tracking
+
+## Development
+
+```sh
+pnpm install
+pnpm dev
+pnpm build
+```
