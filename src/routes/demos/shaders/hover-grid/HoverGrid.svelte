@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { WebGlShader } from 'svader';
+	import { SvaderErrorBoundary } from '$lib/components/SvaderErrorBoundary';
 	import shaderHoverGrid from '$lib/assets/shaders/hover-grid.frag?raw';
 	import { getNormalizedMouseCoords } from '../helpers';
 
@@ -13,7 +13,7 @@
 	onmouseleave={() => (mouse = [-1, -1])}
 	onblur={() => (mouse = [-1, -1])}
 >
-	<WebGlShader
+	<SvaderErrorBoundary
 		code={shaderHoverGrid}
 		parameters={[
 			{ name: 'u_resolution', value: 'resolution' },
@@ -22,5 +22,5 @@
 		]}
 	>
 		<div class="fallback">WebGL not supported in this environment.</div>
-	</WebGlShader>
+	</SvaderErrorBoundary>
 </div>

@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { WebGlShader } from 'svader';
+	import { SvaderErrorBoundary } from '$lib/components/SvaderErrorBoundary';
 	import shaderShapes from '$lib/assets/shaders/shapes.frag?raw';
 
 	let mouse: [number, number] = $state([-1, -1]);
 </script>
 
 <div class="size-full">
-	<WebGlShader
+	<SvaderErrorBoundary
 		code={shaderShapes}
 		parameters={[
 			{ name: 'u_resolution', value: 'resolution' },
@@ -15,5 +15,5 @@
 		]}
 	>
 		<div class="fallback">WebGL not supported in this environment.</div>
-	</WebGlShader>
+	</SvaderErrorBoundary>
 </div>
