@@ -2,9 +2,25 @@
 	import DemoCard from '../DemoCard.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
 	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
+	import lilygemImg from '$lib/assets/images/LilyGem-dashboard.jpg?enhanced';
 </script>
 
 <div class="gallery">
+	<DemoCard
+		title="LilyGem"
+		description="Personal finance app managing currency conversions and tracking transactions"
+		tags={['Next.js', 'supabase', 'recharts', 'react-query']}
+		route="https://lilygem.vercel.app/"
+		github="https://github.com/bionboy/lilygem"
+	>
+		<div class="demo-card-image">
+			<enhanced:img
+				class="rounded asdf"
+				alt="A personal finance application focusing on international transactions and exchange rate tracking"
+				src={lilygemImg}
+			/>
+		</div>
+	</DemoCard>
 	<DemoCard
 		title="Perlin Plane"
 		description="An interactive 3d rendering of a 2d plane of 'perlin' noise. Made with three.js"
