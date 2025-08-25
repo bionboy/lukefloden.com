@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import resume from '$lib/assets/documents/Resume-Luke_Floden_2-4-4.pdf';
+	import resume from '$lib/assets/documents/Resume-Luke_Floden_3-0-1.pdf';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 
