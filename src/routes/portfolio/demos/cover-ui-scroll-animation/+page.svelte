@@ -7,17 +7,17 @@
 
 	// TODO (https://github.com/bionboy/my-site/issues/14): For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
 	const albums = albumsData.sort(() => Math.random() - 0.5);
-
 	let album = $state(albums[0]);
 	const albumEmbedUrl = $derived(getAlbumEmbedURL(album));
 
 	// TODO: turn this into a component or server action or hook or something
-	// Browser detection
-	let isChromiumBased = $state(false);
+	// Feature detection for Scroll-Linked Animations
+	let supportsScrollTimeline = $state(false);
 	if (browser) {
-		const userAgent = navigator.userAgent;
-		// Check for Chromium-based browsers (Chrome, Edge, Brave, etc.)
-		isChromiumBased = /Chrome/.test(userAgent);
+		supportsScrollTimeline =
+			CSS.supports('animation-timeline: --x') ||
+			CSS.supports('view-timeline-name: --x') ||
+			CSS.supports('scroll-timeline-name: --x');
 	}
 
 	const onAlbumClick = (clickedAlbum: Album) => {
@@ -27,7 +27,7 @@
 
 <div class="w-full center-container">
 	<div class="w-full m-8 max-w-6xl flex flex-col gap-10 items-center">
-		{#if browser && !isChromiumBased}
+		{#if browser && !supportsScrollTimeline}
 			{@render browserCompatibilityNotice()}
 		{/if}
 		<div class="w-full aspect-square sm:aspect-[21/9] overflow-clip">

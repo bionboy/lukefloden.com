@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { mode, ThemeMode } from '$lib/theme';
 	import { setDocumentBodyTailwind } from '$lib/setBackground';
-	import Parallax from '../demos/internal/parallax/Parallax.svelte';
-	import MetaBalls from '../demos/shaders/meta-balls/MetaBalls.svelte';
-	import HoverGrid from '../demos/shaders/hover-grid/HoverGrid.svelte';
+	import Parallax from '../portfolio/demos/parallax/Parallax.svelte';
+	import MetaBalls from '../portfolio/shaders/meta-balls/MetaBalls.svelte';
+	import HoverGrid from '../portfolio/shaders/hover-grid/HoverGrid.svelte';
 	import { Dices, Info } from 'lucide-svelte';
 	import HomeDemoCard from './HomeDemoCard.svelte';
 	import HeroPage from '$lib/components/HeroPage.svelte';
@@ -11,16 +11,16 @@
 	const demos = [
 		{
 			component: MetaBalls,
-			route: '/demos/shaders/#meta-balls'
+			route: '/portfolio/shaders/#meta-balls'
 		},
 		{
 			component: Parallax,
 			props: { title: '', moveWithScroll: false },
-			route: '/demos/internal/parallax'
+			route: '/portfolio/demos/parallax'
 		},
 		{
 			component: HoverGrid,
-			route: '/demos/shaders/#hover-grid',
+			route: '/portfolio/shaders/#hover-grid',
 			hasOpaqueIsland: true
 		}
 	];

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ResumeDialog from './ResumeDialog.svelte';
 	import { SocialLinks } from '$lib/components/SocialLinks';
-	import AboutCard from './AboutCard.svelte';
+	import AboutCard from '$lib/components/AboutCard.svelte';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
@@ -81,13 +81,64 @@
 		</p>
 		<ul>
 			<li>
-				<a href="/demos/shaders">Shaders</a>: GLSL,
+				<a href="/portfolio/shaders">Shaders</a>: GLSL,
 				<a href="https://thebookofshaders.com/">the book of shaders</a>, Svader
 			</li>
 			<li>Svelte 5, SvelteKit</li>
 			<li>OKLCH color space</li>
 			<li>Shadcn UI (<em>Svelte specific version</em>)</li>
 			<li>...</li>
+		</ul>
+		<h3>LilyGem</h3>
+		<p>
+			<a href="https://lilygem.vercel.app/">
+				<strong>LilyGem</strong>
+			</a>
+			is a personal finance companion that goes beyond simple currency conversion. I built this as a
+			real-world application to solve the problem of tracking international transfers and understanding
+			exchange rate patterns over time.
+		</p>
+		<p>
+			The app features real-time currency conversion, historical rate analysis, transaction
+			tracking, and a custom WebGL shader background that creates dynamic color gradients. It's
+			designed to help users make informed decisions about when to exchange currencies based on
+			historical trends.
+		</p>
+		<p>
+			This project gave me hands-on experience with several technologies and concepts I wanted to
+			explore in a production environment:
+		</p>
+		<ul>
+			<li>
+				<strong>Next.js 15</strong> with React 19 and the new Turbopack dev server
+			</li>
+			<li>
+				<strong>Authentication</strong>: NextAuth v5 with Google OAuth and Supabase adapter
+			</li>
+			<li>
+				<strong>Database</strong>: Supabase with Row Level Security (RLS)
+			</li>
+			<li>
+				<strong>Overcoming API data limitations</strong>: Automated exchange rate fetching with cron
+				jobs and smart caching for historical data
+			</li>
+			<li>
+				<strong>Data Visualization</strong>: Interactive historical exchange rate charts using
+				<a href="https://recharts.org/">Recharts</a>
+			</li>
+			<li>
+				<strong>WebGL Shaders</strong>: Custom fragment shader background with noise-based color
+				palettes
+			</li>
+			<li>
+				<strong>Modern UI</strong>: Shadcn/UI components with glassmorphism effects
+			</li>
+			<li>
+				<strong>Type Safety</strong>: Full TypeScript implementation with Zod schema validation
+			</li>
+			<li>
+				<strong>State Management</strong>: TanStack Query for server state with optimistic updates
+			</li>
 		</ul>
 		<!-- TODO -->
 		<!-- <h3>Shaders</h3> -->

@@ -24,13 +24,13 @@
 			]
 		},
 		{
-			route: '/demos',
-			defaultSubRoute: '/demos/shaders',
-			name: 'Demos',
+			route: '/portfolio',
+			defaultSubRoute: '/portfolio/projects',
+			name: 'Portfolio',
 			subRoutes: [
-				{ route: '/demos/shaders', name: 'Shaders' },
-				{ route: '/demos/internal', name: 'Internal' },
-				{ route: '/demos/external', name: 'External' }
+				{ route: '/portfolio/projects', name: 'Projects' },
+				{ route: '/portfolio/demos', name: 'Demos' },
+				{ route: '/portfolio/shaders', name: 'Shaders' }
 			]
 		}
 	];
