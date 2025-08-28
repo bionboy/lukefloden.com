@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DeviceOrientationPermissionRequester from './DeviceOrientationPermissionRequester.svelte';
 	import AlwaysLevel from './AlwaysLevel.svelte';
 	import type { PageData } from './$types';
@@ -7,7 +8,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	setDocumentBodyTailwind('bg-accent');
+	onMount(() => setDocumentBodyTailwind('bg-accent'));
 </script>
 
 <HeroPage class="bg-accent flex-col">

@@ -7,7 +7,7 @@
 	// let { data }: { data: PageData } = $props();
 </script>
 
-<div class="max-w-3xll mx-auto my-4 p-4 flex flex-col gap-8">
+<div class="max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8">
 	<div class="flex justify-around">
 		<h1 class="font-jersey15">Meta Balls</h1>
 		<Card.Root class="max-w-3xl">
