@@ -11,16 +11,16 @@
 	const demos = [
 		{
 			component: MetaBalls,
-			route: '/demos/shaders/#meta-balls'
+			route: '/portfolio/shaders/#meta-balls'
 		},
 		{
 			component: Parallax,
 			props: { title: '', moveWithScroll: false },
-			route: '/demos/internal/parallax'
+			route: '/portfolio/demos/parallax'
 		},
 		{
 			component: HoverGrid,
-			route: '/demos/shaders/#hover-grid',
+			route: '/portfolio/shaders/#hover-grid',
 			hasOpaqueIsland: true
 		}
 	];

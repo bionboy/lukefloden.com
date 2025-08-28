@@ -17,7 +17,7 @@
 		title="Cover UI Scroll Animation"
 		description="A CSS only carousel inspired by &quot;Cover Flow&quot;"
 		tags={['Svelte', 'CSS', 'Container Queries']}
-		route="/demos/internal/cover-ui-scroll-animation"
+		route="/portfolio/demos/cover-ui-scroll-animation"
 	>
 		<CoverUIScrollAnimation />
 	</DemoCard>
@@ -25,7 +25,7 @@
 		title="Parallax Hero"
 		description="Parallax effect hero component, moving on scroll or mouse"
 		tags={['Svelte', 'CSS']}
-		route="/demos/internal/parallax"
+		route="/portfolio/demos/parallax"
 		github="https://gist.github.com/bionboy/150a1f1c80a1df40737c5f0eec537b62"
 	>
 		<Parallax title="hi!" islandScale={0.3} />
@@ -34,7 +34,7 @@
 		title="Always Level"
 		description="Keeping text on your screen level; despite your devices orientation"
 		tags={['Svelte', 'Device Orientation API']}
-		route="/demos/internal/always-level"
+		route="/portfolio/demos/always-level"
 	>
 		<div class="h-full flex place-content-center place-items-center bg-accent text-accent-2">
 			<AlwaysLevel />
