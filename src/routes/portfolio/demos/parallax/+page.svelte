@@ -1,22 +1,37 @@
 <script lang="ts">
-	import DemosDisplay from './DemosDisplay.svelte';
-	import DemoContainer from './DemoContainer.svelte';
 	import Parallax from './Parallax.svelte';
+	import * as Card from '$lib/components/ui/card';
 </script>
 
-<div>
-	<DemosDisplay>
-		<DemoContainer title="Moving with the mouse and when you scroll">
+<div class="demos-display">
+	<Card.Root>
+		<Card.Content class="h-[50vh] rounded-xl">
 			<Parallax title="scroll or mouse me" />
-		</DemoContainer>
-		<DemoContainer title="Scrolling only 😈">
+		</Card.Content>
+	</Card.Root>
+
+	<Card.Root>
+		<Card.Content class="h-[50vh] rounded-xl">
 			<Parallax moveWithMouse={false} title="scroll me" />
-		</DemoContainer>
-		<DemoContainer title="I only react to the mouse ¯\_(ツ)_/¯">
+		</Card.Content>
+	</Card.Root>
+
+	<Card.Root>
+		<Card.Content class="h-[50vh] rounded-xl">
 			<Parallax moveWithScroll={false} title="mouse me" />
-		</DemoContainer>
-	</DemosDisplay>
+		</Card.Content>
+	</Card.Root>
 </div>
 
 <style>
+	.demos-display {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+
+		gap: 20px;
+
+		margin: 1rem;
+		padding: 0.5rem;
+	}
 </style>
