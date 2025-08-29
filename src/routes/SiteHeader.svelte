@@ -25,12 +25,12 @@
 		},
 		{
 			route: '/portfolio',
-			defaultSubRoute: '/portfolio/projects',
+			defaultSubRoute: '/portfolio#projects',
 			name: 'Portfolio',
 			subRoutes: [
-				{ route: '/portfolio/projects', name: 'Projects' },
-				{ route: '/portfolio/demos', name: 'Demos' },
-				{ route: '/portfolio/shaders', name: 'Shaders' }
+				{ route: '#projects', name: 'Projects' },
+				{ route: '#demos', name: 'Demos' },
+				{ route: '#shaders', name: 'Shaders' }
 			]
 		}
 	];

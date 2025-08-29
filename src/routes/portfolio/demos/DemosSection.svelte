@@ -9,7 +9,7 @@
 	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
 
 	// For placeholder demo cards
-	let placeholders = ['more', 'to', 'come', ':)'];
+	let placeholders = ['more to', 'come :)'];
 </script>
 
 <div class="gallery">
@@ -70,7 +70,7 @@
 	</DemoCard>
 
 	<!-- * Fill in future spots, so for now our demo cards look less lonely  -->
-	{#each placeholders.map((_, i) => i).filter((i) => placeholders[i]) as i (i)}
+	<!-- {#each placeholders.map((_, i) => i).filter((i) => placeholders[i]) as i (i)}
 		<div animate:flip={{ duration: 500, delay: 100 }} transition:fade={{ duration: 200 }}>
 			<DemoCard class="opacity-30" onremove={() => (placeholders[i] = '')}>
 				<div class="h-full flex place-content-center place-items-center text-6xl">
@@ -78,7 +78,7 @@
 				</div>
 			</DemoCard>
 		</div>
-	{/each}
+	{/each} -->
 </div>
 
 <style lang="postcss">

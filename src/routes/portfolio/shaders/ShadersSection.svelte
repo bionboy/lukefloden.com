@@ -1,7 +1,7 @@
 <script lang="ts">
-	import MetaBalls from '../shaders/meta-balls/MetaBalls.svelte';
+	import MetaBalls from './meta-balls/MetaBalls.svelte';
 	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
-	import Shapes from '../shaders/shapes/Shapes.svelte';
+	import Shapes from './shapes/Shapes.svelte';
 	import HoverGrid from './hover-grid/HoverGrid.svelte';
 	import Circles from './circles/Circles.svelte';
 	import ShaderDescriptionCard from './ShaderDescriptionCard.svelte';
@@ -125,7 +125,10 @@
 		--neg-gap: calc(var(--gap) * -1);
 	}
 	.grouping {
-		@apply max-w-7xl min-w-64 mx-auto p-4
+		@apply min-w-64
+		w-full
+		mx-auto 
+		p-4
     flex flex-col 
     gap-[var(--gap)];
 

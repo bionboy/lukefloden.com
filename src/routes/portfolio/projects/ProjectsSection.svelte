@@ -8,7 +8,7 @@
 		title="LilyGem"
 		description="Personal finance app managing currency conversions and tracking transactions"
 		tags={['Next.js', 'supabase', 'recharts', 'react-query']}
-		route="/portfolio/lilygem"
+		route="/portfolio/projects/lilygem"
 		github="https://github.com/bionboy/lilygem"
 	>
 		<div class="demo-card-image">
