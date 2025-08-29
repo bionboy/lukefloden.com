@@ -81,7 +81,7 @@
 		</p>
 		<ul>
 			<li>
-				<a href="/portfolio/shaders">Shaders</a>: GLSL,
+				<a href="/portfolio#shaders">Shaders</a>: GLSL,
 				<a href="https://thebookofshaders.com/">the book of shaders</a>, Svader
 			</li>
 			<li>Svelte 5, SvelteKit</li>
