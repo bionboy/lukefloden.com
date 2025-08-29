@@ -99,47 +99,8 @@
 			exchange rate patterns over time.
 		</p>
 		<p>
-			The app features real-time currency conversion, historical rate analysis, transaction
-			tracking, and a custom WebGL shader background that creates dynamic color gradients. It's
-			designed to help users make informed decisions about when to exchange currencies based on
-			historical trends.
+			Check out the <a href="/portfolio/projects/lilygem">project page</a> for more details.
 		</p>
-		<p>
-			This project gave me hands-on experience with several technologies and concepts I wanted to
-			explore in a production environment:
-		</p>
-		<ul>
-			<li>
-				<strong>Next.js 15</strong> with React 19 and the new Turbopack dev server
-			</li>
-			<li>
-				<strong>Authentication</strong>: NextAuth v5 with Google OAuth and Supabase adapter
-			</li>
-			<li>
-				<strong>Database</strong>: Supabase with Row Level Security (RLS)
-			</li>
-			<li>
-				<strong>Overcoming API data limitations</strong>: Automated exchange rate fetching with cron
-				jobs and smart caching for historical data
-			</li>
-			<li>
-				<strong>Data Visualization</strong>: Interactive historical exchange rate charts using
-				<a href="https://recharts.org/">Recharts</a>
-			</li>
-			<li>
-				<strong>WebGL Shaders</strong>: Custom fragment shader background with noise-based color
-				palettes
-			</li>
-			<li>
-				<strong>Modern UI</strong>: Shadcn/UI components with glassmorphism effects
-			</li>
-			<li>
-				<strong>Type Safety</strong>: Full TypeScript implementation with Zod schema validation
-			</li>
-			<li>
-				<strong>State Management</strong>: TanStack Query for server state with optimistic updates
-			</li>
-		</ul>
 		<!-- TODO -->
 		<!-- <h3>Shaders</h3> -->
 	</AboutCard>
