@@ -11,7 +11,7 @@
 	const demos = [
 		{
 			component: MetaBalls,
-			route: '/portfolio/shaders/#meta-balls'
+			route: '/portfolio/#meta-balls'
 		},
 		{
 			component: Parallax,
@@ -20,7 +20,7 @@
 		},
 		{
 			component: HoverGrid,
-			route: '/portfolio/shaders/#hover-grid',
+			route: '/portfolio/#hover-grid',
 			hasOpaqueIsland: true
 		}
 	];
