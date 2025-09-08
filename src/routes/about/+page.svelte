@@ -41,29 +41,28 @@
 	<AboutCard
 		id="career"
 		title="Career"
-		subtitle="Front-end dev with an eye for design and a passion for UX"
+		subtitle="Product/Full-Stack Engineer with 5 YOE leading teams in healthcare/climate-tech startups"
 	>
 		{#snippet topRightContent()}
 			<ResumeDialog open={showResumeOnLoad} />
 		{/snippet}
+
 		<p>
-			Full-stack Dev with a passion for intuitive/accessible UX. Specializing in UI/UX design, web
-			standards, accessibility, etc. I strive to build products that feel seamless—a good tool
-			should feel like an extension of its user.
-		</p>
-		<p>
-			My startup experience has honed my ability to work within constraints, prioritize effectively,
-			and make a meaningful impact on product design and development. I've worked in the healthcare,
-			construction, and audiovisual recording industries.
+			My real passion is in honing a consistent and thoughtful user experience. From the design,
+			implementation, performance aspects; whatever it takes to make the experience feel
+			frictionless.
 		</p>
 
-		<ul>
-			<li>5+ years with startups in the healthcare and sustainability sectors</li>
-			<li>3+ years building web applications with React/Laravel</li>
-			<li>Project lead of distributed teams and mentoring junior developers</li>
-			<li>Typescript, React, SvelteKit, Laravel</li>
-			<li>Sentry, Fly.io, Vercel, AWS, GCP</li>
-		</ul>
+		<p>
+			I work well with tradeoffs, and I am not afraid to make tough decisions. I've worked with
+			startups for most of my career, acting not only as a developer, but taking on product
+			ownership and project management responsibilities.
+		</p>
+
+		<p>
+			I've worked on delivering all aspects of a product. From balancing design and feasibility, to
+			architecting new features, and managing team resources.
+		</p>
 	</AboutCard>
 	<!-- <AboutCard title="this site"></AboutCard> -->
 	<AboutCard id="working-on" title="What I'm working on">
