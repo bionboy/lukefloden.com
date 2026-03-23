@@ -14,6 +14,20 @@
 	};
 </script>
 
+<a
+	href="https://www.notion.so/luke-floden/Resume-Luke-Floden-2dcceb9403db8008ad19ea812f9de062"
+	target="_blank"
+	rel="noopener noreferrer"
+	class={cn(
+		buttonVariants({ variant: 'outline' }),
+		'text-accent-2 outline outline-accent-2 -outline-offset-1 no-underline'
+	)}
+	onclick={() => trackResumeView('requested')}
+>
+	<p class="gradient-text">Resume!</p>
+</a>
+
+<!-- PDF preview dialog — kept for potential future use
 <Dialog.Root bind:open>
 	<Dialog.Trigger
 		class={cn(
@@ -40,6 +54,7 @@
 		</object>
 	</Dialog.Content>
 </Dialog.Root>
+-->
 
 <style lang="postcss">
 </style>
