@@ -1,5 +1,5 @@
 <script lang="ts">
-	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg?enhanced&blur=100';
+	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg?enhanced';
 	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
 
 	let { children } = $props();
