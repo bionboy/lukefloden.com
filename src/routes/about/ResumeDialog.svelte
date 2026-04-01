@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import resume from '$lib/assets/documents/Resume-Luke_Floden_3-0-1.pdf';
+	import resume from '$lib/assets/documents/Resume-Luke_Floden_6-0-0.pdf';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 
@@ -10,24 +10,10 @@
 		console.log(`Tracking resume view: ${status}`);
 		// ! Vercel Analytics are paid and I don't want to pay for it now
 		// import { track } from '@vercel/analytics';
-		// 	track('ResumeView', { status, resumeVersion: '2.4.0' });
+		// 	track('ResumeView', { status, resumeVersion: '6.0.0' });
 	};
 </script>
 
-<a
-	href="https://www.notion.so/luke-floden/Resume-Luke-Floden-2dcceb9403db8008ad19ea812f9de062"
-	target="_blank"
-	rel="noopener noreferrer"
-	class={cn(
-		buttonVariants({ variant: 'outline' }),
-		'text-accent-2 outline outline-accent-2 -outline-offset-1 no-underline'
-	)}
-	onclick={() => trackResumeView('requested')}
->
-	<p class="gradient-text">Resume!</p>
-</a>
-
-<!-- PDF preview dialog — kept for potential future use
 <Dialog.Root bind:open>
 	<Dialog.Trigger
 		class={cn(
@@ -54,7 +40,6 @@
 		</object>
 	</Dialog.Content>
 </Dialog.Root>
--->
 
 <style lang="postcss">
 </style>
