@@ -1,0 +1,3 @@
+[submodule "src/lib/resume-system"]
+	path = src/lib/resume-system
+	url = https://github.com/bionboy/resume-system
