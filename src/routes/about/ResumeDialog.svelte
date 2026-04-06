@@ -1,5 +1,4 @@
 <script lang="ts">
-	import * as Dialog from '$lib/components/ui/dialog';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 
@@ -21,39 +20,56 @@
 		Object.entries(htmlModules).sort(([a], [b]) => b.localeCompare(a))[0]?.[1]?.default ?? '';
 	const latestPdfUrl =
 		Object.entries(pdfModules).sort(([a], [b]) => b.localeCompare(a))[0]?.[1]?.default ?? '';
-
-	const trackResumeView = (status: 'requested' | 'success' | 'fallback') => {
-		console.log(`Tracking resume view: ${status}`);
-		// ! Vercel Analytics are paid and I don't want to pay for it now
-		// import { track } from '@vercel/analytics';
-		// 	track('ResumeView', { status, resumeVersion: 'latest' });
-	};
 </script>
 
-<Dialog.Root bind:open>
-	<Dialog.Trigger
-		class={cn(
-			buttonVariants({ variant: 'outline' }),
-			'text-accent-2 outline outline-accent-2 -outline-offset-1'
-		)}
-		onclick={() => trackResumeView('requested')}
-	>
-		<p class="gradient-text">Resume!</p>
-	</Dialog.Trigger>
-	<Dialog.Content class="h-5/6 w-5/6 max-w-7xl flex flex-col gap-2">
-		<div class="flex justify-end">
-			<a
-				href={latestPdfUrl}
-				download="Resume-Luke-Floden.pdf"
-				class={cn(buttonVariants({ variant: 'outline' }), 'text-accent-2 no-underline')}
-				onclick={() => trackResumeView('fallback')}
-			>
-				Download PDF
-			</a>
-		</div>
-		<iframe title="Resume" srcdoc={latestHtml} class="size-full border-0 rounded-sm"></iframe>
-	</Dialog.Content>
-</Dialog.Root>
+<button
+	class={cn(
+		buttonVariants({ variant: 'outline' }),
+		'text-accent-2 outline outline-accent-2 -outline-offset-1'
+	)}
+	onclick={() => (open = true)}
+>
+	<p class="gradient-text">Resume!</p>
+</button>
+
+{#if open}
+	<!-- Backdrop -->
+	<div
+		class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+		role="presentation"
+		onclick={() => (open = false)}
+	></div>
+
+	<!-- Floating resume -->
+	<div class="fixed inset-4 z-50 md:inset-8 lg:inset-12 xl:inset-16 pointer-events-none">
+		<!-- Close button -->
+		<button
+			class="pointer-events-auto absolute -top-3 -right-3 z-10 size-8 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-md"
+			onclick={() => (open = false)}
+			aria-label="Close resume"
+		>
+			✕
+		</button>
+
+		<!-- Download button -->
+		<a
+			href={latestPdfUrl}
+			download="Resume-Luke-Floden.pdf"
+			class={cn(
+				buttonVariants({ variant: 'outline' }),
+				'pointer-events-auto absolute -bottom-3 right-6 z-10 no-underline text-accent-2 outline outline-accent-2 -outline-offset-1 shadow-md'
+			)}
+		>
+			Download PDF
+		</a>
+
+		<iframe
+			title="Resume"
+			srcdoc={latestHtml}
+			class="pointer-events-auto size-full rounded-lg shadow-2xl border-0"
+		></iframe>
+	</div>
+{/if}
 
 <style lang="postcss">
 </style>
