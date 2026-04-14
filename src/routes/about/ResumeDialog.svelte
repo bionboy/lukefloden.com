@@ -16,10 +16,18 @@
 		eager: true
 	}) as Record<string, { default: string }>;
 
-	const latestHtml =
-		Object.entries(htmlModules).sort(([a], [b]) => b.localeCompare(a))[0]?.[1]?.default ?? '';
-	const latestPdfUrl =
-		Object.entries(pdfModules).sort(([a], [b]) => b.localeCompare(a))[0]?.[1]?.default ?? '';
+	// Derive a single build key present in both html and pdf modules to avoid mixing builds.
+	function toBuildKey(path: string) {
+		return path.match(/default-\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
+	}
+
+	const htmlByBuild = new Map(Object.entries(htmlModules).map(([k, v]) => [toBuildKey(k), v.default]));
+	const pdfByBuild = new Map(Object.entries(pdfModules).map(([k, v]) => [toBuildKey(k), v.default]));
+	const sharedKeys = [...htmlByBuild.keys()].filter((k) => k && pdfByBuild.has(k)).sort((a, b) => b.localeCompare(a));
+	const buildKey = sharedKeys[0];
+	const latestHtml = buildKey ? (htmlByBuild.get(buildKey) ?? '') : '';
+	const latestPdfUrl = buildKey ? (pdfByBuild.get(buildKey) ?? '') : '';
+	const hasResume = latestHtml !== '' && latestPdfUrl !== '';
 
 	// Portal action — moves the node to document.body so fixed positioning
 	// escapes any ancestor stacking contexts (e.g. backdrop-filter on cards).
@@ -28,6 +36,53 @@
 		return {
 			destroy() {
 				node.remove();
+			}
+		};
+	}
+
+	// Focus-trap action for the dialog.
+	function focusTrap(node: HTMLElement) {
+		const previouslyFocused = document.activeElement as HTMLElement | null;
+
+		// Focus the first focusable element inside the dialog.
+		const focusFirst = () => {
+			const focusable = node.querySelectorAll<HTMLElement>(
+				'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
+			);
+			focusable[0]?.focus();
+		};
+		focusFirst();
+
+		function handleKeydown(e: KeyboardEvent) {
+			if (e.key === 'Escape') {
+				open = false;
+				return;
+			}
+			if (e.key !== 'Tab') return;
+
+			const focusable = node.querySelectorAll<HTMLElement>(
+				'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
+			);
+			if (focusable.length === 0) return;
+
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
+
+		node.addEventListener('keydown', handleKeydown);
+
+		return {
+			destroy() {
+				node.removeEventListener('keydown', handleKeydown);
+				previouslyFocused?.focus();
 			}
 		};
 	}
@@ -43,8 +98,8 @@
 	<p class="gradient-text">Resume!</p>
 </button>
 
-{#if open}
-	<div use:portal>
+{#if open && hasResume}
+	<div use:portal use:focusTrap>
 		<!-- Backdrop -->
 		<div
 			class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
@@ -53,10 +108,15 @@
 		></div>
 
 		<!-- Floating resume -->
-		<div class="fixed inset-4 z-50 md:inset-8 lg:inset-12 xl:inset-16 pointer-events-none">
+		<div
+			class="fixed inset-4 z-50 md:inset-8 lg:inset-12 xl:inset-16"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Resume preview"
+		>
 			<!-- Close button -->
 			<button
-				class="pointer-events-auto absolute -top-3 -right-3 z-10 size-8 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-md"
+				class="absolute -top-3 -right-3 z-10 size-8 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-md"
 				onclick={() => (open = false)}
 				aria-label="Close resume"
 			>
@@ -69,7 +129,7 @@
 				download="Resume-Luke-Floden.pdf"
 				class={cn(
 					buttonVariants({ variant: 'outline' }),
-					'pointer-events-auto absolute -bottom-3 right-6 z-10 no-underline text-accent-2 outline outline-accent-2 -outline-offset-1 shadow-md'
+					'absolute -bottom-3 right-6 z-10 no-underline text-accent-2 outline outline-accent-2 -outline-offset-1 shadow-md'
 				)}
 			>
 				Download PDF
@@ -78,7 +138,8 @@
 			<iframe
 				title="Resume"
 				srcdoc={latestHtml}
-				class="pointer-events-auto size-full rounded-lg shadow-2xl border-0"
+				sandbox=""
+				class="size-full rounded-lg shadow-2xl border-0"
 			></iframe>
 		</div>
 	</div>
