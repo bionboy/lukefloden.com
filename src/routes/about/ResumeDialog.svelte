@@ -35,29 +35,24 @@
 	const latestPdfUrl = buildKey ? (pdfByBuild.get(buildKey) ?? '') : '';
 	const hasResume = latestHtml !== '' && latestPdfUrl !== '';
 
-	// Portal action — moves the node to document.body so fixed positioning
-	// escapes any ancestor stacking contexts (e.g. backdrop-filter on cards).
+	// --- Responsive iframe scaling ---
+	// The resume content has a min-width of 550px. On narrow screens, the iframe
+	// is rendered at that width and CSS-scaled down to fit the container.
+	const RESUME_CONTENT_MIN_WIDTH = 550;
+	const FOCUSABLE_SELECTOR = 'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
+
+	let iframeContainerWidth = $state(0);
+	const iframeScale = $derived(Math.min(1, iframeContainerWidth / RESUME_CONTENT_MIN_WIDTH || 1));
+	const iframeNeedsScaling = $derived(iframeScale < 1);
+
 	function portal(node: HTMLElement) {
 		document.body.appendChild(node);
-		return {
-			destroy() {
-				node.remove();
-			}
-		};
+		return { destroy: () => node.remove() };
 	}
 
-	// Focus-trap action for the dialog.
 	function focusTrap(node: HTMLElement) {
 		const previouslyFocused = document.activeElement as HTMLElement | null;
-
-		// Focus the first focusable element inside the dialog.
-		const focusFirst = () => {
-			const focusable = node.querySelectorAll<HTMLElement>(
-				'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
-			);
-			focusable[0]?.focus();
-		};
-		focusFirst();
+		node.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)?.focus();
 
 		function handleKeydown(e: KeyboardEvent) {
 			if (e.key === 'Escape') {
@@ -66,9 +61,7 @@
 			}
 			if (e.key !== 'Tab') return;
 
-			const focusable = node.querySelectorAll<HTMLElement>(
-				'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
-			);
+			const focusable = node.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
 			if (focusable.length === 0) return;
 
 			const first = focusable[0];
@@ -84,7 +77,6 @@
 		}
 
 		node.addEventListener('keydown', handleKeydown);
-
 		return {
 			destroy() {
 				node.removeEventListener('keydown', handleKeydown);
@@ -121,7 +113,6 @@
 			aria-label="Resume preview"
 		>
 			<div class="relative size-full max-w-[8.5in]">
-				<!-- <div class="relative size-full max-w-[8.5in] sm:scale-100 scale-75"> -->
 				<!-- Close button -->
 				<button
 					class="absolute -top-3 -right-3 z-10 size-8 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-md"
@@ -143,7 +134,17 @@
 					Download PDF
 				</a>
 
-				<iframe title="Resume" srcdoc={latestHtml} sandbox="" class="size-full border-0"></iframe>
+				<div class="size-full overflow-hidden" bind:clientWidth={iframeContainerWidth}>
+					<iframe
+						title="Resume"
+						srcdoc={latestHtml}
+						sandbox=""
+						class="border-0 origin-top-left"
+						style:width={iframeNeedsScaling ? `${RESUME_CONTENT_MIN_WIDTH}px` : '100%'}
+						style:height={iframeNeedsScaling ? `${100 / iframeScale}%` : '100%'}
+						style:transform={iframeNeedsScaling ? `scale(${iframeScale})` : undefined}
+					></iframe>
+				</div>
 			</div>
 		</div>
 	</div>
