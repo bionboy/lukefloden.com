@@ -73,7 +73,6 @@
 
 	let parallaxShift = $derived(getShift());
 
-	let defaultIslandContent = $derived(mode.current === ThemeMode.LIGHT ? cloud : star);
 </script>
 
 <svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
@@ -119,7 +118,13 @@
 {#snippet island(level: string = 'foreground', x: number = 0, y: number = 0, content?: Snippet)}
 	<div class="island {level}" style="left:{x}px; top:{y}px;">
 		<div class="island-content" style="transform: scale({islandScale})">
-			{@render (content ?? defaultIslandContent)()}
+			{#if content}
+				{@render content()}
+			{:else if mode.current === ThemeMode.LIGHT}
+				{@render cloud()}
+			{:else}
+				{@render star()}
+			{/if}
 		</div>
 	</div>
 {/snippet}
