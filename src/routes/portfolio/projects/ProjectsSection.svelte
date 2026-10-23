@@ -1,6 +1,6 @@
 <script lang="ts">
-	import DemoCard from '$lib/components/DemoCard.svelte';
-	import lilygemImg from '$lib/assets/images/LilyGem-dashboard.png?enhanced';
+	import DemoCard from '#lib/components/DemoCard.svelte';
+	import lilygemImg from '#lib/assets/images/LilyGem-dashboard.png?enhanced';
 </script>
 
 <div class="gallery">
@@ -25,6 +25,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../app.css';
+
 	.gallery {
 		@apply grid gap-4 m-5;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

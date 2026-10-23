@@ -25,6 +25,8 @@
 {/if}
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.island {
 		--bg-color: var(--accent);
 		background-color: oklch(from hsl(var(--bg-color)) calc(l * 0.8) c h / 0.2);

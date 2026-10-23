@@ -49,6 +49,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../../app.css';
+
 	.cards-wrapper {
 		container-type: size;
 		container-name: cards;

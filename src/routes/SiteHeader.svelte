@@ -1,14 +1,14 @@
 <!-- Inspiration for header: https://www.daisychainstudio.net/ (credit: https://twomuch.studio) -->
 
 <script lang="ts">
-	import { page } from '$app/stores';
-	import Nav from '$lib/components/Nav.svelte';
-	import PageHeader from '$lib/components/PageHeader.svelte';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { cn } from '$lib/utils';
+	import { page } from '$app/state';
+	import Nav from '#lib/components/Nav.svelte';
+	import PageHeader from '#lib/components/PageHeader.svelte';
+	import ThemeSwitcher from '#lib/components/ThemeSwitcher.svelte';
+	import Button from '#lib/components/ui/button/button.svelte';
+	import { cn } from '#lib/utils.js';
 	import { Star } from 'lucide-svelte';
-	import type { Props as PageHeaderProps } from '$lib/components/PageHeader.svelte';
+	import type { Props as PageHeaderProps } from '#lib/components/PageHeader.svelte';
 
 	let { headerStyle = 'rounded' }: PageHeaderProps = $props();
 
@@ -36,7 +36,7 @@
 	];
 
 	const subRoutes = $derived(
-		locations.find((location) => $page.route.id?.startsWith(location.route))?.subRoutes
+		locations.find((location) => page.route.id?.startsWith(location.route))?.subRoutes
 	);
 
 	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -60,7 +60,7 @@
 					'hover:duration-300 hover:-rotate-12 hover:scale-150',
 					headerMinimized && 'stroke-background drop-shadow-glow stroke-2'
 				)}
-			></Star>
+			/>
 		</Button>
 	{/snippet}
 	{#snippet middle()}
@@ -81,6 +81,6 @@
 <style lang="postcss">
 	/* ! HACK: This is hardcoded to fit the sub-routes header so that the backdrop blur is not showing ontop of the next page that is being transitioned to */
 	::view-transition-group(page-header-backdrop-sub-routes) {
-		@apply backdrop-blur-none;
+		backdrop-filter: none;
 	}
 </style>

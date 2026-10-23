@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { cn } from '$lib/utils.js';
+	import { page } from '$app/state';
+	import { cn } from '#lib/utils.js';
 
 	// TODO
 	// type NavLocation = { route: string; name: string; defaultSubRoute?: string, subRoutes?: NavLocation[] };
@@ -10,8 +10,8 @@
 	let { locations }: { locations: NavLocations } = $props();
 
 	const isActiveRoute = (route: string): boolean => {
-		const isRouteMatch = $page.route.id?.startsWith(route);
-		const isHashMatch = route.startsWith('#') && $page.url?.hash === route;
+		const isRouteMatch = page.route.id?.startsWith(route);
+		const isHashMatch = route.startsWith('#') && page.url?.hash === route;
 		return isRouteMatch || isHashMatch;
 	};
 </script>
@@ -29,6 +29,8 @@
 </nav>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.nav-item {
 		@apply transition-transform duration-150 ease-in;
 

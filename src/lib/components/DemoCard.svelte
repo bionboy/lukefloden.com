@@ -1,10 +1,10 @@
 <script lang="ts">
-	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
-	import * as Card from '$lib/components/ui/card/';
+	import AspectRatio from '#lib/components/ui/aspect-ratio/aspect-ratio.svelte';
+	import * as Card from '#lib/components/ui/card//index.js';
 	import type { Snippet } from 'svelte';
-	import { Badge, GithubBadge } from '$lib/components/ui/badge';
+	import { Badge, GithubBadge } from '#lib/components/ui/badge/index.js';
 	import { ExternalLink, X } from 'lucide-svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 
 	let props: {
 		title?: string;

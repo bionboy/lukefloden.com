@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { createPositions } from './islandPositions.svelte';
-	import Cloud from '$lib/components/Cloud.svelte';
-	import { mode, ThemeMode } from '$lib/theme';
+	import Cloud from '#lib/components/Cloud.svelte';
+	import { mode, ThemeMode } from '#lib/theme.js';
 	import { Star } from 'lucide-svelte';
 
 	type Props = {
@@ -72,16 +72,14 @@
 	};
 
 	let parallaxShift = $derived(getShift());
-
-	let defaultIslandContent = $derived($mode === ThemeMode.LIGHT ? cloud : star);
 </script>
 
 <svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
 
 <div
 	class="hero"
-	class:light-background={includeBackground && $mode === ThemeMode.LIGHT}
-	class:dark-background={includeBackground && $mode === ThemeMode.DARK}
+	class:light-background={includeBackground && mode.current === ThemeMode.LIGHT}
+	class:dark-background={includeBackground && mode.current === ThemeMode.DARK}
 	role="presentation"
 	onmousemove={(event: MouseEvent) => {
 		// mouse = { x: event.clientX, y: event.clientY };
@@ -119,7 +117,13 @@
 {#snippet island(level: string = 'foreground', x: number = 0, y: number = 0, content?: Snippet)}
 	<div class="island {level}" style="left:{x}px; top:{y}px;">
 		<div class="island-content" style="transform: scale({islandScale})">
-			{@render (content ?? defaultIslandContent)()}
+			{#if content}
+				{@render content()}
+			{:else if mode.current === ThemeMode.LIGHT}
+				{@render cloud()}
+			{:else}
+				{@render star()}
+			{/if}
 		</div>
 	</div>
 {/snippet}
@@ -129,12 +133,14 @@
 {/snippet}
 
 {#snippet star()}
-	<div class="rotate-0" style:--tw-rotate={getRandomRotation()}>
+	<div style:rotate={getRandomRotation()}>
 		<Star size="3rem" class="stroke-yellow-400 fill-yellow-400"></Star>
 	</div>
 {/snippet}
 
 <style lang="postcss">
+	@reference '../../../../app.css';
+
 	.hero {
 		position: relative;
 		display: flex;

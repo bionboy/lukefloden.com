@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card/';
+	import * as Card from '#lib/components/ui/card//index.js';
 
 	// import type { PageData } from './$types';
 	import MetaBalls from './MetaBalls.svelte';
@@ -33,6 +33,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../../app.css';
+
 	.asdf {
 		@apply flex;
 		/* --xxx: min(100vh, 100vw); */

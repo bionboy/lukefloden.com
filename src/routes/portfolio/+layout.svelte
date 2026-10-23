@@ -1,6 +1,6 @@
 <script lang="ts">
-	import bgImg from '$lib/assets/images/gradient-blur-texture.jpg?enhanced&blur=100';
-	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
+	import bgImg from '#lib/assets/images/gradient-blur-texture.jpg?enhanced&blur=100';
+	import FullStaticBackground from '#lib/components/FullStaticBackground.svelte';
 
 	let { children } = $props();
 </script>
@@ -12,6 +12,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.page {
 		/* @apply relative flex flex-col; */
 		view-transition-name: page-content;

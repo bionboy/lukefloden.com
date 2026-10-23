@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { WebGlShader } from 'svader';
-	import shaderShapes from '$lib/assets/shaders/shapes.frag?raw';
+	import shaderShapes from '#lib/assets/shaders/shapes.frag?raw';
 
 	let mouse: [number, number] = $state([-1, -1]);
 </script>

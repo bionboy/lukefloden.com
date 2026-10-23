@@ -1,11 +1,11 @@
 /* using @import instead of @tailwind to allow subsequent import statements after these */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+@config '../tailwind.config.ts';
+@custom-variant hover (&:hover);
 
-@import 'fonts.pcss';
-@import 'typography.pcss';
-@import 'view-transition.pcss';
+@import './fonts.css';
+@import './typography.css';
+@import './view-transition.css';
 
 @layer base {
 	:root {
@@ -84,6 +84,21 @@
 }
 
 @layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+
+	button:not(:disabled),
+	[role='button']:not(:disabled) {
+		cursor: pointer;
+	}
+}
+
+@layer base {
 	* {
 		@apply border-border;
 	}
@@ -108,7 +123,7 @@
 
 	@keyframes highlight {
 		from {
-			@apply bg-accent;
+			background-color: hsl(var(--accent));
 		}
 	}
 }

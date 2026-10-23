@@ -1,6 +1,6 @@
 <script lang="ts">
-	import bgImg from '$lib/assets/images/abstract-grainy-bg.jpg?enhanced&blur=100';
-	import FullStaticBackground from '$lib/components/FullStaticBackground.svelte';
+	import bgImg from '#lib/assets/images/abstract-grainy-bg.jpg?enhanced&blur=100';
+	import FullStaticBackground from '#lib/components/FullStaticBackground.svelte';
 
 	let { children } = $props();
 </script>

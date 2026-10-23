@@ -1,18 +1,18 @@
 <script lang="ts">
 	import ResumeDialog from './ResumeDialog.svelte';
-	import { SocialLinks } from '$lib/components/SocialLinks';
-	import AboutCard from '$lib/components/AboutCard.svelte';
-	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
-	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
-	import CalendlyPopup from '$lib/components/CalendlyPopup.svelte';
+	import { SocialLinks } from '#lib/components/SocialLinks/index.js';
+	import AboutCard from '#lib/components/AboutCard.svelte';
+	import { page } from '$app/state';
+	import { browser } from '$app/env';
+	import TorcLogo from '#lib/components/SocialLinks/torc-logo.svelte';
+	import CalendlyPopup from '#lib/components/CalendlyPopup.svelte';
 
 	let showResumeOnLoad = $state(false);
 
 	// This will run only on client-side after hydration
 	// $effect is not needed because we only care about the initial load
 	if (browser) {
-		showResumeOnLoad = $page.url.searchParams.has('resume');
+		showResumeOnLoad = page.url.searchParams.has('resume');
 	}
 </script>
 
@@ -34,9 +34,7 @@
 			as a resource.
 		</p>
 		<p>That being said.... here are my socials!</p>
-		<div class="mt-8">
-			<SocialLinks></SocialLinks>
-		</div>
+		<div class="mt-8"><SocialLinks /></div>
 	</AboutCard>
 	<AboutCard
 		id="career"
@@ -93,9 +91,9 @@
 			<a href="https://lilygem.vercel.app/">
 				<strong>LilyGem</strong>
 			</a>
-			is a personal finance companion that goes beyond simple currency conversion. I built this as a
-			real-world application to solve the problem of tracking international transfers and understanding
-			exchange rate patterns over time.
+			is a personal finance companion that goes beyond simple currency conversion. I built this as a real-world
+			application to solve the problem of tracking international transfers and understanding exchange
+			rate patterns over time.
 		</p>
 		<p>
 			Check out the <a href="/portfolio/projects/lilygem">project page</a> for more details.

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn } from '$lib/utils.js';
+	import { cn } from '#lib/utils.js';
 
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
@@ -10,8 +10,8 @@
 
 <div
 	class={cn(
-		'bg-card text-card-foreground rounded-lg border shadow-sm',
-		'backdrop-blur-sm bg-opacity-50',
+		'bg-card/50 text-card-foreground rounded-lg border shadow-sm',
+		'backdrop-blur-sm',
 		className
 	)}
 	{...$$restProps}

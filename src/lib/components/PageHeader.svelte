@@ -91,6 +91,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.header-shape {
 		@apply w-screen h-16 mb-4;
 
@@ -115,8 +117,7 @@
 	.backdrop {
 		@apply fixed
 			z-20
-			bg-muted
-			bg-opacity-50
+			bg-muted/50
 			backdrop-blur-md
 			shadow-lg;
 

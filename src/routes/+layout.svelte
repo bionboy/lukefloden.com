@@ -1,13 +1,18 @@
 <script lang="ts">
-	import '../app.pcss';
+	import '../app.css';
 	import type { Snippet } from 'svelte';
 	import { onNavigate } from '$app/navigation';
-	import { ModeWatcher } from '$lib/theme';
+	import { browser } from '$app/env';
+	import { ModeWatcher } from '#lib/theme.js';
+	import { trackVercelObservability } from '#lib/vercel-observability.svelte.js';
 	import SiteHeader from './SiteHeader.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
+	if (browser) trackVercelObservability();
+
 	onNavigate((navigation) => {
+		if (navigation.shallow && navigation.type === 'goto') return;
 		if (!document.startViewTransition) return;
 
 		return new Promise((resolve) => {

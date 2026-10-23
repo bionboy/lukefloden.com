@@ -1,8 +1,8 @@
 <script lang="ts">
 	import CoverUIScrollAnimation from './CoverUIScrollAnimation.svelte';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '#lib/components/ui/card/index.js';
 	import { albums as albumsData, getAlbumEmbedURL, type Album } from './Album';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { AlertTriangle } from 'lucide-svelte';
 
 	// TODO (https://github.com/bionboy/my-site/issues/14): For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
@@ -61,7 +61,7 @@
 </div> -->
 
 {#snippet browserCompatibilityNotice()}
-	<Card.Root class="w-full max-w-2xl border-yellow-500/50 bg-yellow-5000 bg-background">
+	<Card.Root class="w-full max-w-2xl border-yellow-500/50 bg-yellow-5000 bg-background/50">
 		<Card.Header>
 			<Card.Title class="flex gap-2 text-yellow-600 dark:text-yellow-400">
 				<AlertTriangle size={20} />

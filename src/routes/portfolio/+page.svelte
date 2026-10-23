@@ -14,7 +14,10 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	h1 {
-		@apply leading-tight text-muted-foreground rounded-xl p-4;
+		line-height: 1.25;
+		@apply text-muted-foreground rounded-xl p-4;
 	}
 </style>
