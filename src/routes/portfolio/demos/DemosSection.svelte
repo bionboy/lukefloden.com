@@ -1,15 +1,10 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
 	import DemoCard from '$lib/components/DemoCard.svelte';
 	import CoverUIScrollAnimation from './cover-ui-scroll-animation/CoverUIScrollAnimation.svelte';
 	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
 	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
-
-	// For placeholder demo cards
-	let placeholders = ['more to', 'come :)'];
 </script>
 
 <div class="gallery">
