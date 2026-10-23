@@ -25,6 +25,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../app.css';
+
 	.gallery {
 		@apply grid gap-4 m-5;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

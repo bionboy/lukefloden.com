@@ -12,6 +12,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.page {
 		/* @apply relative flex flex-col; */
 		view-transition-name: page-content;

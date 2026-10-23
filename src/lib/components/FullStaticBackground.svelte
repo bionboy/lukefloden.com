@@ -35,5 +35,5 @@
 		view-transition-name: static-bg;
 	}
 
-	/* see /Users/bb/github/mine/my-site/src/view-transition.pcss  */
+	/* see /Users/bb/github/mine/my-site/src/view-transition.css  */
 </style>

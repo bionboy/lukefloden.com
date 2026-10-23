@@ -81,6 +81,6 @@
 <style lang="postcss">
 	/* ! HACK: This is hardcoded to fit the sub-routes header so that the backdrop blur is not showing ontop of the next page that is being transitioned to */
 	::view-transition-group(page-header-backdrop-sub-routes) {
-		@apply backdrop-blur-none;
+		backdrop-filter: none;
 	}
 </style>

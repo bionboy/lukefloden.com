@@ -1,6 +1,15 @@
-import { fontFamily } from 'tailwindcss/defaultTheme';
 import { type Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
+
+const v3SansFontFamily = [
+	'ui-sans-serif',
+	'system-ui',
+	'sans-serif',
+	'"Apple Color Emoji"',
+	'"Segoe UI Emoji"',
+	'"Segoe UI Symbol"',
+	'"Noto Color Emoji"'
+];
 
 const config: Config = {
 	darkMode: ['class'],
@@ -51,6 +60,11 @@ const config: Config = {
 				card: {
 					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
 					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
+				},
+				yellow: {
+					400: '#facc15',
+					500: '#eab308',
+					600: '#ca8a04'
 				}
 			},
 			borderRadius: {
@@ -59,12 +73,19 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans],
+				sans: v3SansFontFamily,
 				jersey15: ['Jersey\\ 15'],
-				shhh: ['shhh', ...fontFamily.sans]
+				shhh: ['shhh', ...v3SansFontFamily]
 			},
 			dropShadow: {
-				glow: ['0 0 5px', '0 0 10px', '0 0 20px']
+				glow: ['0 0 5px', '0 0 10px', '0 0 20px'],
+				xl: ['0 20px 13px rgb(0 0 0 / 0.03)', '0 8px 5px rgb(0 0 0 / 0.08)']
+			},
+			boxShadow: {
+				sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)'
+			},
+			backdropBlur: {
+				sm: '4px'
 			}
 		}
 	},

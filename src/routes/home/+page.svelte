@@ -78,6 +78,8 @@
 </HeroPage>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.bottom-bar {
 		@apply fixed w-full
 			px-4 bottom-4 

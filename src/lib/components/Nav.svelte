@@ -29,6 +29,8 @@
 </nav>
 
 <style lang="postcss">
+	@reference '../../app.css';
+
 	.nav-item {
 		@apply transition-transform duration-150 ease-in;
 

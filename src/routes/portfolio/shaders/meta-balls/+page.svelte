@@ -33,6 +33,8 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../../app.css';
+
 	.asdf {
 		@apply flex;
 		/* --xxx: min(100vh, 100vw); */

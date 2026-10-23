@@ -40,7 +40,7 @@
 <Button
 	onclick={handleClick}
 	variant="outline"
-	class={cn('text-accent-2 outline outline-accent-2 -outline-offset-1', className)}
+	class={cn('text-accent-2 outline-3 outline-accent-2 -outline-offset-1', className)}
 >
 	<p class="gradient-text">{text}</p>
 </Button>

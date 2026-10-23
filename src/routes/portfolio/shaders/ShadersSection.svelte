@@ -114,12 +114,14 @@
 </div>
 
 <style lang="postcss">
+	@reference '../../../app.css';
+
 	:root {
 		--gap: 0rem;
-		@screen sm {
+		@media (min-width: 640px) {
 			--gap: 1rem;
 		}
-		@screen lg {
+		@media (min-width: 1024px) {
 			--gap: 2rem;
 		}
 		--neg-gap: calc(var(--gap) * -1);

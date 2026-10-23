@@ -3,12 +3,14 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { sentrySvelteKit } from '@sentry/sveltekit/vite';
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import devtoolsJson from 'vite-plugin-devtools-json';
 
 export default defineConfig({
 	plugins: [
+		tailwindcss(),
 		sentrySvelteKit({
 			org: process.env.SENTRY_ORG,
 			project: process.env.SENTRY_PROJECT,

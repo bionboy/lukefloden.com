@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.pcss';
+	import '../app.css';
 	import type { Snippet } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 	import { browser } from '$app/env';

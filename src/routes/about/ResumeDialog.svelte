@@ -90,7 +90,7 @@
 <button
 	class={cn(
 		buttonVariants({ variant: 'outline' }),
-		'text-accent-2 outline outline-accent-2 -outline-offset-1'
+		'text-accent-2 outline-3 outline-accent-2 -outline-offset-1'
 	)}
 	onclick={() => (open = true)}
 >
@@ -129,7 +129,7 @@
 					download="Resume-Luke-Floden.pdf"
 					class={cn(
 						buttonVariants({ variant: 'outline' }),
-						'absolute -bottom-3 -right-3 z-10 no-underline text-accent-2 outline outline-accent-2 -outline-offset-1 shadow-md'
+						'absolute -bottom-3 -right-3 z-10 no-underline text-accent-2 outline-3 outline-accent-2 -outline-offset-1 shadow-md'
 					)}
 				>
 					Download PDF

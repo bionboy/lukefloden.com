@@ -129,12 +129,14 @@
 {/snippet}
 
 {#snippet star()}
-	<div class="rotate-0" style:--tw-rotate={getRandomRotation()}>
+	<div style:rotate={getRandomRotation()}>
 		<Star size="3rem" class="stroke-yellow-400 fill-yellow-400"></Star>
 	</div>
 {/snippet}
 
 <style lang="postcss">
+	@reference '../../../../app.css';
+
 	.hero {
 		position: relative;
 		display: flex;
