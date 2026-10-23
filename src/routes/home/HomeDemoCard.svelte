@@ -6,12 +6,12 @@
 		onclick = undefined,
 		bgOpaque = false,
 		class: className = ''
-	} = $props<{
+	}: {
 		children?: Snippet;
 		onclick?: (e: MouseEvent) => void;
 		bgOpaque?: boolean;
 		class?: string;
-	}>();
+	} = $props();
 </script>
 
 {#if onclick}
