@@ -28,7 +28,7 @@
 </script>
 
 <Button
-	on:click={rotateMode}
+	onclick={rotateMode}
 	variant="outline"
 	size="icon"
 	class={['relative overflow-clip', props.class]}
