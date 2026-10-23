@@ -1,5 +1,5 @@
 // Re-export everything we need from mode-watcher
-export { mode, resetMode, setMode, ModeWatcher } from 'mode-watcher';
+export { mode, userPrefersMode, resetMode, setMode, ModeWatcher } from 'mode-watcher';
 
 /**
  * Constants for theme modes to avoid magic strings
