@@ -1,6 +1,6 @@
-import { sequence } from '@sveltejs/kit/hooks';
+import { redirect } from '@sveltejs/kit';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
 import * as Sentry from '@sentry/sveltekit';
-import { redirect, type Handle } from '@sveltejs/kit';
 import { dev } from '$app/env';
 
 Sentry.init({
