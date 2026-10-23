@@ -2,7 +2,7 @@
 	import CoverUIScrollAnimation from './CoverUIScrollAnimation.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { albums as albumsData, getAlbumEmbedURL, type Album } from './Album';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { AlertTriangle } from 'lucide-svelte';
 
 	// TODO (https://github.com/bionboy/my-site/issues/14): For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
@@ -30,9 +30,9 @@
 		{#if browser && !supportsScrollTimeline}
 			{@render browserCompatibilityNotice()}
 		{/if}
-		<div class="w-full aspect-square sm:aspect-[21/9] overflow-clip">
-			<CoverUIScrollAnimation {albums} {onAlbumClick} />
-		</div>
+		<div
+			class="w-full aspect-square sm:aspect-[21/9] overflow-clip"
+		><CoverUIScrollAnimation albums={albums} onAlbumClick={onAlbumClick} /></div>
 		<!-- ! has to be h-9.5rem because on dark mode you will see white in the background overflow -->
 		<iframe
 			title={`Spotify album embed for ${album.name}`}

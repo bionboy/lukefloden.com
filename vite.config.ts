@@ -28,6 +28,7 @@ export default defineConfig({
 			adapter: vercelAdapter(),
 
 			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
+			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
 			typescript: {
 				config: (tsconfig) => {
 					tsconfig.exclude.push('../src/lib/resume-system/**');

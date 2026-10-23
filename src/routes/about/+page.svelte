@@ -3,7 +3,7 @@
 	import { SocialLinks } from '$lib/components/SocialLinks';
 	import AboutCard from '$lib/components/AboutCard.svelte';
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
 	import CalendlyPopup from '$lib/components/CalendlyPopup.svelte';
 
@@ -34,9 +34,7 @@
 			as a resource.
 		</p>
 		<p>That being said.... here are my socials!</p>
-		<div class="mt-8">
-			<SocialLinks></SocialLinks>
-		</div>
+		<div class="mt-8"><SocialLinks /></div>
 	</AboutCard>
 	<AboutCard
 		id="career"

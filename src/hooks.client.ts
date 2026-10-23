@@ -1,6 +1,6 @@
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
-import { dev } from '$app/environment';
+import { dev } from '$app/env';
 
 Sentry.init({
 	dsn: 'https://ead58b658c75eea8948071d7e491ec9c@o4509607124205568.ingest.us.sentry.io/4509607127744512',
