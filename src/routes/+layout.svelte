@@ -2,7 +2,7 @@
 	import '../app.pcss';
 	import type { Snippet } from 'svelte';
 	import { onNavigate } from '$app/navigation';
-	import { ModeWatcher } from '$lib/theme';
+	import { ModeWatcher } from '#lib/theme.js';
 	import SiteHeader from './SiteHeader.svelte';
 
 	let { children }: { children: Snippet } = $props();

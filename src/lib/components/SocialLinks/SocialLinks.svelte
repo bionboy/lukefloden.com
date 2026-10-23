@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mode, ThemeMode } from '$lib/theme';
+	import { mode, ThemeMode } from '#lib/theme.js';
 	import { SocialIcon } from '.';
 </script>
 

@@ -2,13 +2,13 @@
 
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Nav from '$lib/components/Nav.svelte';
-	import PageHeader from '$lib/components/PageHeader.svelte';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { cn } from '$lib/utils';
+	import Nav from '#lib/components/Nav.svelte';
+	import PageHeader from '#lib/components/PageHeader.svelte';
+	import ThemeSwitcher from '#lib/components/ThemeSwitcher.svelte';
+	import Button from '#lib/components/ui/button/button.svelte';
+	import { cn } from '#lib/utils.js';
 	import { Star } from 'lucide-svelte';
-	import type { Props as PageHeaderProps } from '$lib/components/PageHeader.svelte';
+	import type { Props as PageHeaderProps } from '#lib/components/PageHeader.svelte';
 
 	let { headerStyle = 'rounded' }: PageHeaderProps = $props();
 

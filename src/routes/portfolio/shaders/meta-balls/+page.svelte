@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card/';
+	import * as Card from '#lib/components/ui/card//index.js';
 
 	// import type { PageData } from './$types';
 	import MetaBalls from './MetaBalls.svelte';

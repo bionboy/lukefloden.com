@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { WebGlShader } from 'svader';
-	import shaderHoverGrid from '$lib/assets/shaders/hover-grid.frag?raw';
+	import shaderHoverGrid from '#lib/assets/shaders/hover-grid.frag?raw';
 	import { getNormalizedMouseCoords } from '../helpers';
 
 	let mouse: [number, number] = $state([-1, -1]);

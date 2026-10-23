@@ -55,13 +55,13 @@ export default ts.config(
 					paths: [
 						{
 							name: 'mode-watcher',
-							message: 'Please import from "$lib/theme" instead of mode-watcher directly.'
+							message: 'Please import from "#lib/theme" instead of mode-watcher directly.'
 						}
 					],
 					patterns: [
 						{
 							group: ['mode-watcher/*'],
-							message: 'Please import from "$lib/theme" instead of mode-watcher directly.'
+							message: 'Please import from "#lib/theme" instead of mode-watcher directly.'
 						}
 					]
 				}

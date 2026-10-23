@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AboutCard from '$lib/components/AboutCard.svelte';
+	import AboutCard from '#lib/components/AboutCard.svelte';
 </script>
 
 <div class="about max-w-3xl mx-auto my-4 p-4 flex flex-col gap-8 font-jersey15NOT">

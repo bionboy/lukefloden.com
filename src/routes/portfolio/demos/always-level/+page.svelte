@@ -2,8 +2,8 @@
 	import DeviceOrientationPermissionRequester from './DeviceOrientationPermissionRequester.svelte';
 	import AlwaysLevel from './AlwaysLevel.svelte';
 	import type { PageData } from './$types';
-	import { setDocumentBodyTailwind } from '$lib/setBackground';
-	import HeroPage from '$lib/components/HeroPage.svelte';
+	import { setDocumentBodyTailwind } from '#lib/setBackground.js';
+	import HeroPage from '#lib/components/HeroPage.svelte';
 
 	let { data }: { data: PageData } = $props();
 

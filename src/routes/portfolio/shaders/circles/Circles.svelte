@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getNormalizedMouseCoords } from '../helpers';
 	import { WebGlShader } from 'svader';
-	import shaderCode from '$lib/assets/shaders/circles.frag?raw';
+	import shaderCode from '#lib/assets/shaders/circles.frag?raw';
 
 	let mouse: [number, number] = $state([-1, -1]);
 </script>

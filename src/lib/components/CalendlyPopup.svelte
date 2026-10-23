@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
+	import { cn } from '#lib/utils.js';
 	import Button from './ui/button/button.svelte';
 
 	interface CalendlyPopupProps {

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import ResumeDialog from './ResumeDialog.svelte';
-	import { SocialLinks } from '$lib/components/SocialLinks';
-	import AboutCard from '$lib/components/AboutCard.svelte';
+	import { SocialLinks } from '#lib/components/SocialLinks/index.js';
+	import AboutCard from '#lib/components/AboutCard.svelte';
 	import { page } from '$app/stores';
 	import { browser } from '$app/env';
-	import TorcLogo from '$lib/components/SocialLinks/torc-logo.svelte';
-	import CalendlyPopup from '$lib/components/CalendlyPopup.svelte';
+	import TorcLogo from '#lib/components/SocialLinks/torc-logo.svelte';
+	import CalendlyPopup from '#lib/components/CalendlyPopup.svelte';
 
 	let showResumeOnLoad = $state(false);
 

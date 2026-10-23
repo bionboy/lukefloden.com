@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Parallax from './parallax/Parallax.svelte';
 	import AlwaysLevel from './always-level/AlwaysLevel.svelte';
-	import DemoCard from '$lib/components/DemoCard.svelte';
+	import DemoCard from '#lib/components/DemoCard.svelte';
 	import CoverUIScrollAnimation from './cover-ui-scroll-animation/CoverUIScrollAnimation.svelte';
-	import perlinPlaneImg from '$lib/assets/images/perlin-plane.png?enhanced';
-	import granulp5 from '$lib/assets/images/granulp5.png?enhanced';
+	import perlinPlaneImg from '#lib/assets/images/perlin-plane.png?enhanced';
+	import granulp5 from '#lib/assets/images/granulp5.png?enhanced';
 </script>
 
 <div class="gallery">

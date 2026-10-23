@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { mode, setMode, resetMode, type ColorThemeMode, ThemeMode } from '$lib/theme';
+	import { mode, setMode, resetMode, type ColorThemeMode, ThemeMode } from '#lib/theme.js';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import type { ClassValue } from 'svelte/elements';
 
 	const props: { class?: ClassValue } = $props();

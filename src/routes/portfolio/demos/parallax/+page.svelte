@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Parallax from './Parallax.svelte';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '#lib/components/ui/card/index.js';
 </script>
 
 <div class="demos-display">

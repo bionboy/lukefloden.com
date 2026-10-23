@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getNormalizedMouseCoords } from '../helpers';
 	import { WebGlShader } from 'svader';
-	import shaderCode from '$lib/assets/shaders/meta-balls.frag?raw';
+	import shaderCode from '#lib/assets/shaders/meta-balls.frag?raw';
 
 	const defaultMouseCoords: [number, number] = [-1, -1];
 

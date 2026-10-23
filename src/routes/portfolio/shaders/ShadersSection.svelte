@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MetaBalls from './meta-balls/MetaBalls.svelte';
-	import AspectRatio from '$lib/components/ui/aspect-ratio/aspect-ratio.svelte';
+	import AspectRatio from '#lib/components/ui/aspect-ratio/aspect-ratio.svelte';
 	import Shapes from './shapes/Shapes.svelte';
 	import HoverGrid from './hover-grid/HoverGrid.svelte';
 	import Circles from './circles/Circles.svelte';

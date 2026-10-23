@@ -51,5 +51,9 @@
 		"mode-watcher": "^0.5.1",
 		"vite-imagetools": "^12.0.1",
 		"vite-plugin-devtools-json": "^1.1.2"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
 	}
 }

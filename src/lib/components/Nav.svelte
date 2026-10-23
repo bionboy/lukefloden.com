@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { cn } from '$lib/utils.js';
+	import { cn } from '#lib/utils.js';
 
 	// TODO
 	// type NavLocation = { route: string; name: string; defaultSubRoute?: string, subRoutes?: NavLocation[] };

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { createPositions } from './islandPositions.svelte';
-	import Cloud from '$lib/components/Cloud.svelte';
-	import { mode, ThemeMode } from '$lib/theme';
+	import Cloud from '#lib/components/Cloud.svelte';
+	import { mode, ThemeMode } from '#lib/theme.js';
 	import { Star } from 'lucide-svelte';
 
 	type Props = {

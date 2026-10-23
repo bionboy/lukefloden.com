@@ -1,6 +1,6 @@
 <script lang="ts">
 	import CoverUIScrollAnimation from './CoverUIScrollAnimation.svelte';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '#lib/components/ui/card/index.js';
 	import { albums as albumsData, getAlbumEmbedURL, type Album } from './Album';
 	import { browser } from '$app/env';
 	import { AlertTriangle } from 'lucide-svelte';
