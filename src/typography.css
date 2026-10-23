@@ -27,7 +27,8 @@
 	}
 
 	p {
-		@apply leading-7 [&:not(:first-child)]:mt-4;
+		line-height: 1.75rem;
+		@apply [&:not(:first-child)]:mt-4;
 	}
 
 	blockquote {
