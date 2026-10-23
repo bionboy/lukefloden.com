@@ -71,7 +71,7 @@
 					<GithubBadge href={props.github} />
 				{/if}
 				{#if props.tags}
-					{#each props.tags as tag (tag)}
+					{#each props.tags as tag, i (i)}
 						<Badge variant="secondary">{tag}</Badge>
 					{/each}
 				{/if}
