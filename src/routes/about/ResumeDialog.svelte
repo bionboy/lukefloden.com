@@ -39,7 +39,8 @@
 	// The resume content has a min-width of 550px. On narrow screens, the iframe
 	// is rendered at that width and CSS-scaled down to fit the container.
 	const RESUME_CONTENT_MIN_WIDTH = 550;
-	const FOCUSABLE_SELECTOR = 'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
+	const FOCUSABLE_SELECTOR =
+		'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
 
 	let iframeContainerWidth = $state(0);
 	const iframeScale = $derived(Math.min(1, iframeContainerWidth / RESUME_CONTENT_MIN_WIDTH || 1));

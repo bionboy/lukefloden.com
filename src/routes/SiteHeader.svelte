@@ -1,3 +1,5 @@
+<!-- Inspiration for header: https://www.daisychainstudio.net/ (credit: https://twomuch.studio) -->
+
 <script lang="ts">
 	import { page } from '$app/state';
 	import Nav from '#lib/components/Nav.svelte';
@@ -33,13 +35,14 @@
 		}
 	];
 
-	const subRoutes = $derived(locations.find((location) => page.route.id?.startsWith(location.route))?.subRoutes);
+	const subRoutes = $derived(
+		locations.find((location) => page.route.id?.startsWith(location.route))?.subRoutes
+	);
+
 	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
 
-<!-- Inspiration for header: https://www.daisychainstudio.net/ (credit: https://twomuch.studio) -->
-
-<PageHeader headerStyle={headerStyle}>
+<PageHeader {headerStyle}>
 	<!-- creating container and using overflow clip on it so that "inset" doesn't mess with clipping the contents -->
 	{#snippet left({ headerMinimized })}
 		<Button
@@ -51,23 +54,24 @@
 		>
 			<Star
 				size="2rem"
-				class={cn('transition-all duration-700', 'fill-accent-light stroke-background text-accent-light stroke-1', 'hover:duration-300 hover:-rotate-12 hover:scale-150', headerMinimized && 'stroke-background drop-shadow-glow stroke-2')}
+				class={cn(
+					'transition-all duration-700',
+					'fill-accent-light stroke-background text-accent-light stroke-1',
+					'hover:duration-300 hover:-rotate-12 hover:scale-150',
+					headerMinimized && 'stroke-background drop-shadow-glow stroke-2'
+				)}
 			/>
 		</Button>
 	{/snippet}
 	{#snippet middle()}
-		<Nav locations={locations} />
+		<Nav {locations} />
 	{/snippet}
 	{#snippet right()}
 		<ThemeSwitcher class={[headerStyle === 'rounded' && 'rounded-full']} />
 	{/snippet}
 </PageHeader>
 {#if subRoutes}
-	<PageHeader
-		id="sub-routes"
-		headerStyle={headerStyle}
-		class="max-w-64 max-h-10 mx-auto !mt-0"
-	>
+	<PageHeader id="sub-routes" {headerStyle} class="max-w-64 max-h-10 mx-auto !mt-0">
 		{#snippet middle()}
 			<Nav locations={subRoutes} />
 		{/snippet}

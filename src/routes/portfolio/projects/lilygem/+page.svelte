@@ -9,9 +9,9 @@
 			<a href="https://lilygem.vercel.app/">
 				<strong>LilyGem</strong>
 			</a>
-			is a personal finance companion that goes beyond simple currency conversion. I built this as a
-			real-world application to solve the problem of tracking international transfers and understanding
-			exchange rate patterns over time.
+			is a personal finance companion that goes beyond simple currency conversion. I built this as a real-world
+			application to solve the problem of tracking international transfers and understanding exchange
+			rate patterns over time.
 		</p>
 		<p>
 			The app features real-time currency conversion, historical rate analysis, transaction

@@ -30,9 +30,9 @@
 		{#if browser && !supportsScrollTimeline}
 			{@render browserCompatibilityNotice()}
 		{/if}
-		<div
-			class="w-full aspect-square sm:aspect-[21/9] overflow-clip"
-		><CoverUIScrollAnimation albums={albums} onAlbumClick={onAlbumClick} /></div>
+		<div class="w-full aspect-square sm:aspect-[21/9] overflow-clip">
+			<CoverUIScrollAnimation {albums} {onAlbumClick} />
+		</div>
 		<!-- ! has to be h-9.5rem because on dark mode you will see white in the background overflow -->
 		<iframe
 			title={`Spotify album embed for ${album.name}`}

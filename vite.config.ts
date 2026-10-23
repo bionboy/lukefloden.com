@@ -25,28 +25,17 @@ export default defineConfig({
 			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-			adapter: vercelAdapter(),
-
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			// @migration-task `typescript.config` is deprecated; configure TypeScript in tsconfig.json directly
-			typescript: {
-				config: (tsconfig) => {
-					tsconfig.exclude.push('../src/lib/resume-system/**');
-				}
-			}
+			adapter: vercelAdapter()
 		}),
 		enhancedImages(),
-		basicSsl({}),
-		/** name of certification */ // name: 'test',
-		/** custom trust domains */ // domains: ['*.custom.com'],
-		/** custom certification directory */ // certDir: '/Users/.../.devServer/cert'
+		basicSsl({
+			/** name of certification */
+			// name: 'test',
+			/** custom trust domains */
+			// domains: ['*.custom.com'],
+			/** custom certification directory */
+			// certDir: '/Users/.../.devServer/cert'
+		}),
 		devtoolsJson()
 	]
 });
