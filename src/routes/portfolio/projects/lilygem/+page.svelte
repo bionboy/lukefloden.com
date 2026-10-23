@@ -1,6 +1,4 @@
 <script lang="ts">
-	import DemoCard from '$lib/components/DemoCard.svelte';
-	import lilygemImg from '$lib/assets/images/LilyGem-dashboard.png?enhanced';
 	import AboutCard from '$lib/components/AboutCard.svelte';
 </script>
 

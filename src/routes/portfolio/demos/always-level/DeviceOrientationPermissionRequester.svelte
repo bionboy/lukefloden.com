@@ -3,6 +3,10 @@
 
 	let { isIosSafari } = $props();
 
+	type DeviceOrientationEventWithPermission = typeof DeviceOrientationEvent & {
+		requestPermission: () => Promise<PermissionState>;
+	};
+
 	let orientationEventPermission = $state<'' | PermissionState>('');
 
 	/**
@@ -13,10 +17,14 @@
 	async function requestIosSafariDeviceOrientation() {
 		const hasDOE = typeof DeviceOrientationEvent !== 'undefined';
 		const canRequest =
-			hasDOE && typeof (DeviceOrientationEvent as any).requestPermission === 'function';
+			hasDOE &&
+			typeof (DeviceOrientationEvent as DeviceOrientationEventWithPermission).requestPermission ===
+				'function';
 		try {
 			if (canRequest) {
-				const state = await (DeviceOrientationEvent as any).requestPermission();
+				const state = await (
+					DeviceOrientationEvent as DeviceOrientationEventWithPermission
+				).requestPermission();
 				orientationEventPermission = state as PermissionState;
 				if (state !== 'granted') alert('Permission denied');
 			} else {

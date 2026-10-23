@@ -94,15 +94,15 @@
 	style:--y-shift={parallaxShift.y}
 >
 	<div class="parallax">
-		{#each islandPositions[2] as coords}
+		{#each islandPositions[2] as coords, i (i)}
 			{@render island('background', coords[0], coords[1], backgroundContent)}
 		{/each}
 		<div class="blur-panel background"></div>
-		{#each islandPositions[1] as coords}
+		{#each islandPositions[1] as coords, i (i)}
 			{@render island('midground', coords[0], coords[1], midgroundContent)}
 		{/each}
 		<div class="blur-panel midground"></div>
-		{#each islandPositions[0] as coords}
+		{#each islandPositions[0] as coords, i (i)}
 			{@render island('foreground', coords[0], coords[1], foregroundContent)}
 		{/each}
 		<div class="blur-panel foreground"></div>

@@ -19,7 +19,7 @@
 			/>
 		</div>
 	</DemoCard>
-	{#each Array(2) as _}
+	{#each Array(2) as _, i (i)}
 		<DemoCard class="hidden" />
 	{/each}
 </div>

@@ -1,8 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import Parallax from '../portfolio/demos/parallax/Parallax.svelte';
-
-	let { data }: { data: PageData } = $props();
 </script>
 
 <div class="home">
