@@ -73,15 +73,15 @@
 
 	let parallaxShift = $derived(getShift());
 
-	let defaultIslandContent = $derived($mode === ThemeMode.LIGHT ? cloud : star);
+	let defaultIslandContent = $derived(mode.current === ThemeMode.LIGHT ? cloud : star);
 </script>
 
 <svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
 
 <div
 	class="hero"
-	class:light-background={includeBackground && $mode === ThemeMode.LIGHT}
-	class:dark-background={includeBackground && $mode === ThemeMode.DARK}
+	class:light-background={includeBackground && mode.current === ThemeMode.LIGHT}
+	class:dark-background={includeBackground && mode.current === ThemeMode.DARK}
 	role="presentation"
 	onmousemove={(event: MouseEvent) => {
 		// mouse = { x: event.clientX, y: event.clientY };

@@ -48,7 +48,7 @@
 		"@sveltejs/enhanced-img": "^1.0.0",
 		"@vercel/analytics": "^2.0.1",
 		"@vercel/speed-insights": "^2.0.0",
-		"mode-watcher": "^0.5.1",
+		"mode-watcher": "^1.1.0",
 		"vite-imagetools": "^12.0.1",
 		"vite-plugin-devtools-json": "^1.1.2"
 	},

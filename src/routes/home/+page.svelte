@@ -31,7 +31,7 @@
 
 	const nextDemo = () => (demoIndex = (demoIndex + 1) % demos.length);
 
-	setDocumentBodyTailwind($mode !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
+	setDocumentBodyTailwind(mode.current !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 <svelte:window

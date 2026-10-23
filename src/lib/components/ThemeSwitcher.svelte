@@ -6,7 +6,7 @@
 
 	const props: { class?: ClassValue } = $props();
 
-	let selectedMode: ColorThemeMode = $state($mode ?? ThemeMode.SYSTEM);
+	let selectedMode: ColorThemeMode = $state(mode.current ?? ThemeMode.SYSTEM);
 
 	const rotateMode = () => {
 		switch (selectedMode) {
