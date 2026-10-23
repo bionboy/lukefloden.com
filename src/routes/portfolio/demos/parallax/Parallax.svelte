@@ -72,7 +72,6 @@
 	};
 
 	let parallaxShift = $derived(getShift());
-
 </script>
 
 <svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />

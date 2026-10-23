@@ -11,10 +11,6 @@
 	}: Props = $props();
 </script>
 
-<button
-	type="button"
-	class={cn(buttonVariants({ variant, size }), className)}
-	{...restProps}
->
+<button type="button" class={cn(buttonVariants({ variant, size }), className)} {...restProps}>
 	{@render children?.()}
 </button>

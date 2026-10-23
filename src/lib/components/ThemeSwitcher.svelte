@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { userPrefersMode, setMode, resetMode, type ColorThemeMode, ThemeMode } from '#lib/theme.js';
+	import {
+		userPrefersMode,
+		setMode,
+		resetMode,
+		type ColorThemeMode,
+		ThemeMode
+	} from '#lib/theme.js';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 	import { Button } from '#lib/components/ui/button/index.js';
 	import type { ClassValue } from 'svelte/elements';
