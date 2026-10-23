@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { cn } from '#lib/utils.js';
 
 	// TODO
@@ -10,8 +10,8 @@
 	let { locations }: { locations: NavLocations } = $props();
 
 	const isActiveRoute = (route: string): boolean => {
-		const isRouteMatch = $page.route.id?.startsWith(route);
-		const isHashMatch = route.startsWith('#') && $page.url?.hash === route;
+		const isRouteMatch = page.route.id?.startsWith(route);
+		const isHashMatch = route.startsWith('#') && page.url?.hash === route;
 		return isRouteMatch || isHashMatch;
 	};
 </script>

@@ -2,7 +2,7 @@
 	import ResumeDialog from './ResumeDialog.svelte';
 	import { SocialLinks } from '#lib/components/SocialLinks/index.js';
 	import AboutCard from '#lib/components/AboutCard.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { browser } from '$app/env';
 	import TorcLogo from '#lib/components/SocialLinks/torc-logo.svelte';
 	import CalendlyPopup from '#lib/components/CalendlyPopup.svelte';
@@ -12,7 +12,7 @@
 	// This will run only on client-side after hydration
 	// $effect is not needed because we only care about the initial load
 	if (browser) {
-		showResumeOnLoad = $page.url.searchParams.has('resume');
+		showResumeOnLoad = page.url.searchParams.has('resume');
 	}
 </script>
 
