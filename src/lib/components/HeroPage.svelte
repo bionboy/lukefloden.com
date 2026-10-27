@@ -24,6 +24,10 @@
 		--after-hero-offset: calc(100dvh + var(--hero-offset) + -2rem);
 	}
 
+	:global(body):has(.hero.fixed) {
+		min-height: 100dvh;
+	}
+
 	.hero {
 		top: var(--hero-offset);
 		height: var(--hero-height);
