@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="site-bg fixed inset-0 -z-10 dark:brightness-50">
+<div class="site-bg absolute inset-0 -z-10 min-h-lvh dark:brightness-50">
 	{#if props.children}
 		{@render props.children()}
 	{:else if props.imgSrc}
@@ -42,6 +42,11 @@
 <style lang="postcss">
 	.site-bg {
 		view-transition-name: static-bg;
+		mask-image: linear-gradient(#000 calc(100% - 6rem), transparent);
+	}
+
+	:global(body.bg-accent) .site-bg {
+		display: none;
 	}
 
 	/* see /Users/bb/github/mine/my-site/src/view-transition.css  */
