@@ -23,7 +23,12 @@
 
 	function parkDocument() {
 		if (nested && viewport) {
-			window.scrollTo({ top: viewport.offsetTop, left: 0, behavior: 'instant' });
+			const screenBlock = screen.orientation.type.startsWith('landscape')
+				? Math.min(screen.width, screen.height)
+				: Math.max(screen.width, screen.height);
+			document.documentElement.style.setProperty('--screen-block', `${screenBlock}px`);
+			const padding = parseFloat(getComputedStyle(viewport).paddingTop);
+			window.scrollTo({ top: viewport.offsetTop + padding, left: 0, behavior: 'instant' });
 		}
 	}
 
@@ -80,6 +85,7 @@
 	:global(html[data-page-viewport='nested']) {
 		height: 300lvh;
 		overflow: hidden;
+		overflow-anchor: none;
 		scroll-behavior: auto;
 		view-transition-name: none;
 	}
@@ -89,11 +95,14 @@
 	}
 
 	:global(html[data-page-viewport='nested']) .page-viewport {
+		--page-overscan: max(0px, var(--screen-block, 100dvh) - 100dvh);
 		position: absolute;
-		top: 100lvh;
+		top: calc(100lvh - var(--page-overscan));
 		left: 0;
 		right: 0;
-		height: 100dvh;
+		height: calc(100dvh + 2 * var(--page-overscan));
+		padding-block: var(--page-overscan);
+		scroll-padding-block: var(--page-overscan);
 		overflow-y: auto;
 		overscroll-behavior-y: contain;
 	}
@@ -111,6 +120,7 @@
 		:global(html[data-page-viewport='nested']) .page-viewport {
 			position: static;
 			height: auto;
+			padding-block: 0;
 			overflow: visible;
 		}
 	}

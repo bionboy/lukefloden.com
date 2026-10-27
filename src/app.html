@@ -73,8 +73,13 @@
 			if (CSS.supports('-webkit-touch-callout', 'none')) {
 				const viewport = document.getElementById('page-viewport');
 				if (viewport) {
+					const screenBlock = screen.orientation.type.startsWith('landscape')
+						? Math.min(screen.width, screen.height)
+						: Math.max(screen.width, screen.height);
+					document.documentElement.style.setProperty('--screen-block', `${screenBlock}px`);
 					document.documentElement.dataset.pageViewport = 'nested';
-					window.scrollTo({ top: viewport.offsetTop, behavior: 'instant' });
+					const padding = parseFloat(getComputedStyle(viewport).paddingTop);
+					window.scrollTo({ top: viewport.offsetTop + padding, behavior: 'instant' });
 				}
 			}
 		</script>
