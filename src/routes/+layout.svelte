@@ -25,7 +25,7 @@
 </script>
 
 <ModeWatcher />
-<div class="relative isolate flex flex-col">
+<div class="relative flex flex-col">
 	<SiteHeader />
 	{@render children()}
 </div>
