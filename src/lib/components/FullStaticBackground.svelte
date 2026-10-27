@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
+	import type { Snippet } from 'svelte';
 	import type { Picture } from 'vite-imagetools';
 
 	let props: {
@@ -7,18 +7,9 @@
 		imgAlt?: string;
 		children?: Snippet;
 	} = $props();
-
-	onMount(() => {
-		if (!props.imgSrc || props.children) return;
-		document.documentElement.style.setProperty(
-			'--page-background-image',
-			`url("${props.imgSrc.img.src}")`
-		);
-		return () => document.documentElement.style.removeProperty('--page-background-image');
-	});
 </script>
 
-<div class="site-bg absolute inset-0 -z-10 min-h-lvh dark:brightness-50">
+<div class="site-bg fixed inset-0 -z-10 dark:brightness-50">
 	{#if props.children}
 		{@render props.children()}
 	{:else if props.imgSrc}
@@ -42,7 +33,7 @@
 <style lang="postcss">
 	.site-bg {
 		view-transition-name: static-bg;
-		mask-image: linear-gradient(#000 calc(100% - 6rem), transparent);
+		mask-image: linear-gradient(transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
 	}
 
 	:global(body.bg-accent) .site-bg {
