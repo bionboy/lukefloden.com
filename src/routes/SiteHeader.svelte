@@ -9,6 +9,7 @@
 	import { cn } from '#lib/utils.js';
 	import { Star } from 'lucide-svelte';
 	import type { Props as PageHeaderProps } from '#lib/components/PageHeader.svelte';
+	import { getPageScroll } from '#lib/page-scroll.js';
 
 	let { headerStyle = 'rounded' }: PageHeaderProps = $props();
 
@@ -39,7 +40,8 @@
 		locations.find((location) => page.route.id?.startsWith(location.route))?.subRoutes
 	);
 
-	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+	const pageScroll = getPageScroll();
+	const scrollToTop = () => pageScroll.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
 
 <PageHeader {headerStyle}>

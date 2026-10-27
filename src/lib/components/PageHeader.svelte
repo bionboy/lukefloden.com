@@ -2,6 +2,7 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { getPageScroll } from '#lib/page-scroll.js';
 
 	type IslandSnippet = Snippet<[{ headerMinimized: boolean }]>;
 
@@ -31,30 +32,29 @@
 
 	let hovering = $state(false);
 	let headerHeight = $state(0);
+	const pageScroll = getPageScroll();
 	const scroll = $state({
-		y: 0,
 		yPrev: 0,
 		up: false
 	});
 	// let headerMinimized: boolean = $derived( !hovering && !scroll.up && scroll.y > headerHeight * 2 - 1);
 	let headerMinimized: boolean = $derived.by(() => {
 		if (!hideOnScroll) return false;
-		return !hovering && !scroll.up && scroll.y > headerHeight * 2 - 1;
+		return !hovering && !scroll.up && pageScroll.y > headerHeight * 2 - 1;
 	});
 
 	const hoverTrue = () => (revealOnHover ? (hovering = true) : undefined);
 	const hoverFalse = () => (hovering = false);
 
-	const onscroll = () => {
-		scroll.up = scroll.y - scroll.yPrev < 0;
-		scroll.yPrev = scroll.y;
-	};
+	$effect(() => {
+		const y = pageScroll.y;
+		scroll.up = y - scroll.yPrev < 0;
+		scroll.yPrev = y;
+	});
 </script>
 
-<svelte:window bind:scrollY={scroll.y} {onscroll} />
-
 <!-- creating container and using overflow clip on it so that "inset" doesn't mess with clipping the contents -->
-<div class="header-container overflow-x-clip {className}">
+<div class="header-container overflow-x-clip {className}" data-header={id}>
 	<div
 		class={['site-header header-shape', className, headerStyle, { headerMinimized }]}
 		role="navigation"
@@ -153,5 +153,23 @@
 		&.headerMinimized {
 			@apply -translate-y-full -scale-x-0 opacity-0;
 		}
+	}
+
+	:global(html[data-page-viewport='nested']) .header-container {
+		position: sticky;
+		top: 0;
+		width: 100%;
+		z-index: 30;
+		flex-shrink: 0;
+	}
+
+	:global(html[data-page-viewport='nested']) .header-container[data-header='sub-routes'] {
+		top: 4.5rem;
+	}
+
+	:global(html[data-page-viewport='nested']) .site-header,
+	:global(html[data-page-viewport='nested']) .backdrop {
+		position: absolute;
+		top: 0;
 	}
 </style>

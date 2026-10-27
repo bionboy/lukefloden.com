@@ -37,7 +37,7 @@
 	}}
 />
 
-<HeroPage>
+<HeroPage class={demoIndex === 0 ? 'home-metaballs' : ''}>
 	<!-- *  using 60% of max viewport dimension and scaling instead of 110%
        *  to avoid performance issues with resolution being too high -->
 	<div class="aspect-square h-[max(75vh,75vw)] scale-[1.5]">
@@ -75,6 +75,15 @@
 
 <style lang="postcss">
 	@reference '../../app.css';
+
+	:global(body:has(.home-metaballs)) {
+		background-image: none;
+		background-color: white;
+	}
+
+	:global(.dark body:has(.home-metaballs)) {
+		background-color: black;
+	}
 
 	.bottom-bar {
 		@apply fixed w-full

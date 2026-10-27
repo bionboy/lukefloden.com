@@ -24,7 +24,7 @@
 		--after-hero-offset: calc(100dvh + var(--hero-offset) + -2rem);
 	}
 
-	:global(body):has(.hero.fixed) {
+	:global(html:not([data-page-viewport='nested']) body):has(.hero.fixed) {
 		min-height: 100dvh;
 	}
 
