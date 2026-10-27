@@ -104,6 +104,7 @@
 		padding-block: var(--page-overscan);
 		scroll-padding-block: var(--page-overscan);
 		overflow-y: auto;
+		scroll-behavior: smooth;
 		overscroll-behavior-y: contain;
 	}
 
