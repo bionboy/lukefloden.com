@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { mode, ThemeMode } from '#lib/theme.js';
-	import { setDocumentBodyTailwind } from '#lib/setBackground.js';
 	import Parallax from '../portfolio/demos/parallax/Parallax.svelte';
 	import MetaBalls from '../portfolio/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../portfolio/shaders/hover-grid/HoverGrid.svelte';
@@ -30,8 +28,6 @@
 	const DemoToDisplay = $derived(demos[demoIndex]);
 
 	const nextDemo = () => (demoIndex = (demoIndex + 1) % demos.length);
-
-	setDocumentBodyTailwind(mode.current !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 <svelte:window
