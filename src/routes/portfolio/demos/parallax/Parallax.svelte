@@ -4,6 +4,7 @@
 	import Cloud from '#lib/components/Cloud.svelte';
 	import { mode, ThemeMode } from '#lib/theme.js';
 	import { Star } from 'lucide-svelte';
+	import { getPageScroll } from '#lib/page-scroll.js';
 
 	type Props = {
 		title?: string;
@@ -29,7 +30,7 @@
 		moveWithMouse = true
 	}: Props = $props();
 
-	let scroll = $state({ x: 0, y: 0 });
+	const scroll = getPageScroll();
 	let mouse = $state({ x: 0, y: 0 });
 	let hero = $state({
 		width: 0,
@@ -73,8 +74,6 @@
 
 	let parallaxShift = $derived(getShift());
 </script>
-
-<svelte:window bind:scrollY={scroll.y} bind:scrollX={scroll.x} />
 
 <div
 	class="hero"

@@ -4,7 +4,10 @@
 		<title>Luke Floden</title>
 
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=1, viewport-fit=cover"
+		/>
 		<meta
 			name="description"
 			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
@@ -66,5 +69,19 @@
 		style="/* background-color: hsl(240, 100%, 70%); */ /* min-height:100vh; */ margin: 0px"
 	>
 		<div style="display: contents">%sveltekit.body%</div>
+		<script>
+			if (CSS.supports('-webkit-touch-callout', 'none')) {
+				const viewport = document.getElementById('page-viewport');
+				if (viewport) {
+					const screenBlock = screen.orientation.type.startsWith('landscape')
+						? Math.min(screen.width, screen.height)
+						: Math.max(screen.width, screen.height);
+					document.documentElement.style.setProperty('--screen-block', `${screenBlock}px`);
+					document.documentElement.dataset.pageViewport = 'nested';
+					const padding = parseFloat(getComputedStyle(viewport).paddingTop);
+					window.scrollTo({ top: viewport.offsetTop + padding, behavior: 'instant' });
+				}
+			}
+		</script>
 	</body>
 </html>

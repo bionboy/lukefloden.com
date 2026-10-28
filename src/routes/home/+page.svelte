@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { mode, ThemeMode } from '#lib/theme.js';
-	import { setDocumentBodyTailwind } from '#lib/setBackground.js';
 	import Parallax from '../portfolio/demos/parallax/Parallax.svelte';
 	import MetaBalls from '../portfolio/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../portfolio/shaders/hover-grid/HoverGrid.svelte';
@@ -30,8 +28,6 @@
 	const DemoToDisplay = $derived(demos[demoIndex]);
 
 	const nextDemo = () => (demoIndex = (demoIndex + 1) % demos.length);
-
-	setDocumentBodyTailwind(mode.current !== ThemeMode.DARK ? 'bg-[hsl(180,100%,55%)]' : 'bg-accent');
 </script>
 
 <svelte:window
@@ -41,7 +37,7 @@
 	}}
 />
 
-<HeroPage>
+<HeroPage class={demoIndex === 0 ? 'home-metaballs' : ''}>
 	<!-- *  using 60% of max viewport dimension and scaling instead of 110%
        *  to avoid performance issues with resolution being too high -->
 	<div class="aspect-square h-[max(75vh,75vw)] scale-[1.5]">
@@ -79,6 +75,15 @@
 
 <style lang="postcss">
 	@reference '../../app.css';
+
+	:global(body:has(.home-metaballs)) {
+		background-image: none;
+		background-color: white;
+	}
+
+	:global(.dark body:has(.home-metaballs)) {
+		background-color: black;
+	}
 
 	.bottom-bar {
 		@apply fixed w-full

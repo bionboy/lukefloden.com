@@ -9,31 +9,41 @@
 	} = $props();
 </script>
 
-<div class="site-bg fixed -z-10 h-screen w-screen dark:brightness-50">
-	{#if props.children}
-		{@render props.children()}
-	{:else if props.imgSrc}
-		<enhanced:img
-			src={props.imgSrc}
-			class="size-full object-fill"
-			alt={props.imgAlt || 'abstract colorful gradient background'}
-			loading="eager"
-			fetchpriority="high"
-		/>
-		<!-- TODO(@bionboy, 2025-02-10):
-		       - make sure i'm using 'sizes' correctly so it loads smaller ones faster
-					 - make sure i need loading="eager"
-					 - and fetchpriority="high".
-		-->
-		<!-- sizes="100px" -->
-		<!-- sizes="min(1280px, 100vw)" -->
+<svelte:head>
+	{#if props.imgSrc && !props.children}
+		<svelte:element this={"style"}>
+			{`body { --page-background-image: url("${props.imgSrc.img.src}"); }`}
+		</svelte:element>
 	{/if}
-</div>
+</svelte:head>
+
+{#if props.children}
+	<div class="site-bg fixed inset-0 -z-10 dark:brightness-50">
+		{@render props.children()}
+	</div>
+{/if}
 
 <style lang="postcss">
+	:global(body) {
+		--page-background-shade: transparent;
+		min-height: 100lvh;
+		background-image:
+			linear-gradient(var(--page-background-shade), var(--page-background-shade)),
+			var(--page-background-image, none);
+		background-size: 100% 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	:global(.dark body) {
+		--page-background-shade: rgb(0 0 0 / 50%);
+	}
+
+	:global(body.bg-accent) {
+		background-image: none;
+	}
+
 	.site-bg {
 		view-transition-name: static-bg;
 	}
-
-	/* see /Users/bb/github/mine/my-site/src/view-transition.css  */
 </style>

@@ -6,6 +6,7 @@
 	import { ModeWatcher } from '#lib/theme.js';
 	import { trackVercelObservability } from '#lib/vercel-observability.svelte.js';
 	import SiteHeader from './SiteHeader.svelte';
+	import PageViewport from '#lib/components/PageViewport.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
@@ -25,10 +26,10 @@
 </script>
 
 <ModeWatcher />
-<div class="relative flex flex-col">
+<PageViewport>
 	<SiteHeader />
 	{@render children()}
-</div>
+</PageViewport>
 
 <style lang="postcss">
 </style>
