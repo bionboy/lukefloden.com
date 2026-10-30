@@ -154,22 +154,4 @@
 			@apply -translate-y-full -scale-x-0 opacity-0;
 		}
 	}
-
-	:global(html[data-page-viewport='nested']) .header-container {
-		position: sticky;
-		top: 0;
-		width: 100%;
-		z-index: 30;
-		flex-shrink: 0;
-	}
-
-	:global(html[data-page-viewport='nested']) .header-container[data-header='sub-routes'] {
-		top: 4.5rem;
-	}
-
-	:global(html[data-page-viewport='nested']) .site-header,
-	:global(html[data-page-viewport='nested']) .backdrop {
-		position: absolute;
-		top: 0;
-	}
 </style>
