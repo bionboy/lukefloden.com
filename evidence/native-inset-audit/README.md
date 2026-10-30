@@ -30,7 +30,10 @@ The application code is unchanged from `64456d5`.
 Pins: WebKit main [`bacf018e`](https://github.com/WebKit/WebKit/tree/bacf018e412546741befdaffa1ca5b5355268272) and branch `safari-7625.2.8.18` [`d953bbed`](https://github.com/WebKit/WebKit/tree/d953bbedb514f5e274f9fa2465a8bc75391e891a).
 
 - Overflow scrollers set `scrollsToTop = NO` ([main ScrollingTreeScrollingNodeDelegateIOS.mm:404](https://github.com/WebKit/WebKit/blob/bacf018e412546741befdaffa1ca5b5355268272/Source/WebKit/UIProcess/RemoteLayerTree/ios/ScrollingTreeScrollingNodeDelegateIOS.mm#L404)).
-- WebKit has no `scrollViewShouldScrollToTop` override. The tap uses the UIKit target, `-adjustedContentInset.top`. CSS snap and padding do not change it.
+- The inspected open-source WebKit code has no `scrollViewShouldScrollToTop` override.
+  UIKit's default target is `-adjustedContentInset.top`.
+  The native tap reaches the top in the recorded tests.
+  This source inspection does not establish Safari's closed-source delegate policy.
 - The scroll-view background is `underPageBackgroundColor`, from the root background color or `theme-color` ([7625 WKWebViewIOS.mm:668-718](https://github.com/WebKit/WebKit/blob/d953bbedb514f5e274f9fa2465a8bc75391e891a/Source/WebKit/UIProcess/API/ios/WKWebViewIOS.mm#L668)). It is a color.
 - A fixed or sticky container at an edge gets a color-extension view: its background color, a sampled predominant color, or `underPageBackgroundColor` ([7625 WKWebView.mm:3516-3560](https://github.com/WebKit/WebKit/blob/d953bbedb514f5e274f9fa2465a8bc75391e891a/Source/WebKit/UIProcess/API/Cocoa/WKWebView.mm#L3516), [main LocalFrameView.cpp:2717-2738](https://github.com/WebKit/WebKit/blob/bacf018e412546741befdaffa1ca5b5355268272/Source/WebCore/page/LocalFrameView.cpp#L2717)).
 - When Safari sets obscured insets, `viewport-fit` does not change them ([7625 WKWebViewIOS.mm:827-883](https://github.com/WebKit/WebKit/blob/d953bbedb514f5e274f9fa2465a8bc75391e891a/Source/WebKit/UIProcess/API/ios/WKWebViewIOS.mm#L827)).
@@ -46,6 +49,6 @@ Pins: WebKit main [`bacf018e`](https://github.com/WebKit/WebKit/tree/bacf018e412
 ## Limits
 
 - Safari's closed code sets the insets and pref defaults. Open source does not prove Safari's policy.
-- The `7625` branch is close to, but not proven to be, the iOS 27.0 build.
+- The inspected `7625` branch was not mapped to the simulator's exact engine build.
 - Six fixture mechanisms and two real sites were tested. This is strong evidence for this runtime, not a proof for every layout.
 - One fixture result is unexplained: in `negfixed.html`, document text shows over the flat bottom strip mid-page.

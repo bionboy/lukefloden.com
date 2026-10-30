@@ -1,6 +1,33 @@
-<!doctype html><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>fixedimg</title>
-<style>html{background:#f0f}body{margin:0;font:20px system-ui;color:#fff}
-#bg{position:fixed;inset:0;width:100%;height:100lvh;object-fit:cover;z-index:-1}
-p{margin:0 20px 40px;text-shadow:0 0 4px #000}</style>
-<img id=bg src=../native-boundary-probe/photo.jpg>
-<script>document.write('<p>'+Array.from({length:60},(_, i)=>'Line '+i).join('</p><p>')+'</p>')</script><script src=hud.js></script>
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" /><title>
+	fixedimg
+</title>
+<style>
+	html {
+		background: #f0f;
+	}
+	body {
+		margin: 0;
+		font: 20px system-ui;
+		color: #fff;
+	}
+	#bg {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100lvh;
+		object-fit: cover;
+		z-index: -1;
+	}
+	p {
+		margin: 0 20px 40px;
+		text-shadow: 0 0 4px #000;
+	}
+</style>
+<img id="bg" src="../native-boundary-probe/photo.jpg" />
+<script>
+	document.write(
+		'<p>' + Array.from({ length: 60 }, (_, i) => 'Line ' + i).join('</p><p>') + '</p>'
+	);
+</script>
+<script src="hud.js"></script>

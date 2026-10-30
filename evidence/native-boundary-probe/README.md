@@ -92,13 +92,17 @@ Neither workaround was added to the application.
 
 ## Browser implementation
 
-Three WebKit paths explain the observed constraint:
+The later [native inset audit](../native-inset-audit/README.md) corrects the implementation explanation below.
+The browser background-color path and the lack of image extension support remain relevant source facts.
 
-- [`insetClipLayerRect`](https://github.com/WebKit/WebKit/blob/82e38652261d445230604088d5c1943783b0f2e7/Source/WebCore/page/LocalFrameView.cpp#L2764) clips the obscured region at the document boundaries.
+- `insetClipLayerRect` was an incorrect explanation for the iOS main frame.
+  [`requiresScrollLayer`](https://github.com/WebKit/WebKit/blob/bacf018e412546741befdaffa1ca5b5355268272/Source/WebCore/rendering/RenderLayerCompositor.cpp#L4570) returns false when the main frame delegates scrolling to the native scroll view.
+  That compositor clip layer does not explain the observed iOS strip.
 - [`calculateExtendedBackgroundMode`](https://github.com/WebKit/WebKit/blob/82e38652261d445230604088d5c1943783b0f2e7/Source/WebCore/page/LocalFrameView.cpp#L4572) returns no extended image mode on iOS.
 - [`baseScrollViewBackgroundColor`](https://github.com/WebKit/WebKit/blob/82e38652261d445230604088d5c1943783b0f2e7/Source/WebKit/UIProcess/API/ios/WKWebViewIOS.mm#L677) selects a color for the native scroll-view background.
 
-These sources and tests support a browser boundary constraint.
+The native tests reproduce the boundary strips. The inspected sources identify color-only background paths.
+Safari's closed code chooses the actual insets, so these sources do not fully establish its policy.
 They do not prove that every possible website layout must fail.
 The inspected WebKit commit is not asserted to be the simulator's exact engine revision.
 [WebKit issue 301108](https://bugs.webkit.org/show_bug.cgi?id=301108) tracks related viewport coverage problems.

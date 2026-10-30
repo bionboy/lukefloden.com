@@ -63,6 +63,12 @@ The bottom screenshots show each layout's reachable end, rather than equal numer
 | Light, start | ![Baseline light start](baseline-light-about-top.png) | ![Candidate light start](simple-light-about-top.png) |
 | Light, end   | ![Baseline light end](baseline-light-about-end.png)   | ![Candidate light end](simple-light-about-end.png)   |
 
+## Independent native validation
+
+Claude Opus 5.5 [reproduced the native controls and both image failures](native-inset-audit/README.md) on the actual production build.
+The report includes new recordings, fixture tests, source corrections, and explicit coverage limits.
+No tested fix meets all requirements.
+
 ## Further investigation
 
 The [native boundary tests from October 30](native-boundary-probe/README.md) cover additional CSS layouts, scroll snapping, and root scroll bounds.
