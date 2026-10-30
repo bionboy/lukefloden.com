@@ -1,0 +1,37 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" /><title>
+	negfixed
+</title>
+<style>
+	html {
+		background: #f0f;
+	}
+	body {
+		margin: 0;
+		font: 20px system-ui;
+		color: #fff;
+	}
+	p {
+		margin: 0 20px 40px;
+		text-shadow: 0 0 4px #000;
+	}
+	.img {
+		background: url(../native-boundary-probe/photo.jpg) center/cover;
+	}
+	#x {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: -300px;
+		bottom: -300px;
+		z-index: -1;
+		will-change: transform;
+	}
+</style>
+<div id="x" class="img"></div>
+<script>
+	document.write(
+		'<p>' + Array.from({ length: 60 }, (_, i) => 'Line ' + i).join('</p><p>') + '</p>'
+	);
+</script>
+<script src="hud.js"></script>
