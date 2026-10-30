@@ -3,7 +3,7 @@
 	import { createPositions } from './islandPositions.svelte';
 	import Cloud from '#lib/components/Cloud.svelte';
 	import { mode, ThemeMode } from '#lib/theme.js';
-	import { Star } from 'lucide-svelte';
+	import { Star } from '@lucide/svelte';
 	import { getPageScroll } from '#lib/page-scroll.js';
 
 	type Props = {

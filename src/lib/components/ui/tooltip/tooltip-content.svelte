@@ -16,6 +16,7 @@
 			<div {...wrapperProps}>
 				<div
 					{...props}
+					data-slot="tooltip-content"
 					class={cn(
 						'bg-popover text-popover-foreground z-50 overflow-hidden rounded-md border px-3 py-1.5 text-sm shadow-md',
 						className

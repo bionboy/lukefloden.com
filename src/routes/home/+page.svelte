@@ -2,7 +2,7 @@
 	import Parallax from '../portfolio/demos/parallax/Parallax.svelte';
 	import MetaBalls from '../portfolio/shaders/meta-balls/MetaBalls.svelte';
 	import HoverGrid from '../portfolio/shaders/hover-grid/HoverGrid.svelte';
-	import { Dices, Info } from 'lucide-svelte';
+	import { Dices, Info } from '@lucide/svelte';
 	import HomeDemoCard from './HomeDemoCard.svelte';
 	import HeroPage from '#lib/components/HeroPage.svelte';
 

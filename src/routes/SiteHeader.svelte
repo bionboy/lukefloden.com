@@ -7,7 +7,7 @@
 	import ThemeSwitcher from '#lib/components/ThemeSwitcher.svelte';
 	import Button from '#lib/components/ui/button/button.svelte';
 	import { cn } from '#lib/utils.js';
-	import { Star } from 'lucide-svelte';
+	import { Star } from '@lucide/svelte';
 	import type { Props as PageHeaderProps } from '#lib/components/PageHeader.svelte';
 	import { getPageScroll } from '#lib/page-scroll.js';
 

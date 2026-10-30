@@ -3,7 +3,7 @@
 	import * as Card from '#lib/components/ui/card/index.js';
 	import { albums as albumsData, getAlbumEmbedURL, type Album } from './Album';
 	import { browser } from '$app/env';
-	import { AlertTriangle } from 'lucide-svelte';
+	import { AlertTriangle } from '@lucide/svelte';
 
 	// TODO (https://github.com/bionboy/my-site/issues/14): For some reason when I hard refresh the page the albums when clicked are not loading the correct embed
 	const albums = albumsData.sort(() => Math.random() - 0.5);

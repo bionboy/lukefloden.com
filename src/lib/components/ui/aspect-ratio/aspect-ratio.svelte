@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { AspectRatio as AspectRatioPrimitive } from 'bits-ui';
 
-	let { ratio = 4 / 3, ...restProps }: AspectRatioPrimitive.RootProps = $props();
+	let {
+		ref = $bindable(null),
+		ratio = 4 / 3,
+		...restProps
+	}: AspectRatioPrimitive.RootProps = $props();
 </script>
 
-<AspectRatioPrimitive.Root {ratio} {...restProps} />
+<AspectRatioPrimitive.Root bind:ref data-slot="aspect-ratio" {ratio} {...restProps} />
