@@ -1,4 +1,4 @@
-/// <reference types="node" />
+import process from 'node:process';
 import vercelAdapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { sentrySvelteKit } from '@sentry/sveltekit/vite';
