@@ -10,7 +10,7 @@
 		/>
 		<meta
 			name="description"
-			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+			content="Luke Floden's personal site. Web demos, a portfolio, and a short about page."
 		/>
 		<meta name="robots" content="index, follow" />
 		<!-- css and tw color --accent -->
@@ -20,41 +20,35 @@
 		<!-- TODO: should i set something like this, does SvelteKit do this? -->
 		<!-- <meta http-equiv="content-security-policy" content="default-src https:" /> -->
 
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+		<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+		<link rel="manifest" href="/site.webmanifest" />
 
 		<!--
 		25-02-03 (@bionboy): Turning this off because SEO report from lighthouse says this is bad... 
 		<link rel="canonical" href="https://www.lukefloden.me" />
 	-->
 
-		<!-- TODO: safari specific icons -->
-		<!-- <link rel="apple-touch-icon" sizes="180x180" href="...png" /> -->
-		<!-- <link rel="mask-icon" href="...svg" color="#226DAA" /> -->
-
-		<!-- TODO: use OpenGraph meta tags to control link previews of the site https://ogp.me/ -->
-		<!-- OpenGraph (Facebook link preview, etc.) -->
-		<!-- check FB preview: https://developers.facebook.com/tools/debug/?q=https://lukefloden.me -->
 		<meta property="og:title" content="Luke Floden" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Luke Floden" />
+		<meta property="og:locale" content="en_US" />
 		<meta
 			property="og:description"
-			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+			content="Luke Floden's personal site. Web demos, a portfolio, and a short about page."
 		/>
-		<!-- <meta property="og:image" content="https://www.lukefloden.me/...png" /> -->
-		<!-- <meta property="og:image:alt" content="" /> -->
 		<meta property="og:url" content="https://www.lukefloden.me" />
 
-		<!-- Twitter/X link preview-->
-		<!-- check Twitter preview: https://cards-dev.x.com/validator -->
+		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="Luke Floden" />
 		<meta
 			name="twitter:description"
-			content="Personal website of web-developer Luke Floden; including web demos, about me, and more!"
+			content="Luke Floden's personal site. Web demos, a portfolio, and a short about page."
 		/>
 		<meta name="twitter:url" content="https://www.lukefloden.me/?src=twitter" />
-		<!-- <meta name="twitter:image:src" content="" /> -->
-		<!-- <meta name="twitter:image:alt" content="" /> -->
 		<meta name="twitter:creator" content="@lukefloden" />
-		<!-- <meta name="twitter:site" content="@perfmattersconf" /> -->
 
 		<!-- Fediverse: -->
 		<!-- Mastodon.social identity verification -->
