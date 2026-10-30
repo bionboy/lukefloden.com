@@ -1,0 +1,3 @@
+(()=>{const d=document.createElement('div');d.id='hud';d.style.cssText='position:fixed;left:8px;top:45%;z-index:99;font:12px/1.3 monospace;background:#000c;color:#0f0;padding:4px;pointer-events:none;white-space:pre';document.documentElement.appendChild(d);
+const p=document.createElement('div');p.style.cssText='position:fixed;top:0;height:env(safe-area-inset-top);width:1px;visibility:hidden';document.documentElement.appendChild(p);
+const f=()=>{const v=visualViewport;d.textContent=`sy ${scrollY.toFixed(0)} ih ${innerHeight} ch ${document.documentElement.clientHeight}\nvv ${v.height.toFixed(0)} off ${v.offsetTop.toFixed(0)} sat ${p.offsetHeight}\nsh ${document.documentElement.scrollHeight}`;requestAnimationFrame(f)};f();})();
