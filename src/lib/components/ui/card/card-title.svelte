@@ -1,17 +1,25 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { HeadingLevel } from './index.js';
-	import { cn } from '#lib/utils.js';
+	import { cn, type WithElementRef } from '#lib/utils.js';
 
-	type $$Props = HTMLAttributes<HTMLHeadingElement> & {
+	let {
+		ref = $bindable(null),
+		class: className,
+		tag = 'h3',
+		children,
+		...restProps
+	}: WithElementRef<HTMLAttributes<HTMLHeadingElement>> & {
 		tag?: HeadingLevel;
-	};
-
-	let className: $$Props['class'] = undefined;
-	export let tag: $$Props['tag'] = 'h3';
-	export { className as class };
+	} = $props();
 </script>
 
-<svelte:element this={tag} class={cn('leading-none', className)} {...$$restProps}>
-	<slot />
+<svelte:element
+	this={tag}
+	bind:this={ref}
+	data-slot="card-title"
+	class={cn('leading-none', className)}
+	{...restProps}
+>
+	{@render children?.()}
 </svelte:element>

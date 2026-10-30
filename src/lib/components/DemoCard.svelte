@@ -3,7 +3,7 @@
 	import * as Card from '#lib/components/ui/card//index.js';
 	import type { Snippet } from 'svelte';
 	import { Badge, GithubBadge } from '#lib/components/ui/badge/index.js';
-	import { ExternalLink, X } from 'lucide-svelte';
+	import { ExternalLink, X } from '@lucide/svelte';
 	import { cn } from '#lib/utils.js';
 
 	let props: {

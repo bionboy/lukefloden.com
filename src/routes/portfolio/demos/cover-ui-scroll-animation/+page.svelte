@@ -3,7 +3,7 @@
 	import * as Card from '#lib/components/ui/card/index.js';
 	import { getAlbumEmbedURL, type Album } from './Album';
 	import { browser } from '$app/env';
-	import { AlertTriangle } from 'lucide-svelte';
+	import { AlertTriangle } from '@lucide/svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

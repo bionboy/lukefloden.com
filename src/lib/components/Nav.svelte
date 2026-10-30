@@ -5,7 +5,7 @@
 	// TODO
 	// type NavLocation = { route: string; name: string; defaultSubRoute?: string, subRoutes?: NavLocation[] };
 	// type NavLocations = NavLocation[];
-	export type NavLocations = { route: string; name: string; defaultSubRoute?: string }[];
+	type NavLocations = { route: string; name: string; defaultSubRoute?: string }[];
 
 	let { locations }: { locations: NavLocations } = $props();
 
