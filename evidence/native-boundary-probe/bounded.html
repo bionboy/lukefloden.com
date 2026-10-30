@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Safari edge probe</title>
+		<style>
+			body {
+				background: #ff00ff url(photo.jpg) center/100% 100% no-repeat;
+				color: white;
+				font: 20px system-ui;
+			}
+			body {
+				margin: 0;
+				min-height: 100lvh;
+			}
+			main {
+				min-height: 220lvh;
+				padding: 80px 20px;
+				box-sizing: border-box;
+			}
+			button {
+				font: inherit;
+				padding: 16px;
+			}
+			footer {
+				padding: 30px;
+			}
+			body {
+				padding-block: 100lvh;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<main>
+				<h1 id="state">Bounded SSR</h1>
+				<button onclick="window.scrollTo(0, document.documentElement.scrollHeight)">
+					Go to end
+				</button>
+			</main>
+			<footer>
+				<h2>Image end</h2>
+				<button onclick="window.scrollTo(0, 0)">Go to start</button>
+			</footer>
+		</div>
+		<script>
+			const content = document.getElementById('content');
+			function boundScroll() {
+				const min = content.offsetTop;
+				document.getElementById('state').textContent =
+					'JS y ' + Math.round(scrollY) + ' min ' + Math.round(min);
+				document.title = 'Bounded y ' + Math.round(scrollY) + ' min ' + Math.round(min);
+				const max = Math.max(min, min + content.offsetHeight - innerHeight);
+				const y = Math.max(min, Math.min(max, scrollY));
+				if (Math.abs(y - scrollY) > 0.5) window.scrollTo({ top: y, behavior: 'instant' });
+			}
+			addEventListener('scroll', boundScroll);
+			addEventListener('resize', boundScroll);
+			boundScroll();
+		</script>
+		<output
+			id="metrics"
+			style="
+				position: fixed;
+				top: 45%;
+				left: 20px;
+				background: #123;
+				color: white;
+				font: 14px monospace;
+			"
+		></output>
+		<script>
+			setInterval(() => {
+				document.getElementById('metrics').textContent = JSON.stringify({
+					y: scrollY,
+					rect: content.getBoundingClientRect().top,
+					offset: content.offsetTop,
+					inner: innerHeight,
+					visual: visualViewport.pageTop,
+					top: visualViewport.offsetTop
+				});
+			}, 100);
+		</script>
+	</body>
+</html>

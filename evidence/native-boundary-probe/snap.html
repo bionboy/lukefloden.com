@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Safari edge probe</title>
+		<style>
+			html {
+				background: #ff00ff url(photo.jpg) center/100% 100% no-repeat;
+				color: white;
+				font: 20px system-ui;
+			}
+			body {
+				margin: 0;
+				min-height: 100lvh;
+			}
+			main {
+				min-height: 220lvh;
+				padding: 80px 20px;
+				box-sizing: border-box;
+			}
+			button {
+				font: inherit;
+				padding: 16px;
+			}
+			footer {
+				padding: 30px;
+			}
+			html {
+				scroll-snap-type: y mandatory;
+			}
+			body {
+				padding-block: 100lvh;
+			}
+			.snap {
+				scroll-snap-align: start;
+				scroll-snap-stop: normal;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="snap">
+			<main>
+				<h1>Image start</h1>
+				<button onclick="document.querySelector('footer').scrollIntoView({ block: 'end' })">
+					Go to end
+				</button>
+			</main>
+			<footer>
+				<h2>Image end</h2>
+				<button onclick="document.querySelector('.snap').scrollIntoView({ block: 'start' })">
+					Go to start
+				</button>
+			</footer>
+		</div>
+	</body>
+</html>
