@@ -1,0 +1,96 @@
+{
+  "browser": "153.0.8010.12",
+  "os": "macOS arm64",
+  "viewport": "1000 × 900",
+  "base": "e9ff75f35eff5317793bb35840e43a4c46f260d4",
+  "routes": [
+    {
+      "route": "/home",
+      "description": "Luke Floden's personal site. Web demos, a portfolio, and a short about page.",
+      "ogImage": "https://www.lukefloden.com/social-card.png",
+      "twitterCard": "summary",
+      "twitterImage": "https://www.lukefloden.com/social-card-square.png",
+      "icons": [
+        "/favicon.svg",
+        "/favicon-32x32.png",
+        "/favicon-16x16.png"
+      ]
+    },
+    {
+      "route": "/about",
+      "description": "Luke Floden's personal site. Web demos, a portfolio, and a short about page.",
+      "ogImage": "https://www.lukefloden.com/social-card.png",
+      "twitterCard": "summary",
+      "twitterImage": "https://www.lukefloden.com/social-card-square.png",
+      "icons": [
+        "/favicon.svg",
+        "/favicon-32x32.png",
+        "/favicon-16x16.png"
+      ]
+    },
+    {
+      "route": "/portfolio",
+      "description": "Luke Floden's personal site. Web demos, a portfolio, and a short about page.",
+      "ogImage": "https://www.lukefloden.com/social-card.png",
+      "twitterCard": "summary",
+      "twitterImage": "https://www.lukefloden.com/social-card-square.png",
+      "icons": [
+        "/favicon.svg",
+        "/favicon-32x32.png",
+        "/favicon-16x16.png"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "asset": "favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml"
+    },
+    {
+      "asset": "favicon-16x16.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "favicon-32x32.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "apple-touch-icon.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "icon-192.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "icon-512.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "logo.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "social-card.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "social-card-square.png",
+      "status": 200,
+      "type": "image/png"
+    },
+    {
+      "asset": "site.webmanifest",
+      "status": 200,
+      "type": "application/manifest+json"
+    }
+  ]
+}

@@ -47,3 +47,15 @@ export const albums: Album[] = [
 
 export const getAlbumEmbedURL = (album: Album) =>
 	`https://open.spotify.com/embed/${album.type ?? 'album'}/${album.id}`;
+
+/** New array each call. The catalog export stays in its original order. */
+export function shuffleAlbums(source: readonly Album[] = albums): Album[] {
+	const next = [...source];
+	for (let index = next.length - 1; index > 0; index -= 1) {
+		const swapIndex = Math.floor(Math.random() * (index + 1));
+		const current = next[index];
+		next[index] = next[swapIndex];
+		next[swapIndex] = current;
+	}
+	return next;
+}
