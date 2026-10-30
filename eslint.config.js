@@ -11,6 +11,11 @@ export default ts.config(
 	prettier,
 	...svelte.configs['flat/prettier'],
 	{
+		linterOptions: {
+			reportUnusedDisableDirectives: 'error'
+		}
+	},
+	{
 		languageOptions: {
 			globals: {
 				...globals.browser,
@@ -34,7 +39,12 @@ export default ts.config(
 		rules: {
 			'@typescript-eslint/no-unused-vars': [
 				'error',
-				{ argsIgnorePattern: '^_', varsIgnorePattern: '^(_|\\$\\$(Props|Events|Slots))$' }
+				{
+					args: 'all',
+					argsIgnorePattern: '^_',
+					caughtErrors: 'all',
+					reportUsedIgnorePattern: true
+				}
 			]
 		}
 	},

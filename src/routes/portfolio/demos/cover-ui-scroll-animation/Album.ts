@@ -45,7 +45,5 @@ export const albums: Album[] = [
 	}
 ];
 
-export const getAlbumURL = (album: Album) =>
-	`https://open.spotify.com/${album.type ?? 'album'}/${album.id}`;
 export const getAlbumEmbedURL = (album: Album) =>
 	`https://open.spotify.com/embed/${album.type ?? 'album'}/${album.id}`;

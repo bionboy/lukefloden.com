@@ -35,10 +35,8 @@ type Props = HTMLButtonAttributes & {
 };
 
 export {
-	Root,
 	type Props,
 	//
 	Root as Button,
-	type Props as ButtonProps,
 	buttonVariants
 };
