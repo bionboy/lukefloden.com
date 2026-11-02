@@ -1,20 +1,21 @@
 # Broad native search for issue 37, 2026-11-02
 
 No compliant layout was found.
-This search adds a source-verified mechanism, 14 real websites, and 7 structural fixture families that earlier tests did not cover.
+This search adds a source-verified mechanism, 14 page captures across 13 sites, and additional structural fixture tests.
+Some fixture ideas overlap earlier work; these counts do not represent independent architectures.
 The application code is unchanged from `241d51a`.
 This is a finite search. It is not an impossibility proof.
 
 ## Result
 
-| Requirement                                   | Best tested result                                                                                   |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Status-bar tap, toolbar collapse              | Pass with root scrolling                                                                             |
-| Image behind both bars mid-page               | Pass with root scrolling                                                                             |
-| Image during overscroll pulls                 | Pulls can be removed: `html{overscroll-behavior:none}` stops the bounce (see below)                  |
-| Image behind the status bar at the true top   | **Fail in every tested structure and real site**                                                     |
-| Image behind the toolbar at the true end      | **Fail in every tested structure**                                                                   |
-| Image behind both bars during view transition | **Fail**: an active view transition shows flat strips at both edges, even mid-page (new observation) |
+| Requirement                                     | Best tested result                                                                                   |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Status-bar tap, toolbar collapse                | Pass with root scrolling                                                                             |
+| Image behind both bars mid-page                 | Pass with root scrolling                                                                             |
+| Image during overscroll pulls                   | No continuity fix. `html{overscroll-behavior:none}` suppresses bounce but leaves the existing strip. |
+| Image behind the status bar at the true top     | **Fail in every tested structure and real site**                                                     |
+| Image behind the toolbar at the true end        | **Fail in every tested structure**                                                                   |
+| Image during the tested view-transition fixture | **Fail**: flat strips at both edges, even mid-page. The actual app transition was not retested.      |
 
 ## Environment
 
@@ -48,21 +49,34 @@ Full notes: [WebKit source notes](webkit-source-notes.md), [web research notes](
 
 ## Map of approaches
 
-"New" means earlier reports did not test that structure.
+This table includes new structures, related variants, real-page screening, and one rejected prototype.
+It must not be read as a count of independent successful implementations.
 
-| #   | Structure                                      | What changes                                               | Pass criterion                            | Native result                                                                                      |
-| --- | ---------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| 1   | Real sites, 14 (new set)                       | Third-party DOMs: video heroes, WebGL canvas, photo heroes | Image under the clock at scroll 0         | All 14 flat. [1](sites-a.jpg) [2](sites-b.jpg) [3](sites-c.jpg)                                    |
-| 2   | Top layer: popover (new)                       | Image in the top layer at `top:-200px`                     | Image under the clock                     | Flat top; also adds a flat bottom strip. [image](s-escape1.jpg), panel 1                           |
-| 3   | Top layer: modal `::backdrop` (new)            | Viewport-wide backdrop image                               | Same                                      | Flat at both edges. Panel 2                                                                        |
-| 4   | Visual overflow: `border-image-outset` (new)   | Image painted 300px above the body box                     | Same                                      | Flat top. Panel 3                                                                                  |
-| 5   | `::view-transition` (new)                      | Snapshot layer with an image background                    | Image under both bars during a transition | Flat at both edges at the top and mid-page. [top](s-escape2.jpg), [mid-page](vt2.jpg)              |
-| 6   | Transformed oversized fixed image (new)        | `transform` skips clip B                                   | Image under both bars at the true edges   | Mid-page pass; true top and end flat. [image](tfixed.jpg)                                          |
-| 7   | Root `overscroll-behavior:none` (new)          | No bounce on the main scroll view                          | No flat area grows during pulls           | Pass for pulls. Strips at rest remain. [base](sheet-pull-base.jpg), [none](sheet-pull-osb.jpg)     |
-| 8   | Scroll runway from 1ar.io (new source)         | Load at `scrollY=62` with image above                      | Image after the native tap                | Load passes; the tap goes to y=0, flat strip. [image](runway.jpg), [frames](runway-tap-frames.jpg) |
-| 9   | Reversed scroll origin, `column-reverse` (new) | Root flex reversal                                         | Root scroll with origin above             | Not root scrolling: the scroller became an inner box. Not valid                                    |
+The site captures include consent and region dialogs. Those dialogs can affect Safari's edge colors.
+The 14 captures also include two Apple pages, so they cover 13 sites.
+They establish only the captured page states; they are not controlled counterexample tests of every underlying layout.
+
+| #   | Structure                                      | What changes                                               | Pass criterion                            | Native result                                                                                                      |
+| --- | ---------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 1   | Real pages, 14 captures across 13 sites        | Third-party DOMs: video heroes, WebGL canvas, photo heroes | Image under the clock at scroll 0         | All captured states flat; some have dialogs. [1](sites-a.jpg) [2](sites-b.jpg) [3](sites-c.jpg)                    |
+| 2   | Top layer: popover (new)                       | Image in the top layer at `top:-200px`                     | Image under the clock                     | Flat top; also adds a flat bottom strip. [image](s-escape1.jpg), panel 1                                           |
+| 3   | Top layer: modal `::backdrop` (new)            | Viewport-wide backdrop image                               | Same                                      | Flat at both edges. Panel 2                                                                                        |
+| 4   | Visual overflow: `border-image-outset` (new)   | Image painted 300px above the body box                     | Same                                      | Flat top. Panel 3                                                                                                  |
+| 5   | `::view-transition` (new)                      | Snapshot layer with an image background                    | Image under both bars during a transition | Flat at both edges at the top and mid-page. [top](s-escape2.jpg), [mid-page](vt2.jpg)                              |
+| 6   | Transformed oversized fixed image (new)        | `transform` skips clip B                                   | Image under both bars at the true edges   | Mid-page pass; true top and end flat. [image](tfixed.jpg)                                                          |
+| 7   | Root `overscroll-behavior:none` (new)          | No bounce on the main scroll view                          | No flat area grows during pulls           | Bounce suppressed. Strips at rest remain; #37 still fails. [base](sheet-pull-base.jpg), [none](sheet-pull-osb.jpg) |
+| 8   | Scroll runway from 1ar.io (new source)         | Load at `scrollY=62` with image above                      | Image after the native tap                | Load passes; the tap goes to y=0, flat strip. [image](runway.jpg), [frames](runway-tap-frames.jpg)                 |
+| 9   | Reversed scroll origin, `column-reverse` (new) | Root flex reversal                                         | Root scroll with origin above             | Not root scrolling: the scroller became an inner box. Not valid                                                    |
 
 Earlier families, for completeness: parked root with an inner scroller (#36), 13 root background variants, oversized snap areas, and JavaScript bounds.
+
+## Review of real-page screening
+
+The parent rechecked `https://www.chrisburkard.com/` in the same native simulator and rejected its consent dialog.
+The [unobstructed page](chrisburkard-no-dialog.png) still shows a dark strip above its image.
+This removes that dialog as the cause for this one page state.
+It does not establish the page's DOM scroll offset or complete native-scroll behavior.
+The other dialog-bearing captures remain screening observations.
 
 ## Notes on earlier observations
 
@@ -70,7 +84,8 @@ Earlier families, for completeness: parked root with an inner scroller (#36), 13
   Clip B cuts the untransformed image at the layout viewport. Below it, the root background and document text show.
   Fixture 6 tests this. With a transform, the image fills the bars mid-page. So the strip was a clip, not a Safari overlay.
 - **Did a diagnostic force the failure?** The magenta root only sets the under-page color.
-  Real sites with their own colors show the same flat strip. Fixture 6 removes the body background and still fails at the edges.
+  Real-page captures show flat strips in their own colors, but dialogs and headers confound some captures.
+  Fixture 6 removes the body background and still fails at the edges.
 - **Glass tint versus flat color.** Mid-page and after a runway load, the strip shows image texture under a magenta tint.
   At the true top and end, the strip has no texture. The frames show both cases.
 - **View transitions.** The app uses view transitions for routes.
