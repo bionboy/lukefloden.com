@@ -10,6 +10,14 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import devtoolsJson from 'vite-plugin-devtools-json';
 
 export default defineConfig({
+	define: {
+		'import.meta.env.VITE_SENTRY_ENVIRONMENT': JSON.stringify(
+			process.env.VERCEL === '1' &&
+				(process.env.VERCEL_ENV === 'production' || process.env.VERCEL_ENV === 'preview')
+				? process.env.VERCEL_ENV
+				: ''
+		)
+	},
 	plugins: [
 		tailwindcss(),
 		sentrySvelteKit({

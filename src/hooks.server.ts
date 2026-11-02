@@ -3,11 +3,13 @@ import { sequence, type Handle } from '@sveltejs/kit/hooks';
 import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/env';
 
-Sentry.init({
-	dsn: 'https://ead58b658c75eea8948071d7e491ec9c@o4509607124205568.ingest.us.sentry.io/4509607127744512',
-	environment: dev ? 'development' : 'production',
-	tracesSampleRate: 1.0
-});
+if (!dev && import.meta.env.VITE_SENTRY_ENVIRONMENT) {
+	Sentry.init({
+		dsn: 'https://ead58b658c75eea8948071d7e491ec9c@o4509607124205568.ingest.us.sentry.io/4509607127744512',
+		environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
+		tracesSampleRate: 1.0
+	});
+}
 
 const siteHandle: Handle = async ({ event, resolve }) => {
 	const url: URL = event.url;
