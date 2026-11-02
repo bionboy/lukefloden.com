@@ -1,0 +1,40 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+	html {
+		background: #f0f;
+	}
+	body {
+		margin: 0;
+		font: 20px system-ui;
+		color: #fff;
+		background: url(photo.jpg) center/cover;
+	}
+	p {
+		margin: 0 20px 40px;
+		text-shadow: 0 0 4px #000;
+	}
+</style>
+<title>tfixed</title
+><style>
+	body {
+		background: none;
+	}
+	#x {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: -50vh;
+		height: 200vh;
+		z-index: -1;
+		background: url(photo.jpg) center/cover;
+		transform: translateZ(0);
+	}
+</style>
+<div id="x"></div>
+<script>
+	document.write(
+		'<p>' + Array.from({ length: 60 }, (_, i) => 'Line ' + i).join('</p><p>') + '</p>'
+	);
+</script>
+<script src="hud.js"></script>

@@ -74,6 +74,9 @@ No tested fix meets all requirements.
 The [native boundary tests from October 30](native-boundary-probe/README.md) cover additional CSS layouts, scroll snapping, and root scroll bounds.
 No tested alternative meets all requirements. The application code remains unchanged.
 
+The [broad native search from November 2](native-broad-search/README.md) adds real sites, top-layer and transition layers, and a source-verified clip.
+It also found no compliant layout.
+
 ## Open work
 
 First find a layout that keeps the image behind both native controls at the document boundaries.

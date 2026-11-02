@@ -1,0 +1,59 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+	html {
+		background: #f0f;
+	}
+	body {
+		margin: 0;
+		font: 20px system-ui;
+		color: #fff;
+		background: url(photo.jpg) center/cover;
+	}
+	p {
+		margin: 0 20px 40px;
+		text-shadow: 0 0 4px #000;
+	}
+</style>
+<title>vt</title>
+<style>
+	::view-transition {
+		background: url(photo.jpg) center/cover;
+	}
+	::view-transition-group(root) {
+		animation-duration: 20s;
+	}
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 20s;
+		opacity: 0.5;
+	}
+</style>
+<button
+	onclick="
+		document.startViewTransition(() => {
+			document.body.style.color = 'yellow';
+		})
+	"
+	style="position: absolute; top: 120px; left: 20px; font-size: 20px"
+>
+	start VT
+</button>
+<script>
+	document.write(
+		'<p>' + Array.from({ length: 60 }, (_, i) => 'Line ' + i).join('</p><p>') + '</p>'
+	);
+</script>
+<script src="hud.js"></script>
+<script>
+	setTimeout(() => {
+		document.title = 'vt ' + typeof document.startViewTransition;
+		const t = document.startViewTransition(() => {
+			document.body.style.color = 'yellow';
+		});
+		t.ready.then(
+			() => (document.title += ' ready'),
+			(e) => (document.title += ' err ' + e)
+		);
+	}, 4000);
+</script>
